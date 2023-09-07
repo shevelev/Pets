@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     private let resetPassword: UILabel = {
         $0.text = "Восстановить пароль"
         $0.font = .systemFont(ofSize: 12, weight: .medium)
-        $0.textColor = .red//UIColor(red: 130, green: 138, blue: 150, alpha: 1)
+        $0.textColor = .red
         $0.numberOfLines = 0
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
@@ -32,7 +32,7 @@ class ViewController: UIViewController {
     private let registration: UILabel = {
         $0.text = "Регистрация"
         $0.font = .systemFont(ofSize: 12, weight: .medium)
-        $0.textColor = .red//UIColor(red: 130, green: 138, blue: 150, alpha: 1)
+        $0.textColor = .red
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
     }(UILabel())
@@ -51,6 +51,12 @@ class ViewController: UIViewController {
         return $0
     }(UIView())
     
+    private let textFieldsView: UIView = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.backgroundColor = .yellow
+        return $0
+    }(UIView())
+    
     lazy var nextButton: UIButton = {
         $0.backgroundColor = UIColor(named: "backgroundColorAuth")
         $0.tintColor = .white
@@ -60,7 +66,7 @@ class ViewController: UIViewController {
     }(UIButton())
     
     lazy var emailTextField: UITextField = {
-        $0.frame = CGRect(x: 0, y: 0, width: 100, height: 50)
+        $0.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width-32, height: 30)
         $0.placeholder = "E-mail"
         $0.borderStyle = .roundedRect
         
@@ -68,7 +74,7 @@ class ViewController: UIViewController {
     }(UITextField())
     
     lazy var passwordTextField: UITextField = {
-        $0.frame = CGRect(x: 0, y: 70, width: 100, height: 50)
+        $0.frame = CGRect(x: 0, y: 70, width: self.view.frame.size.width-32, height: 30)
         $0.placeholder = "Пароль"
         $0.borderStyle = .roundedRect
         return $0
@@ -79,12 +85,13 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor(named: "backgroundColorAuth")
         view.addSubview(bottomView)
+        textFieldsView.addSubview(emailTextField)
+        textFieldsView.addSubview(passwordTextField)
+        bottomView.addSubview(textFieldsView)
         bottomView.addSubview(enter)
         bottomView.addSubview(resetPassword)
         bottomView.addSubview(registration)
         bottomView.addSubview(background)
-        bottomView.addSubview(emailTextField)
-        bottomView.addSubview(passwordTextField)
         bottomView.addSubview(nextButton)
         
 
@@ -113,18 +120,22 @@ class ViewController: UIViewController {
             nextButton.trailingAnchor.constraint(equalTo: bottomView.trailingAnchor, constant: -17),
             nextButton.heightAnchor.constraint(equalToConstant: 30),
 
+            textFieldsView.topAnchor.constraint(equalTo: enter.bottomAnchor, constant: 16),
+            textFieldsView.leadingAnchor.constraint(equalTo: bottomView.leadingAnchor, constant: 16),
+            textFieldsView.trailingAnchor.constraint(equalTo: bottomView.trailingAnchor, constant: -16),
+            
+            
             enter.topAnchor.constraint(equalTo: bottomView.topAnchor, constant: 15),
             enter.leadingAnchor.constraint(equalTo: bottomView.leadingAnchor, constant: 15),
             enter.trailingAnchor.constraint(equalTo: bottomView.trailingAnchor, constant: -15),
             
-//            passwordTextField.bottomAnchor.constraint(equalTo: nextButton.topAnchor, constant: 0),
-            emailTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            emailTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 16),
-            emailTextField.heightAnchor.constraint(equalToConstant: 80),
+            emailTextField.leadingAnchor.constraint(equalTo: textFieldsView.leadingAnchor, constant: 0),
+            emailTextField.trailingAnchor.constraint(equalTo: textFieldsView.trailingAnchor, constant: 0),
             
-            passwordTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            passwordTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 16),
-            passwordTextField.heightAnchor.constraint(equalToConstant: 80),
+            
+            passwordTextField.leadingAnchor.constraint(equalTo: textFieldsView.leadingAnchor, constant: 16),
+            passwordTextField.trailingAnchor.constraint(equalTo: textFieldsView.trailingAnchor, constant: 16),
+            
 
         ])
     }
