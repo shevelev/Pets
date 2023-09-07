@@ -18,5 +18,5 @@ struct HumanModel{
     let bioAbout: String
 }
 extension HumanModel{
-    static let MOCK_USER = HumanModel(id: 10, petIds: [2,3,4], name: "Igor", email: "igorz@mail.ru", password: "111222", location: CLLocation(latitude: 5, longitude: 5), phoneNumber: "891999999911", bioAbout: "ya igor")
+    static let MOCK_USER = HumanModel(id: 10, petIds: [2,3,4], name: "Igor", email: "3411@mail.ru", password: "78391111", location: CLLocation(latitude: 5, longitude: 5), phoneNumber: "891999999911", bioAbout: "ya igor")
 }

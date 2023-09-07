@@ -15,3 +15,6 @@ struct PetModel{
     let bioAbout: String
     let media: [UIImage]
 }
+extension PetModel{
+    static let MOCK_PET = PetModel(id: 1, breed: "German ovcharka", name: "Muhtar", dateBirth: NSDate(timeIntervalSinceNow: TimeInterval(10)), bioAbout: "ebannii", media: [])
+}

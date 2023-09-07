@@ -8,49 +8,64 @@
 import Foundation
 import Firebase
 import FirebaseAuth
-@frozen enum DataJsonFormat: String{
-    case name = "name"
-    case bioAbout = "bioAbout"
-    case location = "location"
-    case petIds = "petIds"
-    case phoneNumber = "phoneNumber"
-    case uid = "uid"
+@frozen enum DataJsonFormat{
+    static let name = "name"
+    static let bioAbout = "bioAbout"
+    static let location = "location"
+    static let petIds = "petIds"
+    static let phoneNumber = "phoneNumber"
 }
 
 protocol FirebaseClientProtocol{
-    func handleSignUp(with human: HumanModel)
-    func handleSignIn(with human: HumanModel, completion: @escaping(Bool) -> Void)
+    func handleSignUp(withHuman human: HumanModel,withPet pet: PetModel)
+    func handleSignIn(email: String, password: String)
 }
 
-final class AuthViewModel: FirebaseClientProtocol{
-
-    func handleSignUp(with human: HumanModel) {
-        Auth.auth().createUser(withEmail:human.email, password: human.password) { result, error in
-            if error != nil{
-                print(error ?? "error with user")
-            } else {
-                let db = Firestore.firestore()
-                db.collection("users").addDocument(data: [
-                    DataJsonFormat.name.rawValue: human.name,
-                    DataJsonFormat.bioAbout.rawValue: human.bioAbout,
-                    DataJsonFormat.location.rawValue: human.location.coordinate,
-                    DataJsonFormat.petIds.rawValue: human.petIds,
-                    DataJsonFormat.phoneNumber.rawValue: human.phoneNumber,
-                    DataJsonFormat.uid.rawValue: result! .user.uid
-                ]) { error in
-                    print(error!)
-                }
-            }
-        }
-    }
-
-    func handleSignIn(with human: HumanModel, completion: @escaping(Bool) -> Void) {
-        Auth.auth().signIn(withEmail: human.email, password: human.password) { result, error in
+final class FirebaseClient: FirebaseClientProtocol{
+    let db = Firestore.firestore()
+    func handleSignUp(withHuman human: HumanModel,withPet pet: PetModel) {
+        Auth.auth().createUser(withEmail: human.email, password: human.password) {[weak self] authResult, error in
             if let err = error{
                 print(err)
             } else{
-                completion(true)
+                guard let self = self else {return}
+                self.db
+                    .collection("users")
+                    .addDocument(data: [
+                        DataJsonFormat.name: human.name,
+                        DataJsonFormat.phoneNumber: human.phoneNumber,
+                        DataJsonFormat.petIds: human.petIds,
+                        DataJsonFormat.location: [human.location.coordinate.latitude,
+                                                  human.location.coordinate.longitude
+                                                 ],
+                        DataJsonFormat.bioAbout: human.bioAbout,
+                        "pet": [
+                            pet.bioAbout,
+                            pet.name,
+                            pet.breed,
+                            pet.dateBirth
+                        ]
+                    ]) { (error) in
+                        if let e = error{
+                            print("there was issue, \(e)")
+                        } else{
+                            print("succesfully saved your data")
+                        }
+                    }
+                print("created")
             }
         }
     }
+    func handleSignIn(email: String, password: String) {
+        Auth.auth().signIn(withEmail: email, password: password) { result, error in
+            if let err = error{
+                print(err)
+            } else{
+                print("SignIn")
+            }
+        }
+    }
+    
+
 }
+
