@@ -16,6 +16,10 @@ class ViewController: UIViewController {
         $0.textColor = .red
         $0.numberOfLines = 0
         $0.translatesAutoresizingMaskIntoConstraints = false
+        let tap = UITapGestureRecognizer(target: self, action: #selector(restorePassword))
+        $0.isUserInteractionEnabled = true
+        $0.addGestureRecognizer(tap)
+       // $0.addTarget(self, action: #selector(restorePassword), for: .touchUpInside)
         return $0
     }(UILabel())
     
@@ -75,6 +79,7 @@ class ViewController: UIViewController {
         $0.setTitle("Далее", for: .normal)
         $0.layer.cornerRadius = 32
         $0.layer.cornerCurve = .continuous
+        $0.addTarget(self, action: #selector(restorePassword), for: .touchUpInside) //test
         return $0
     }(UIButton())
     
@@ -173,5 +178,11 @@ class ViewController: UIViewController {
         ])
     }
     
+    
+    @objc func restorePassword() {
+        let vc = RestorePasswordController()
+        //vc.navigationItem.largeTitleDisplayMode = .never
+        navigationController?.pushViewController(vc, animated: true)
+    }
 
 }
