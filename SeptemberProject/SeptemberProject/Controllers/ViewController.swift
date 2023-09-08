@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //firebaseclient.handleSignUp(withHuman: HumanModel.MOCK_USER, withPet: PetModel.MOCK_PET)
-        firebaseclient.handleSignUp(withHuman: HumanModel.MOCK_USER, withPet: PetModel.MOCK_PET)
+        firebaseclient.handleSignUp(withHuman: HumanModel.MOCK_USER,pass: "1111111")
     }
 }
 

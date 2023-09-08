@@ -8,7 +8,6 @@
 import Foundation
 import UIKit
 struct PetModel{
-    let id: Int
     let breed: String
     let name: String
     let dateBirth: NSDate
@@ -16,5 +15,5 @@ struct PetModel{
     let media: [UIImage]
 }
 extension PetModel{
-    static let MOCK_PET = PetModel(id: 1, breed: "German ovcharka", name: "Muhtar", dateBirth: NSDate(timeIntervalSinceNow: TimeInterval(10)), bioAbout: "ebannii", media: [])
+    static let MOCK_PET = PetModel( breed: "German ovcharka", name: "Muhtar", dateBirth: NSDate(timeIntervalSinceNow: TimeInterval(10)), bioAbout: "ebannii", media: [])
 }
