@@ -22,7 +22,9 @@ protocol FirebaseClientProtocol{
 }
 
 final class FirebaseClient: FirebaseClientProtocol{
+    
     let db = Firestore.firestore()
+    
     func handleSignUp(withHuman human: HumanModel,withPet pet: PetModel) {
         Auth.auth().createUser(withEmail: human.email, password: human.password) {[weak self] authResult, error in
             if let err = error{
@@ -55,6 +57,20 @@ final class FirebaseClient: FirebaseClientProtocol{
                 print("created")
             }
         }
+        let petsColl = db.collection("pets")
+        let usersColl = db.collection("users")
+        let petsRef = petsColl.document("pet1")
+        petsRef.setData([
+            "breed": "pes",
+            "name": "muha",
+        ])
+        let userRef = usersColl.document("john")
+        userRef.setData([
+            "name": "John",
+            "posts": [
+                petsColl.document("pet1")
+            ]
+        ])
     }
     func handleSignIn(email: String, password: String) {
         Auth.auth().signIn(withEmail: email, password: password) { result, error in
@@ -65,7 +81,6 @@ final class FirebaseClient: FirebaseClientProtocol{
             }
         }
     }
-    
 
 }
 
