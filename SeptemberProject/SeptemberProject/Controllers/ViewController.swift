@@ -16,9 +16,9 @@ class ViewController: UIViewController {
         $0.textColor = .red
         $0.numberOfLines = 0
         $0.translatesAutoresizingMaskIntoConstraints = false
-        let tap = UITapGestureRecognizer(target: self, action: #selector(restorePassword))
-        $0.isUserInteractionEnabled = true
-        $0.addGestureRecognizer(tap)
+        //let tap = UITapGestureRecognizer(target: ViewController.self, action: #selector(restorePassword))
+        //$0.isUserInteractionEnabled = true
+        //$0.addGestureRecognizer(tap)
        // $0.addTarget(self, action: #selector(restorePassword), for: .touchUpInside)
         return $0
     }(UILabel())
@@ -74,7 +74,7 @@ class ViewController: UIViewController {
     
     lazy var nextButton: UIButton = {
         $0.backgroundColor = UIColor(named: "backgroundColorAuth")
-        $0.tintColor = .white
+        $0.setTitleColor(.white, for: .normal)
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.setTitle("Далее", for: .normal)
         $0.layer.cornerRadius = 32
@@ -89,6 +89,7 @@ class ViewController: UIViewController {
         $0.borderStyle = .roundedRect
         $0.layer.cornerRadius = 10
         $0.layer.cornerCurve = .continuous
+        $0.isUserInteractionEnabled = true
         return $0
     }(UITextField())
     
@@ -118,6 +119,7 @@ class ViewController: UIViewController {
         textFieldsView.addSubview(emailTextField)
         textFieldsView.addSubview(passwordTextField)
         textFieldsView.addSubview(nextButton)
+        textFieldsView.layer.zPosition = 100
 
         
         bottomView.addSubview(resetPassword)
@@ -180,8 +182,8 @@ class ViewController: UIViewController {
     
     
     @objc func restorePassword() {
+        print("test")
         let vc = RestorePasswordController()
-        //vc.navigationItem.largeTitleDisplayMode = .never
         navigationController?.pushViewController(vc, animated: true)
     }
 
