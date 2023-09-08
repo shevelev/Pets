@@ -60,15 +60,14 @@ class ViewController: UIViewController {
     
     private let bottomView: UIView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        //$0.backgroundColor = .white
-       // $0.layer.zPosition = 5
+        $0.isUserInteractionEnabled = true
         return $0
     }(UIView())
     
     private let textFieldsView: UIView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.backgroundColor = .white
-        //$0.layer.zPosition = 10
+        $0.isUserInteractionEnabled = true
         return $0
     }(UIView())
     
@@ -89,7 +88,6 @@ class ViewController: UIViewController {
         $0.borderStyle = .roundedRect
         $0.layer.cornerRadius = 10
         $0.layer.cornerCurve = .continuous
-        $0.isUserInteractionEnabled = true
         return $0
     }(UITextField())
     
@@ -158,6 +156,7 @@ class ViewController: UIViewController {
             //textFieldsView.topAnchor.constraint(equalTo: enter.bottomAnchor, constant: 16),
             textFieldsView.leadingAnchor.constraint(equalTo: bottomView.leadingAnchor, constant: 16),
             textFieldsView.trailingAnchor.constraint(equalTo: bottomView.trailingAnchor, constant: -16),
+            textFieldsView.heightAnchor.constraint(equalToConstant: 200),
             
             
             enter.topAnchor.constraint(equalTo: bottomView.topAnchor, constant: 45),
