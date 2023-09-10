@@ -32,15 +32,8 @@ class RestorePasswordViewController: UIViewController {
         return label
     }()
     
-    private let emailTextField: UITextField = {
-        let textField = UITextField()//frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width-32, height: 59))
-        textField.layer.borderWidth = 1
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.placeholder = "E-mail"
-        textField.borderStyle = .roundedRect
-        textField.layer.cornerRadius = 10
-        textField.layer.cornerCurve = .continuous
-        textField.isUserInteractionEnabled = true
+    private let emailTextField: CustomTextField = {
+        let textField = CustomTextField(placeholder: "E-mail")
         return textField
     }()
     
