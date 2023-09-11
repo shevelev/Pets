@@ -89,6 +89,34 @@ final class FirebaseClient: FirebaseClientProtocol{
             }
         }
     }
+//    func createUser(userFirstName: String, userLastName: String, email: String, password: String, completionBlock: @escaping (Result<UserAuthData, Error>) -> Void) {
+//        Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
+//            if let error = error {
+//                completionBlock(.failure(error))
+//                return
+//            } else {
+//                if let currentUser = Auth.auth().currentUser?.createProfileChangeRequest() {
+//                    currentUser.displayName = String("\(userFirstName) \(userLastName)")
+//                    currentUser.commitChanges { [self] (error) in
+//                        if let error = error {
+//                            completionBlock(.failure(error))
+//                        } else {
+//                            if let curUser = Auth.auth().currentUser {
+//                                user = UserAuthData(userFirstName: userFirstName,
+//                                                    userLastName: userLastName,
+//                                                    userEmail: curUser.email!,
+//                                                    userPassword: password,
+//                                                    uid: curUser.uid,
+//                                                    userImageUrl: curUser.photoURL,
+//                                                    isGoogleUser: false)
+//                            }
+//                            completionBlock(.success(user))
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//    }
 
 }
 
