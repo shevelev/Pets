@@ -50,7 +50,7 @@ class RestorePasswordViewController: UIViewController {
     
     @objc private func sendCode() {
       print("send code")
-        let vc = ViewController()
+        let vc = AutorizetionViewController()
         self.navigationController?.pushViewController(vc, animated: true)
         print("2")
     }
