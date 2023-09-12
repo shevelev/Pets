@@ -20,7 +20,8 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let window = UIWindow(windowScene: windowScene)
 //        window.rootViewController = RestorePasswordViewController()//ViewController()
-        window.rootViewController = RegistrationViewController()
+//        window.rootViewController = RegistrationViewController()
+        window.rootViewController = AutorizetionViewController()
         window.makeKeyAndVisible()
         self.window = window
     }

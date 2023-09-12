@@ -74,16 +74,6 @@ class AutorizetionViewController: UIViewController {
         return image
     }()
     
-    private let backgroundDogImageView: UIImageView = {
-        let image = UIImageView()
-        image.image = UIImage(named: "backgroundAuth-1")
-        image.contentMode = .scaleAspectFit
-        image.layer.masksToBounds = true
-        image.translatesAutoresizingMaskIntoConstraints = false
-        image.layer.zPosition = 10000
-        return image
-    }()
-    
     private let lineImageView: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "Line3")
@@ -96,7 +86,7 @@ class AutorizetionViewController: UIViewController {
     
     private let backgroundBottomImageView: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "rectangle150")
+        image.image = UIImage(named: "Rectangle150")
         //$0.contentMode = .scaleToFill
         image.layer.masksToBounds = true
         image.translatesAutoresizingMaskIntoConstraints = false
@@ -120,7 +110,6 @@ class AutorizetionViewController: UIViewController {
 
         view.addSubview(backgroundTopImageView)
         view.addSubview(backgroundBottomImageView)
-        view.addSubview(backgroundDogImageView)
         
         view.addSubview(enterLabel)
         view.addSubview(emailTextField)
@@ -152,10 +141,6 @@ class AutorizetionViewController: UIViewController {
             backgroundBottomImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),
             backgroundBottomImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
             backgroundBottomImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
-            
-            backgroundDogImageView.bottomAnchor.constraint(equalTo: backgroundBottomImageView.topAnchor, constant: -10),
-            backgroundDogImageView.widthAnchor.constraint(equalToConstant: view.frame.size.width / 2),
-            backgroundDogImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
             
         ])
     }
