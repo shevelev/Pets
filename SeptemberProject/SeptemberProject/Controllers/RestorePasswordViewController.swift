@@ -9,7 +9,7 @@ import UIKit
 
 class RestorePasswordViewController: UIViewController {
     
-    private let signInButton: UIButton = {
+    lazy var signInButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = UIColor(named: "backgroundColorAuth")
         button.setTitleColor(.white, for: .normal)
@@ -17,7 +17,7 @@ class RestorePasswordViewController: UIViewController {
         button.setTitle("Отправить код", for: .normal)
         button.layer.cornerRadius = 32
         button.layer.cornerCurve = .continuous
-        button.addTarget(RestorePasswordViewController.self, action: #selector(sendCode), for: .touchUpInside) //test
+        button.addTarget(self, action: #selector(sendCode), for: .touchUpInside)
         return button
     }()
     
@@ -40,7 +40,7 @@ class RestorePasswordViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        title = "Напомнить пароль"
+        //title = "Напомнить пароль"
        
         view.addSubview(signInButton)
         view.addSubview(descriptionLabel)
@@ -49,10 +49,9 @@ class RestorePasswordViewController: UIViewController {
     }
     
     @objc private func sendCode() {
-      print("send code")
-        let vc = AutorizetionViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
-        print("2")
+        print("no action")
+//        let viewController = AutorizetionViewController()
+//        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     private func setConstraints() {

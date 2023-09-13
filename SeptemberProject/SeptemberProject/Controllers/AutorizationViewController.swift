@@ -196,14 +196,20 @@ class AutorizetionViewController: UIViewController {
     
     @objc func resetPasswordButtonPressed(_ sender: UIButton!) {
         print("resetPasswordButtonPressed \(Date())")
+        let viewController = RestorePasswordViewController()
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     @objc func registrationButtonPressed(_ sender: UIButton!) {
         print("registrationButtonPressed \(Date())")
+        let viewController = RegistrationViewController()
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     @objc func nextButtonPressed(_ sender: UIButton!) {
         print("nextButtonPressed \(Date())")
+//        let viewController = AutorizetionViewController()
+//        self.navigationController?.pushViewController(viewController, animated: true)
     }
 
 }
