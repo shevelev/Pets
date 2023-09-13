@@ -19,9 +19,16 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        window?.rootViewController = ViewController()
         
         let window = UIWindow(windowScene: windowScene)
+        
+        
+        let navigationController = UINavigationController(rootViewController: AutorizetionViewController())
+        navigationController.navigationBar.prefersLargeTitles = true
+        navigationController.viewControllers.first?.navigationItem.largeTitleDisplayMode = .always
+        window.rootViewController = navigationController
+        
 //        window.rootViewController = RestorePasswordViewController()//ViewController()
 //        window.rootViewController = RegistrationViewController()
-        window.rootViewController = AutorizetionViewController()
+//        window.rootViewController = AutorizetionViewController()
         window.makeKeyAndVisible()
         self.window = window
     }
