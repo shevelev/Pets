@@ -25,6 +25,11 @@
 		C9629F8E2AAB4F7500CBD361 /* RestorePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9629F8D2AAB4F7500CBD361 /* RestorePasswordViewController.swift */; };
 		C96FAD162AAE034900CA0BAA /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96FAD152AAE034900CA0BAA /* K.swift */; };
 		C96FAD182AAE34D800CA0BAA /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96FAD172AAE34D800CA0BAA /* CustomTextField.swift */; };
+		C989D9D02AB319AB00268730 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C989D9CF2AB319AB00268730 /* Coordinator.swift */; };
+		C989D9D22AB31A0800268730 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C989D9D12AB31A0800268730 /* AppCoordinator.swift */; };
+		C989D9D52AB31D8600268730 /* AutorizetionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C989D9D42AB31D8600268730 /* AutorizetionViewModel.swift */; };
+		C989D9D72AB31DD300268730 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C989D9D62AB31DD300268730 /* RegistrationViewModel.swift */; };
+		C989D9D92AB31E8100268730 /* RestorePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C989D9D82AB31E8100268730 /* RestorePasswordViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +48,11 @@
 		C9629F8D2AAB4F7500CBD361 /* RestorePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordViewController.swift; sourceTree = "<group>"; };
 		C96FAD152AAE034900CA0BAA /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
 		C96FAD172AAE34D800CA0BAA /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		C989D9CF2AB319AB00268730 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		C989D9D12AB31A0800268730 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		C989D9D42AB31D8600268730 /* AutorizetionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutorizetionViewModel.swift; sourceTree = "<group>"; };
+		C989D9D62AB31DD300268730 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
+		C989D9D82AB31E8100268730 /* RestorePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +90,8 @@
 		18A539492AA798CB00D82A49 /* SeptemberProject */ = {
 			isa = PBXGroup;
 			children = (
+				C989D9D32AB31D6100268730 /* ViewModel */,
+				C989D9CE2AB3199500268730 /* Coordinator */,
 				18A5395E2AA79A2C00D82A49 /* Resources */,
 				18A539602AA79AB300D82A49 /* FirebaseService */,
 				18A5395F2AA79A3C00D82A49 /* Controllers */,
@@ -128,6 +140,25 @@
 				18A539712AA8913A00D82A49 /* PetModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		C989D9CE2AB3199500268730 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				C989D9CF2AB319AB00268730 /* Coordinator.swift */,
+				C989D9D12AB31A0800268730 /* AppCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		C989D9D32AB31D6100268730 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C989D9D42AB31D8600268730 /* AutorizetionViewModel.swift */,
+				C989D9D62AB31DD300268730 /* RegistrationViewModel.swift */,
+				C989D9D82AB31E8100268730 /* RestorePasswordViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -211,12 +242,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C989D9D22AB31A0800268730 /* AppCoordinator.swift in Sources */,
 				18A5394F2AA798CB00D82A49 /* AutorizationViewController.swift in Sources */,
+				C989D9D52AB31D8600268730 /* AutorizetionViewModel.swift in Sources */,
+				C989D9D72AB31DD300268730 /* RegistrationViewModel.swift in Sources */,
 				C96FAD162AAE034900CA0BAA /* K.swift in Sources */,
+				C989D9D92AB31E8100268730 /* RestorePasswordViewModel.swift in Sources */,
 				C96FAD182AAE34D800CA0BAA /* CustomTextField.swift in Sources */,
 				C9629F8E2AAB4F7500CBD361 /* RestorePasswordViewController.swift in Sources */,
 				31A492982AAFB74E009B27C9 /* RegistrationViewController.swift in Sources */,
 				18A5394B2AA798CB00D82A49 /* AppDelegate.swift in Sources */,
+				C989D9D02AB319AB00268730 /* Coordinator.swift in Sources */,
 				18A5394D2AA798CB00D82A49 /* SceneDelegate.swift in Sources */,
 				18A539702AA8913200D82A49 /* HumanModel.swift in Sources */,
 				18A5396D2AA7AB3300D82A49 /* FirebaseClient.swift in Sources */,
