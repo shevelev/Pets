@@ -9,6 +9,8 @@ import UIKit
 
 class RestorePasswordViewController: UIViewController {
     
+    var viewModel: RestorePasswordViewModel!
+    
     lazy var signInButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = UIColor(named: "backgroundColorAuth")
