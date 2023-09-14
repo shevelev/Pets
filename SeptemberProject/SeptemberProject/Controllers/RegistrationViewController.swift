@@ -75,74 +75,103 @@ private extension RegistrationViewController {
 private extension RegistrationViewController {
     
     func configureScrollView() {
+        view.addSubview(scrollView)
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.showsVerticalScrollIndicator = true
-        scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
-        scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
-        scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        view.addSubview(scrollView)
+        scrollView.backgroundColor = .white
+        
+        NSLayoutConstraint.activate([
+            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        ])
     }
     
     func configureContentView() {
-        contentView.translatesAutoresizingMaskIntoConstraints = false
-        contentView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
-        contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
-        contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
-        contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
-        contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
         scrollView.addSubview(contentView)
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.backgroundColor = .white
+        
+        NSLayoutConstraint.activate([
+            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
+        ])
     }
     
     func configureNameTextField() {
        // nameTextField.translatesAutoresizingMaskIntoConstraints = false
-        nameTextField.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
-        nameTextField.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
-        nameTextField.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.8).isActive = true
-        nameTextField.heightAnchor.constraint(equalToConstant: 60).isActive = true
         contentView.addSubview(nameTextField)
+        
+        NSLayoutConstraint.activate([
+        nameTextField.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 400),
+        nameTextField.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.8),
+        nameTextField.heightAnchor.constraint(equalToConstant: 60)
+        ])
     }
     func configureEmailTextField() {
      //   emailTextField.translatesAutoresizingMaskIntoConstraints = false
-        emailTextField.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.8).isActive = true
-        emailTextField.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 20).isActive = true
-        emailTextField.heightAnchor.constraint(equalToConstant: 60).isActive = true
         contentView.addSubview(emailTextField)
+        
+        NSLayoutConstraint.activate([
+        emailTextField.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.8),
+        emailTextField.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 20),
+        emailTextField.heightAnchor.constraint(equalToConstant: 60)
+        ])
     }
     
     func configurePlaceTextField() {
  //       placeTextField.translatesAutoresizingMaskIntoConstraints = false
-        emailTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 20).isActive = true
-        placeTextField.heightAnchor.constraint(equalToConstant: 60).isActive = true
         contentView.addSubview(placeTextField)
+        NSLayoutConstraint.activate([
+        placeTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 20),
+        placeTextField.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.8),
+        placeTextField.heightAnchor.constraint(equalToConstant: 60)
+        ])
     }
     
     func configureMobileTextField() {
 //        mobileTextField.translatesAutoresizingMaskIntoConstraints = false
-        mobileTextField.topAnchor.constraint(equalTo: placeTextField.bottomAnchor, constant: 20).isActive = true
-        mobileTextField.heightAnchor.constraint(equalToConstant: 60).isActive = true
         contentView.addSubview(mobileTextField)
+        NSLayoutConstraint.activate([
+        mobileTextField.topAnchor.constraint(equalTo: placeTextField.bottomAnchor, constant: 20),
+        mobileTextField.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.8),
+        mobileTextField.heightAnchor.constraint(equalToConstant: 60)
+        ])
     }
     
     func configureBioTextFieald() {
  //       bioTextField.translatesAutoresizingMaskIntoConstraints = false
-        bioTextField.topAnchor.constraint(equalTo: mobileTextField.bottomAnchor, constant: 20).isActive = true
-        bioTextField.heightAnchor.constraint(equalToConstant: 60).isActive = true
         contentView.addSubview(bioTextField)
+        NSLayoutConstraint.activate([
+        bioTextField.topAnchor.constraint(equalTo: mobileTextField.bottomAnchor, constant: 20),
+        bioTextField.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.8),
+        bioTextField.heightAnchor.constraint(equalToConstant: 60)
+        ])
     }
     
     func configurePassTextField() {
   //      passTextField.translatesAutoresizingMaskIntoConstraints = false
-        passTextField.topAnchor.constraint(equalTo: bioTextField.bottomAnchor, constant: 20).isActive = true
-        passTextField.heightAnchor.constraint(equalToConstant: 60).isActive = true
         contentView.addSubview(passTextField)
+        NSLayoutConstraint.activate([
+        passTextField.topAnchor.constraint(equalTo: bioTextField.bottomAnchor, constant: 20),
+        passTextField.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.8),
+        passTextField.heightAnchor.constraint(equalToConstant: 60)
+        ])
     }
     
     func configurePass2TextField() {
   //      pass2TextField.translatesAutoresizingMaskIntoConstraints = false
-        emailTextField.topAnchor.constraint(equalTo: passTextField.bottomAnchor, constant: 20).isActive = true
-        pass2TextField.heightAnchor.constraint(equalToConstant: 60).isActive = true
         contentView.addSubview(pass2TextField)
+        NSLayoutConstraint.activate([
+        pass2TextField.topAnchor.constraint(equalTo: passTextField.bottomAnchor, constant: 20),
+        pass2TextField.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.8),
+        pass2TextField.heightAnchor.constraint(equalToConstant: 60),
+        pass2TextField.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+        ])
     }
     
 }
