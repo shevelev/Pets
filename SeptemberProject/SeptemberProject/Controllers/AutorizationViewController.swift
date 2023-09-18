@@ -53,8 +53,8 @@ class AutorizetionViewController: UIViewController {
     }()
     
     //MARK: textFields
-    private let emailTextField: CustomTextField = {
-        let textField = CustomTextField(placeholder: "E-mail")
+    private let emailTextField: CustomFloatingTextField = {
+        let textField = CustomFloatingTextField(placeholder: "E-mail")
         return textField
     }()
     
