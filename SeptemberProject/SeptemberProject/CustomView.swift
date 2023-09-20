@@ -111,6 +111,7 @@ final class CustomView: UIView {
         floatingLabel.text = ""
         labelTopCon = 0
         textTopCon = 0
+        layer.borderColor = UIColor(red: 237/255, green: 237/255, blue: 240/255, alpha: 1).cgColor
 //        updateConst()
     }
     
@@ -140,7 +141,8 @@ final class CustomView: UIView {
         
         layer.cornerRadius = 10
         layer.cornerCurve = .continuous
-        layer.backgroundColor =  .init(red: 255, green: 255, blue: 255, alpha: 1)
+        layer.backgroundColor = UIColor.white.cgColor
+        layer.borderColor =  UIColor(red: 237/255, green: 237/255, blue: 240/255, alpha: 1).cgColor
         layer.borderWidth = 1
         translatesAutoresizingMaskIntoConstraints = false
         layer.borderColor = UIColor(named: "borderColorEditText")!.cgColor
@@ -167,5 +169,9 @@ final class CustomView: UIView {
         return emailPred.evaluate(with: floatingText.text)
      }
     
+    override func resignFirstResponder() -> Bool {
+        print("2")
+        return super.resignFirstResponder()
+    }
  
 }
