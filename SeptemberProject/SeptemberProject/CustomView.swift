@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class CustomView: UIStackView {
+final class CustomView: UIView {
     
     enum typeTextField {
         case email //regex check
@@ -23,6 +23,18 @@ final class CustomView: UIStackView {
     
     
     //MARK: -- elements
+    
+    private let stackView: UIStackView = {
+           let stack = UIStackView(arrangedSubviews: [])
+           stack.axis  = .horizontal
+           //stack.distribution = .fillEqually
+           stack.alignment = .center
+           stack.translatesAutoresizingMaskIntoConstraints = false
+//           stack.spacing = 5
+        //stack.backgroundColor = .red
+           return stack
+       }()
+    
     private let floatingLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 12, weight: .light)
@@ -37,6 +49,7 @@ final class CustomView: UIStackView {
         //textField.placeholder = "test2"
         textField.textColor = .gray
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.font = UIFont.systemFont(ofSize: 16, weight: .light)
         //textField.backgroundColor = .green
         textField.addTarget(self, action: #selector(editTextChanged), for: .editingChanged)
         return textField
@@ -63,9 +76,9 @@ final class CustomView: UIStackView {
                 floatingText.textColor = UIColor(red: 250/255, green: 46/255, blue: 105/255, alpha: 1)
             }
             
-            labelTopCon = 15
-            textTopCon = -5
-            updateConst()
+//            labelTopCon = 15
+//            textTopCon = 5
+//            updateConst()
             
         } else if size == 0 {
             reset()
@@ -78,12 +91,17 @@ final class CustomView: UIStackView {
             self.heightAnchor.constraint(equalToConstant: 60),
             //floatingLabel.heightAnchor.constraint(equalToConstant: 15),
             
-            floatingLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15),
-            floatingLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 15),
-            floatingLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: labelTopCon),
+            stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15),
+            stackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 11),
+            stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -15),
+            stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -11),
             
-            floatingText.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15),
-            floatingText.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 15),
+            floatingLabel.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: 0),
+            floatingLabel.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: 0),
+            floatingLabel.topAnchor.constraint(equalTo: stackView.topAnchor, constant: labelTopCon),
+            
+            floatingText.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: 0),
+            floatingText.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: 0),
             floatingText.topAnchor.constraint(equalTo: floatingLabel.bottomAnchor, constant: textTopCon)
             
         ])
@@ -93,7 +111,7 @@ final class CustomView: UIStackView {
         floatingLabel.text = ""
         labelTopCon = 0
         textTopCon = 0
-        updateConst()
+//        updateConst()
     }
     
     init(placeholder: String, type: typeTextField) {
@@ -112,11 +130,14 @@ final class CustomView: UIStackView {
     
     private func setupUI() {
         
-        self.addArrangedSubview(floatingLabel)
-        self.addArrangedSubview(floatingText)
+        self.addSubview(stackView)
         
-        backgroundColor = .blue
-        axis = .vertical
+        stackView.addArrangedSubview(floatingLabel)
+        stackView.addArrangedSubview(floatingText)
+        
+        stackView.axis = .vertical
+        stackView.alignment = .leading
+        
         layer.cornerRadius = 10
         layer.cornerCurve = .continuous
         layer.backgroundColor =  .init(red: 255, green: 255, blue: 255, alpha: 1)
@@ -145,4 +166,6 @@ final class CustomView: UIStackView {
           let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailPred.evaluate(with: floatingText.text)
      }
+    
+ 
 }
