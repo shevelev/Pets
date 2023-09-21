@@ -58,7 +58,7 @@ class RestorePasswordViewController: UIViewController {
     }
     
     @objc private func goToBack() {
-        viewModel.goToLogin()
+        viewModel.goToBack()
     }
     
     private func setupNavItem() {

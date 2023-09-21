@@ -13,5 +13,9 @@ class RestorePasswordViewModel {
     func goToLogin() {
         coordinator.goToAutorizetionPage()
     }
+    
+    func goToBack() {
+        coordinator.goToBack()
+    }
 }
 

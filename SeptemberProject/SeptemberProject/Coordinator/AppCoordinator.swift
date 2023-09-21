@@ -28,6 +28,11 @@ class AppCoordinator: Coordinator {
         autorizetionViewModel.coordinator = self
         autorizetionViewController.viewModel = autorizetionViewModel
         navigationController.pushViewController(autorizetionViewController, animated: true)
+        navigationController.popViewController(animated: true)
+    }
+    
+    func goToBack() {
+        navigationController.popViewController(animated: true)
     }
     
     func goToRegistrationPage() {
