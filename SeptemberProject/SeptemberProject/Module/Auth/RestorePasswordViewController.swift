@@ -35,7 +35,7 @@ class RestorePasswordViewController: UIViewController {
     }()
     
     private let emailTextField: CustomTextField = {
-        let textField = CustomTextField(placeholder: "E-mail")
+        let textField = CustomTextField(placeholder: "E-mail", type: .email)
         return textField
     }()
     

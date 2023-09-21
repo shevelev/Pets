@@ -7,12 +7,13 @@
 
 import UIKit
 
-final class CustomView: UIView {
+final class CustomTextField: UIView {
     
     enum typeTextField {
         case email //regex check
         case phone //format +* (***) *** **-**
         case none
+        case pass
     }
     
     private var labelText: String = ""
@@ -52,6 +53,7 @@ final class CustomView: UIView {
         textField.font = UIFont.systemFont(ofSize: 16, weight: .light)
         //textField.backgroundColor = .green
         textField.addTarget(self, action: #selector(editTextChanged), for: .editingChanged)
+        
         return textField
     }()
     
@@ -122,6 +124,8 @@ final class CustomView: UIView {
         floatingText.placeholder = placeholder
         self.type = type
         
+        
+        
         setupUI()
     }
     
@@ -147,6 +151,10 @@ final class CustomView: UIView {
         translatesAutoresizingMaskIntoConstraints = false
         layer.borderColor = UIColor(named: "borderColorEditText")!.cgColor
         
+        if self.type == .pass {
+            floatingText.isSecureTextEntry = true
+        }
+        
         updateConst()
      
     }
@@ -157,6 +165,8 @@ final class CustomView: UIView {
         case .email:
             self.isCorrectly = isValidEmail()
         case .phone:
+            self.isCorrectly = true
+        case .pass:
             self.isCorrectly = true
         case .none:
             self.isCorrectly = true

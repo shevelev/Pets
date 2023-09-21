@@ -24,14 +24,12 @@
 		31A492982AAFB74E009B27C9 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A492972AAFB74E009B27C9 /* RegistrationViewController.swift */; };
 		C9629F8E2AAB4F7500CBD361 /* RestorePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9629F8D2AAB4F7500CBD361 /* RestorePasswordViewController.swift */; };
 		C96FAD162AAE034900CA0BAA /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96FAD152AAE034900CA0BAA /* K.swift */; };
-		C96FAD182AAE34D800CA0BAA /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96FAD172AAE34D800CA0BAA /* CustomTextField.swift */; };
-		C9813A0F2ABB666000F4FC92 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9813A0E2ABB666000F4FC92 /* CustomView.swift */; };
+		C9813A0F2ABB666000F4FC92 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9813A0E2ABB666000F4FC92 /* CustomTextField.swift */; };
 		C989D9D02AB319AB00268730 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C989D9CF2AB319AB00268730 /* Coordinator.swift */; };
 		C989D9D22AB31A0800268730 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C989D9D12AB31A0800268730 /* AppCoordinator.swift */; };
 		C989D9D52AB31D8600268730 /* AutorizetionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C989D9D42AB31D8600268730 /* AutorizetionViewModel.swift */; };
 		C989D9D72AB31DD300268730 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C989D9D62AB31DD300268730 /* RegistrationViewModel.swift */; };
 		C989D9D92AB31E8100268730 /* RestorePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C989D9D82AB31E8100268730 /* RestorePasswordViewModel.swift */; };
-		C9B187D72AB88DCA00E6A6A4 /* CustomFloatingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B187D62AB88DCA00E6A6A4 /* CustomFloatingTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,14 +47,12 @@
 		31A492972AAFB74E009B27C9 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		C9629F8D2AAB4F7500CBD361 /* RestorePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordViewController.swift; sourceTree = "<group>"; };
 		C96FAD152AAE034900CA0BAA /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
-		C96FAD172AAE34D800CA0BAA /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
-		C9813A0E2ABB666000F4FC92 /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
+		C9813A0E2ABB666000F4FC92 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		C989D9CF2AB319AB00268730 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		C989D9D12AB31A0800268730 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		C989D9D42AB31D8600268730 /* AutorizetionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutorizetionViewModel.swift; sourceTree = "<group>"; };
 		C989D9D62AB31DD300268730 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		C989D9D82AB31E8100268730 /* RestorePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordViewModel.swift; sourceTree = "<group>"; };
-		C9B187D62AB88DCA00E6A6A4 /* CustomFloatingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFloatingTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,17 +90,13 @@
 		18A539492AA798CB00D82A49 /* SeptemberProject */ = {
 			isa = PBXGroup;
 			children = (
-				C989D9D32AB31D6100268730 /* ViewModel */,
+				C9813A112ABC6F7700F4FC92 /* Module */,
+				C9813A102ABC6C5100F4FC92 /* Extenstions */,
 				C989D9CE2AB3199500268730 /* Coordinator */,
 				18A5395E2AA79A2C00D82A49 /* Resources */,
 				18A539602AA79AB300D82A49 /* FirebaseService */,
-				18A5395F2AA79A3C00D82A49 /* Controllers */,
 				18A539582AA798CD00D82A49 /* Info.plist */,
-				C96FAD152AAE034900CA0BAA /* K.swift */,
-				C96FAD172AAE34D800CA0BAA /* CustomTextField.swift */,
 				18A539612AA79DA400D82A49 /* GoogleService-Info.plist */,
-				C9B187D62AB88DCA00E6A6A4 /* CustomFloatingTextField.swift */,
-				C9813A0E2ABB666000F4FC92 /* CustomView.swift */,
 			);
 			path = SeptemberProject;
 			sourceTree = "<group>";
@@ -118,16 +110,6 @@
 				18A539552AA798CD00D82A49 /* LaunchScreen.storyboard */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		18A5395F2AA79A3C00D82A49 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				18A5394E2AA798CB00D82A49 /* AutorizationViewController.swift */,
-				31A492972AAFB74E009B27C9 /* RegistrationViewController.swift */,
-				C9629F8D2AAB4F7500CBD361 /* RestorePasswordViewController.swift */,
-			);
-			path = Controllers;
 			sourceTree = "<group>";
 		};
 		18A539602AA79AB300D82A49 /* FirebaseService */ = {
@@ -148,6 +130,44 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		C9813A102ABC6C5100F4FC92 /* Extenstions */ = {
+			isa = PBXGroup;
+			children = (
+				C9813A0E2ABB666000F4FC92 /* CustomTextField.swift */,
+				C96FAD152AAE034900CA0BAA /* K.swift */,
+			);
+			path = Extenstions;
+			sourceTree = "<group>";
+		};
+		C9813A112ABC6F7700F4FC92 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				C9813A132ABC708F00F4FC92 /* Registration */,
+				C9813A122ABC6F7F00F4FC92 /* Auth */,
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		C9813A122ABC6F7F00F4FC92 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				C989D9D42AB31D8600268730 /* AutorizetionViewModel.swift */,
+				C989D9D82AB31E8100268730 /* RestorePasswordViewModel.swift */,
+				C9629F8D2AAB4F7500CBD361 /* RestorePasswordViewController.swift */,
+				18A5394E2AA798CB00D82A49 /* AutorizationViewController.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		C9813A132ABC708F00F4FC92 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				31A492972AAFB74E009B27C9 /* RegistrationViewController.swift */,
+				C989D9D62AB31DD300268730 /* RegistrationViewModel.swift */,
+			);
+			path = Registration;
+			sourceTree = "<group>";
+		};
 		C989D9CE2AB3199500268730 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
@@ -155,16 +175,6 @@
 				C989D9D12AB31A0800268730 /* AppCoordinator.swift */,
 			);
 			path = Coordinator;
-			sourceTree = "<group>";
-		};
-		C989D9D32AB31D6100268730 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				C989D9D42AB31D8600268730 /* AutorizetionViewModel.swift */,
-				C989D9D62AB31DD300268730 /* RegistrationViewModel.swift */,
-				C989D9D82AB31E8100268730 /* RestorePasswordViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -248,16 +258,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9B187D72AB88DCA00E6A6A4 /* CustomFloatingTextField.swift in Sources */,
 				C989D9D22AB31A0800268730 /* AppCoordinator.swift in Sources */,
 				18A5394F2AA798CB00D82A49 /* AutorizationViewController.swift in Sources */,
 				C989D9D52AB31D8600268730 /* AutorizetionViewModel.swift in Sources */,
 				C989D9D72AB31DD300268730 /* RegistrationViewModel.swift in Sources */,
 				C96FAD162AAE034900CA0BAA /* K.swift in Sources */,
 				C989D9D92AB31E8100268730 /* RestorePasswordViewModel.swift in Sources */,
-				C96FAD182AAE34D800CA0BAA /* CustomTextField.swift in Sources */,
 				C9629F8E2AAB4F7500CBD361 /* RestorePasswordViewController.swift in Sources */,
-				C9813A0F2ABB666000F4FC92 /* CustomView.swift in Sources */,
+				C9813A0F2ABB666000F4FC92 /* CustomTextField.swift in Sources */,
 				31A492982AAFB74E009B27C9 /* RegistrationViewController.swift in Sources */,
 				18A5394B2AA798CB00D82A49 /* AppDelegate.swift in Sources */,
 				C989D9D02AB319AB00268730 /* Coordinator.swift in Sources */,

@@ -53,14 +53,14 @@ class AutorizetionViewController: UIViewController {
     }()
     
     //MARK: textFields
-    private let emailTextField: CustomView = {
-        let textField = CustomView(placeholder: "E-mail", type: .email)//CustomFloatingTextField(placeholder: "E-mail", type: .email)
+    private let emailTextField: CustomTextField = {
+        let textField = CustomTextField(placeholder: "E-mail", type: .email)//CustomFloatingTextField(placeholder: "E-mail", type: .email)
         return textField
     }()
     
     private let passwordTextField: CustomTextField = {
-        let textField = CustomTextField(placeholder: "Пароль")
-        textField.isSecureTextEntry = true
+        let textField = CustomTextField(placeholder: "Пароль", type: .pass)
+        //textField.isSecureTextEntry = true
         return textField
     }()
     
