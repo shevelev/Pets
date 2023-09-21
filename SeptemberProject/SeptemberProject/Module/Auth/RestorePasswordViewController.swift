@@ -42,20 +42,42 @@ class RestorePasswordViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        //title = "Напомнить пароль"
+        title = "Напомнить пароль"
        
         view.addSubview(signInButton)
         view.addSubview(descriptionLabel)
         view.addSubview(emailTextField)
+        
+        setupNavItem()
+        
         setConstraints()
     }
     
     @objc private func sendCode() {
         print("no action")
-//        let viewController = AutorizetionViewController()
-//        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
+    @objc private func goToBack() {
+        viewModel.goToLogin()
+    }
+    
+    private func setupNavItem() {
+
+        let button = UIButton()
+        var image = UIImage(systemName: "chevron.left")?.withTintColor(UIColor(red: 117/255, green: 127/255, blue: 140/255, alpha: 1), renderingMode: .alwaysOriginal)
+        //image?.withTintColor(.systemRed, renderingMode: .alwaysOriginal)
+        button.setImage(image, for: .normal)
+        button.layer.cornerRadius = 17
+        button.layer.cornerCurve = .continuous
+        button.backgroundColor = UIColor(ciColor: .white)
+        button.frame.size.width = 34
+        button.frame.size.height = 34
+        button.layer.borderColor = UIColor(red: 200/255, green: 200/255, blue: 200/255, alpha: 1).cgColor
+        button.layer.borderWidth = 1
+        button.addTarget(self, action: #selector(goToBack), for: .touchUpInside)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: button)
+    }
+
     private func setConstraints() {
         NSLayoutConstraint.activate([
             
