@@ -12,7 +12,7 @@ class ProfileTabViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.view.backgroundColor = .green
+        self.view.backgroundColor = .white
         // Do any additional setup after loading the view.
     }
     

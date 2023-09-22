@@ -29,19 +29,18 @@ class MainTabBarController: UITabBarController {
 
         
         
-        let layer = CAShapeLayer()
+        let layerView = CAShapeLayer()
         
-        layer.path = UIBezierPath(roundedRect: CGRect(x: 0, y: self.tabBar.bounds.minY - 14, width: self.tabBar.bounds.width, height: self.tabBar.bounds.height + 70), cornerRadius: 0).cgPath
-
-        layer.fillColor = UIColor(named: "borderColorEditText")?.cgColor
+        layerView.path = UIBezierPath(roundedRect: CGRect(x: 0, y: self.tabBar.bounds.minY - 14, width: self.tabBar.bounds.width, height: self.tabBar.bounds.height + 70), cornerRadius: 0).cgPath
+        layerView.fillColor = UIColor(named: "borderColorEditText")?.cgColor
         
-        let layer2 = CAShapeLayer()
+        let lineView = CAShapeLayer()
         
-        layer2.path = UIBezierPath(roundedRect: CGRect(x: 0, y: -14, width: self.tabBar.bounds.width, height: 1), cornerRadius: 0).cgPath
-        layer2.fillColor = .init(red: 0.5, green: 0.5, blue: 0.5, alpha: 1)
+        lineView.path = UIBezierPath(roundedRect: CGRect(x: 0, y: -14, width: self.tabBar.bounds.width, height: 1), cornerRadius: 0).cgPath
+        lineView.fillColor = .init(red: 0.5, green: 0.5, blue: 0.5, alpha: 1)
         
-        self.tabBar.layer.insertSublayer(layer, at: 0)
-        self.tabBar.layer.insertSublayer(layer2, at: 1)
+        self.tabBar.layer.insertSublayer(layerView, at: 0)
+        self.tabBar.layer.insertSublayer(lineView, at: 1)
         
         self.tabBar.itemWidth = tabBar.bounds.width / 3
         self.tabBar.itemPositioning = .centered
@@ -51,9 +50,9 @@ class MainTabBarController: UITabBarController {
     
     private func setupTabItems() {
         
-        let profile = self.createNav(with: "Profiles", and: UIImage(systemName: "person.crop.circle"), vc: ProfileTabViewController())
-        let walk = self.createNav(with: "Walk", and: UIImage(systemName: "pawprint.fill"), vc: WalkTabViewController())
-        let friends = self.createNav(with: "Friends", and: UIImage(systemName: "person.3.fill"), vc: FriendsTabViewController())
+        let profile = self.createNav(with: "Profiles", and: UIImage(named: "profileIcon"), vc: ProfileTabViewController())
+        let walk = self.createNav(with: "Walk", and: UIImage(named: "walkIcon"), vc: WalkTabViewController())
+        let friends = self.createNav(with: "Friends", and: UIImage(named: "friendsIcon"), vc: FriendsTabViewController())
         
         self.setViewControllers([profile, walk, friends], animated: true)
     }
@@ -62,9 +61,8 @@ class MainTabBarController: UITabBarController {
         
         let nav = UINavigationController(rootViewController: vc)
         
-        nav.tabBarItem.title = title
+        //nav.tabBarItem.title = title
         nav.tabBarItem.image = image
-        //nav.navigationBar.prefersLargeTitles = true
         nav.viewControllers.first?.navigationItem.title = title + " title"
         
         return nav
