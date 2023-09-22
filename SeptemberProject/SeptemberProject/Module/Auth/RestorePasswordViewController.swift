@@ -64,7 +64,7 @@ class RestorePasswordViewController: UIViewController {
     private func setupNavItem() {
 
         let button = UIButton()
-        var image = UIImage(systemName: "chevron.left")?.withTintColor(UIColor(red: 117/255, green: 127/255, blue: 140/255, alpha: 1), renderingMode: .alwaysOriginal)
+        let image = UIImage(systemName: "chevron.left")?.withTintColor(UIColor(red: 117/255, green: 127/255, blue: 140/255, alpha: 1), renderingMode: .alwaysOriginal)
         //image?.withTintColor(.systemRed, renderingMode: .alwaysOriginal)
         button.setImage(image, for: .normal)
         button.layer.cornerRadius = 17

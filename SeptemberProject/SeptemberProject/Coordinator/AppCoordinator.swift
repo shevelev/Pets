@@ -18,7 +18,7 @@ class AppCoordinator: Coordinator {
     
     func start() {
         print("App Coordinator start")
-        goToAutorizetionPage()
+        goToTabBar()
     }
     
     
@@ -46,5 +46,13 @@ class AppCoordinator: Coordinator {
         restorePasswordViewModel.coordinator = self
         restorePasswordViewController.viewModel = restorePasswordViewModel
         navigationController.pushViewController(restorePasswordViewController, animated: true)
+    }
+    
+    func goToTabBar() {
+        let mainTabBarController = MainTabBarController()
+        let mainTabBarControllerViewModel = MainTabBarViewModel.init()
+        mainTabBarControllerViewModel.coordinator = self
+        mainTabBarController.viewModel = mainTabBarControllerViewModel
+        navigationController.pushViewController(mainTabBarController, animated: true)
     }
 }

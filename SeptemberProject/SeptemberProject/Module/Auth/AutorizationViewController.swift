@@ -206,7 +206,7 @@ class AutorizetionViewController: UIViewController {
     }
     
     @objc func nextButtonPressed(_ sender: UIButton!) {
-        print("nextButtonPressed \(Date())")
+        print("no action")
     }
 
 }

@@ -25,6 +25,11 @@
 		C9629F8E2AAB4F7500CBD361 /* RestorePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9629F8D2AAB4F7500CBD361 /* RestorePasswordViewController.swift */; };
 		C96FAD162AAE034900CA0BAA /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96FAD152AAE034900CA0BAA /* K.swift */; };
 		C9813A0F2ABB666000F4FC92 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9813A0E2ABB666000F4FC92 /* CustomTextField.swift */; };
+		C9813A162ABCBAB800F4FC92 /* ProfileTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9813A152ABCBAB800F4FC92 /* ProfileTabViewController.swift */; };
+		C9813A182ABCBAE700F4FC92 /* WalkTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9813A172ABCBAE700F4FC92 /* WalkTabViewController.swift */; };
+		C9813A1A2ABCBAFA00F4FC92 /* FriendsTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9813A192ABCBAFA00F4FC92 /* FriendsTabViewController.swift */; };
+		C9813A1C2ABCBCB200F4FC92 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9813A1B2ABCBCB200F4FC92 /* MainTabBarController.swift */; };
+		C9813A1E2ABDB73C00F4FC92 /* MainTabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9813A1D2ABDB73C00F4FC92 /* MainTabBarViewModel.swift */; };
 		C989D9D02AB319AB00268730 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C989D9CF2AB319AB00268730 /* Coordinator.swift */; };
 		C989D9D22AB31A0800268730 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C989D9D12AB31A0800268730 /* AppCoordinator.swift */; };
 		C989D9D52AB31D8600268730 /* AutorizetionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C989D9D42AB31D8600268730 /* AutorizetionViewModel.swift */; };
@@ -48,6 +53,11 @@
 		C9629F8D2AAB4F7500CBD361 /* RestorePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordViewController.swift; sourceTree = "<group>"; };
 		C96FAD152AAE034900CA0BAA /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
 		C9813A0E2ABB666000F4FC92 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		C9813A152ABCBAB800F4FC92 /* ProfileTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTabViewController.swift; sourceTree = "<group>"; };
+		C9813A172ABCBAE700F4FC92 /* WalkTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkTabViewController.swift; sourceTree = "<group>"; };
+		C9813A192ABCBAFA00F4FC92 /* FriendsTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTabViewController.swift; sourceTree = "<group>"; };
+		C9813A1B2ABCBCB200F4FC92 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		C9813A1D2ABDB73C00F4FC92 /* MainTabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewModel.swift; sourceTree = "<group>"; };
 		C989D9CF2AB319AB00268730 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		C989D9D12AB31A0800268730 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		C989D9D42AB31D8600268730 /* AutorizetionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutorizetionViewModel.swift; sourceTree = "<group>"; };
@@ -142,6 +152,7 @@
 		C9813A112ABC6F7700F4FC92 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				C9813A142ABCBA6C00F4FC92 /* MainTabBar */,
 				C9813A132ABC708F00F4FC92 /* Registration */,
 				C9813A122ABC6F7F00F4FC92 /* Auth */,
 			);
@@ -166,6 +177,18 @@
 				C989D9D62AB31DD300268730 /* RegistrationViewModel.swift */,
 			);
 			path = Registration;
+			sourceTree = "<group>";
+		};
+		C9813A142ABCBA6C00F4FC92 /* MainTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				C9813A152ABCBAB800F4FC92 /* ProfileTabViewController.swift */,
+				C9813A172ABCBAE700F4FC92 /* WalkTabViewController.swift */,
+				C9813A192ABCBAFA00F4FC92 /* FriendsTabViewController.swift */,
+				C9813A1B2ABCBCB200F4FC92 /* MainTabBarController.swift */,
+				C9813A1D2ABDB73C00F4FC92 /* MainTabBarViewModel.swift */,
+			);
+			path = MainTabBar;
 			sourceTree = "<group>";
 		};
 		C989D9CE2AB3199500268730 /* Coordinator */ = {
@@ -258,16 +281,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9813A162ABCBAB800F4FC92 /* ProfileTabViewController.swift in Sources */,
 				C989D9D22AB31A0800268730 /* AppCoordinator.swift in Sources */,
 				18A5394F2AA798CB00D82A49 /* AutorizationViewController.swift in Sources */,
 				C989D9D52AB31D8600268730 /* AutorizetionViewModel.swift in Sources */,
 				C989D9D72AB31DD300268730 /* RegistrationViewModel.swift in Sources */,
+				C9813A1E2ABDB73C00F4FC92 /* MainTabBarViewModel.swift in Sources */,
 				C96FAD162AAE034900CA0BAA /* K.swift in Sources */,
+				C9813A1A2ABCBAFA00F4FC92 /* FriendsTabViewController.swift in Sources */,
 				C989D9D92AB31E8100268730 /* RestorePasswordViewModel.swift in Sources */,
 				C9629F8E2AAB4F7500CBD361 /* RestorePasswordViewController.swift in Sources */,
+				C9813A182ABCBAE700F4FC92 /* WalkTabViewController.swift in Sources */,
 				C9813A0F2ABB666000F4FC92 /* CustomTextField.swift in Sources */,
 				31A492982AAFB74E009B27C9 /* RegistrationViewController.swift in Sources */,
 				18A5394B2AA798CB00D82A49 /* AppDelegate.swift in Sources */,
+				C9813A1C2ABCBCB200F4FC92 /* MainTabBarController.swift in Sources */,
 				C989D9D02AB319AB00268730 /* Coordinator.swift in Sources */,
 				18A5394D2AA798CB00D82A49 /* SceneDelegate.swift in Sources */,
 				18A539702AA8913200D82A49 /* HumanModel.swift in Sources */,

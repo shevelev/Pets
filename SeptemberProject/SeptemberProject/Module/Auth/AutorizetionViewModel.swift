@@ -17,5 +17,4 @@ class AutorizetionViewModel {
     func goToRestorePassword() {
         coordinator.goToRestorePasswordPage()
     }
-    
 }
