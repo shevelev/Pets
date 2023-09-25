@@ -11,6 +11,6 @@ class RegistrationViewModel {
     weak var coordinator: AppCoordinator!
     
     func goToLogin() {
-        coordinator.goToAutorizetionPage()
+        //coordinator.goToAutorizetionPage()
     }
 }

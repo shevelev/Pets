@@ -8,14 +8,10 @@
 import Foundation
 
 class RestorePasswordViewModel {
-    weak var coordinator: AppCoordinator!
-    
-    func goToLogin() {
-        coordinator.goToAutorizetionPage()
-    }
-    
+    weak var coordinator: AuthorizationCoordinator!
+
     func goToBack() {
-        coordinator.goToBack()
+       coordinator.goToBack()
     }
 }
 

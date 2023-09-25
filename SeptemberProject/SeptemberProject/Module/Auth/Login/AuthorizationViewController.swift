@@ -7,9 +7,9 @@
 
 import UIKit
 import Firebase
-class AutorizetionViewController: UIViewController {
+class AuthorizationViewController: UIViewController {
     
-    var viewModel: AutorizetionViewModel!
+    var viewModel: AuthorizationViewModel!
     
     //MARK: buttons
     

@@ -8,51 +8,31 @@
 import UIKit
 
 class AppCoordinator: Coordinator {
-    var parentCoordinator: Coordinator?
-    var children: [Coordinator] = []
-    var navigationController: UINavigationController
+//    var parentCoordinator: Coordinator?
+    var children = [Coordinator]()
+    //var navigationController: UINavigationController
     
-    init(navCon: UINavigationController) {
-        self.navigationController = navCon
+    let window: UIWindow
+    
+    var isLogin: Bool = true
+
+    init(window: UIWindow) {
+        self.window = window
     }
     
     func start() {
         print("App Coordinator start")
-        goToTabBar()
-    }
-    
-    
-    func goToAutorizetionPage() {
-        let autorizetionViewController = AutorizetionViewController()
-        let autorizetionViewModel = AutorizetionViewModel.init()
-        autorizetionViewModel.coordinator = self
-        autorizetionViewController.viewModel = autorizetionViewModel
-        navigationController.pushViewController(autorizetionViewController, animated: true)
-        navigationController.popViewController(animated: true)
-    }
-    
-    func goToBack() {
-        navigationController.popViewController(animated: true)
-    }
-    
-    func goToRegistrationPage() {
-        let registrationViewController = RegistrationViewController()
-        navigationController.pushViewController(registrationViewController, animated: true)
-    }
-    
-    func goToRestorePasswordPage() {
-        let restorePasswordViewController = RestorePasswordViewController()
-        let restorePasswordViewModel = RestorePasswordViewModel.init()
-        restorePasswordViewModel.coordinator = self
-        restorePasswordViewController.viewModel = restorePasswordViewModel
-        navigationController.pushViewController(restorePasswordViewController, animated: true)
-    }
-    
-    func goToTabBar() {
-        let mainTabBarController = MainTabBarController()
-        let mainTabBarControllerViewModel = MainTabBarViewModel.init()
-        mainTabBarControllerViewModel.coordinator = self
-        mainTabBarController.viewModel = mainTabBarControllerViewModel
-        navigationController.pushViewController(mainTabBarController, animated: true)
+        
+        if isLogin {
+           let mainTabCoordinator = MainTabCoordinator()
+            mainTabCoordinator.start()
+            self.children = [mainTabCoordinator]
+            window.rootViewController = mainTabCoordinator.rootViewController
+        } else {
+            let authCoordinator = AuthorizationCoordinator()
+            authCoordinator.start()
+            self.children = [authCoordinator]
+            window.rootViewController = authCoordinator.rootViewContoller
+        }
     }
 }
