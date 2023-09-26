@@ -9,7 +9,7 @@ import UIKit
 import Firebase
 class AuthorizationViewController: UIViewController {
     
-    var viewModel: AuthorizationViewModel!
+    var viewModel = AuthorizationViewModel()
     
     //MARK: buttons
     
@@ -197,7 +197,6 @@ class AuthorizationViewController: UIViewController {
     //MARK: ButtonsPressed
     
     @objc func resetPasswordButtonPressed(_ sender: UIButton!) {
-        print("resetPasswordButtonPressed \(Date())")
         viewModel.goToRestorePassword()
     }
     
@@ -206,7 +205,8 @@ class AuthorizationViewController: UIViewController {
     }
     
     @objc func nextButtonPressed(_ sender: UIButton!) {
-        print("no action")
+        print("no action -> Screen Pets")
+        viewModel.goToRegistration()
     }
 
 }

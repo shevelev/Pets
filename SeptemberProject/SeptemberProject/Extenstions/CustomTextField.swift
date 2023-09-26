@@ -13,7 +13,7 @@ final class CustomTextField: UIView {
         case email //regex check
         case phone //format +* (***) *** **-**
         case none
-        case pass
+        case pass // security hide/nohide
     }
     
     private var labelText: String = ""

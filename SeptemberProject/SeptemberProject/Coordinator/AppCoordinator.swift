@@ -8,20 +8,18 @@
 import UIKit
 
 class AppCoordinator: Coordinator {
-//    var parentCoordinator: Coordinator?
+
     var children = [Coordinator]()
-    //var navigationController: UINavigationController
     
     let window: UIWindow
-    
-    var isLogin: Bool = true
 
     init(window: UIWindow) {
         self.window = window
     }
     
     func start() {
-        print("App Coordinator start")
+
+        let isLogin: Bool = getIsLogin()
         
         if isLogin {
            let mainTabCoordinator = MainTabCoordinator()
@@ -34,5 +32,10 @@ class AppCoordinator: Coordinator {
             self.children = [authCoordinator]
             window.rootViewController = authCoordinator.rootViewContoller
         }
+    }
+    
+    private func getIsLogin() -> Bool {
+        let result = UserDefaults.standard.bool(forKey: K.loginKey)
+        return result
     }
 }

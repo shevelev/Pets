@@ -10,12 +10,11 @@ import Foundation
 class AuthorizationViewModel {
     weak var coordinator: AuthorizationCoordinator!
     
-//    func goToRegister() {
-//        coordinator.goToRegistrationPage()
-//    }
-//
+    func goToRegistration() {
+        coordinator.goToRegistration()
+    }
+
     func goToRestorePassword() {
-        print("model click")
         coordinator.goToRestorePasswordPage()
     }
 }
