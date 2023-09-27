@@ -7,15 +7,14 @@
 
 import Foundation
 
-class AutorizetionViewModel {
-    weak var coordinator: AppCoordinator!
+class AuthorizationViewModel {
+    weak var coordinator: AuthorizationCoordinator!
     
-    func goToRegister() {
-        coordinator.goToRegistrationPage()
+    func goToRegistration() {
+        coordinator.goToRegistration()
     }
-    
+
     func goToRestorePassword() {
         coordinator.goToRestorePasswordPage()
     }
-    
 }

@@ -13,37 +13,37 @@ final class RegistrationViewController: UIViewController {
     private let contentView = UIView()
     
     private let nameTextField: CustomTextField = {
-        let textField = CustomTextField(placeholder: "Имя")
+        let textField = CustomTextField(placeholder: "Имя", type: .none)
         return textField
     }()
     
     private let mobileTextField: CustomTextField = {
-        let textField = CustomTextField(placeholder: "Телефон")
+        let textField = CustomTextField(placeholder: "Телефон", type: .none)
         return textField
     }()
     
     private let emailTextField: CustomTextField = {
-        let textField = CustomTextField(placeholder: "E-mail")
+        let textField = CustomTextField(placeholder: "E-mail", type: .none)
         return textField
     }()
     
     private let placeTextField: CustomTextField = {
-        let textField = CustomTextField(placeholder: "Местоположение")
+        let textField = CustomTextField(placeholder: "Местоположение", type: .none)
         return textField
     }()
     
     private let bioTextField: CustomTextField = {
-        let textField = CustomTextField(placeholder: "О себе")
+        let textField = CustomTextField(placeholder: "О себе", type: .none)
         return textField
     }()
     
     private let passTextField: CustomTextField = {
-        let textField = CustomTextField(placeholder: "Введите пароль")
+        let textField = CustomTextField(placeholder: "Введите пароль", type: .none)
         return textField
     }()
     
     private let pass2TextField: CustomTextField = {
-        let textField = CustomTextField(placeholder: "Повторите пароль")
+        let textField = CustomTextField(placeholder: "Повторите пароль", type: .none)
         return textField
     }()
     

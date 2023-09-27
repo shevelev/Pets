@@ -23,4 +23,6 @@ class K {
         case resetPasswordButtonText = "Восстановить пароль"
         case enterLabelText = "Вход"
     }
+    
+    static let loginKey = "hasLogin"
 }

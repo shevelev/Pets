@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		18A5394B2AA798CB00D82A49 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A5394A2AA798CB00D82A49 /* AppDelegate.swift */; };
 		18A5394D2AA798CB00D82A49 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A5394C2AA798CB00D82A49 /* SceneDelegate.swift */; };
-		18A5394F2AA798CB00D82A49 /* AutorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A5394E2AA798CB00D82A49 /* AutorizationViewController.swift */; };
+		18A5394F2AA798CB00D82A49 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A5394E2AA798CB00D82A49 /* AuthorizationViewController.swift */; };
 		18A539542AA798CD00D82A49 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18A539532AA798CD00D82A49 /* Assets.xcassets */; };
 		18A539572AA798CD00D82A49 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18A539552AA798CD00D82A49 /* LaunchScreen.storyboard */; };
 		18A539622AA79DA400D82A49 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18A539612AA79DA400D82A49 /* GoogleService-Info.plist */; };
@@ -24,10 +24,18 @@
 		31A492982AAFB74E009B27C9 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A492972AAFB74E009B27C9 /* RegistrationViewController.swift */; };
 		C9629F8E2AAB4F7500CBD361 /* RestorePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9629F8D2AAB4F7500CBD361 /* RestorePasswordViewController.swift */; };
 		C96FAD162AAE034900CA0BAA /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96FAD152AAE034900CA0BAA /* K.swift */; };
-		C96FAD182AAE34D800CA0BAA /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96FAD172AAE34D800CA0BAA /* CustomTextField.swift */; };
+		C9813A0F2ABB666000F4FC92 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9813A0E2ABB666000F4FC92 /* CustomTextField.swift */; };
+		C9813A162ABCBAB800F4FC92 /* ProfileTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9813A152ABCBAB800F4FC92 /* ProfileTabViewController.swift */; };
+		C9813A182ABCBAE700F4FC92 /* WalkTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9813A172ABCBAE700F4FC92 /* WalkTabViewController.swift */; };
+		C9813A1A2ABCBAFA00F4FC92 /* FriendsTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9813A192ABCBAFA00F4FC92 /* FriendsTabViewController.swift */; };
+		C9813A212AC1705700F4FC92 /* AuthorizationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9813A202AC1705700F4FC92 /* AuthorizationCoordinator.swift */; };
+		C9813A282AC1830500F4FC92 /* MainTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9813A272AC1830500F4FC92 /* MainTabCoordinator.swift */; };
+		C9813A2C2AC1C0EA00F4FC92 /* ProfileTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9813A2B2AC1C0EA00F4FC92 /* ProfileTabCoordinator.swift */; };
+		C9813A2E2AC1C1D900F4FC92 /* WalkTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9813A2D2AC1C1D900F4FC92 /* WalkTabCoordinator.swift */; };
+		C9813A302AC1C20500F4FC92 /* FriendsTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9813A2F2AC1C20500F4FC92 /* FriendsTabCoordinator.swift */; };
 		C989D9D02AB319AB00268730 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C989D9CF2AB319AB00268730 /* Coordinator.swift */; };
 		C989D9D22AB31A0800268730 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C989D9D12AB31A0800268730 /* AppCoordinator.swift */; };
-		C989D9D52AB31D8600268730 /* AutorizetionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C989D9D42AB31D8600268730 /* AutorizetionViewModel.swift */; };
+		C989D9D52AB31D8600268730 /* AuthorizationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C989D9D42AB31D8600268730 /* AuthorizationViewModel.swift */; };
 		C989D9D72AB31DD300268730 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C989D9D62AB31DD300268730 /* RegistrationViewModel.swift */; };
 		C989D9D92AB31E8100268730 /* RestorePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C989D9D82AB31E8100268730 /* RestorePasswordViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -36,7 +44,7 @@
 		18A539472AA798CB00D82A49 /* SeptemberProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeptemberProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18A5394A2AA798CB00D82A49 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18A5394C2AA798CB00D82A49 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		18A5394E2AA798CB00D82A49 /* AutorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutorizationViewController.swift; sourceTree = "<group>"; };
+		18A5394E2AA798CB00D82A49 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
 		18A539532AA798CD00D82A49 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18A539562AA798CD00D82A49 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		18A539582AA798CD00D82A49 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -47,10 +55,18 @@
 		31A492972AAFB74E009B27C9 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		C9629F8D2AAB4F7500CBD361 /* RestorePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordViewController.swift; sourceTree = "<group>"; };
 		C96FAD152AAE034900CA0BAA /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
-		C96FAD172AAE34D800CA0BAA /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		C9813A0E2ABB666000F4FC92 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		C9813A152ABCBAB800F4FC92 /* ProfileTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTabViewController.swift; sourceTree = "<group>"; };
+		C9813A172ABCBAE700F4FC92 /* WalkTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkTabViewController.swift; sourceTree = "<group>"; };
+		C9813A192ABCBAFA00F4FC92 /* FriendsTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTabViewController.swift; sourceTree = "<group>"; };
+		C9813A202AC1705700F4FC92 /* AuthorizationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationCoordinator.swift; sourceTree = "<group>"; };
+		C9813A272AC1830500F4FC92 /* MainTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabCoordinator.swift; sourceTree = "<group>"; };
+		C9813A2B2AC1C0EA00F4FC92 /* ProfileTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTabCoordinator.swift; sourceTree = "<group>"; };
+		C9813A2D2AC1C1D900F4FC92 /* WalkTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkTabCoordinator.swift; sourceTree = "<group>"; };
+		C9813A2F2AC1C20500F4FC92 /* FriendsTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTabCoordinator.swift; sourceTree = "<group>"; };
 		C989D9CF2AB319AB00268730 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		C989D9D12AB31A0800268730 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
-		C989D9D42AB31D8600268730 /* AutorizetionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutorizetionViewModel.swift; sourceTree = "<group>"; };
+		C989D9D42AB31D8600268730 /* AuthorizationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewModel.swift; sourceTree = "<group>"; };
 		C989D9D62AB31DD300268730 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		C989D9D82AB31E8100268730 /* RestorePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -90,14 +106,12 @@
 		18A539492AA798CB00D82A49 /* SeptemberProject */ = {
 			isa = PBXGroup;
 			children = (
-				C989D9D32AB31D6100268730 /* ViewModel */,
+				C9813A112ABC6F7700F4FC92 /* Module */,
+				C9813A102ABC6C5100F4FC92 /* Extenstions */,
 				C989D9CE2AB3199500268730 /* Coordinator */,
 				18A5395E2AA79A2C00D82A49 /* Resources */,
 				18A539602AA79AB300D82A49 /* FirebaseService */,
-				18A5395F2AA79A3C00D82A49 /* Controllers */,
 				18A539582AA798CD00D82A49 /* Info.plist */,
-				C96FAD152AAE034900CA0BAA /* K.swift */,
-				C96FAD172AAE34D800CA0BAA /* CustomTextField.swift */,
 				18A539612AA79DA400D82A49 /* GoogleService-Info.plist */,
 			);
 			path = SeptemberProject;
@@ -112,16 +126,6 @@
 				18A539552AA798CD00D82A49 /* LaunchScreen.storyboard */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		18A5395F2AA79A3C00D82A49 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				18A5394E2AA798CB00D82A49 /* AutorizationViewController.swift */,
-				31A492972AAFB74E009B27C9 /* RegistrationViewController.swift */,
-				C9629F8D2AAB4F7500CBD361 /* RestorePasswordViewController.swift */,
-			);
-			path = Controllers;
 			sourceTree = "<group>";
 		};
 		18A539602AA79AB300D82A49 /* FirebaseService */ = {
@@ -142,6 +146,100 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		C9813A102ABC6C5100F4FC92 /* Extenstions */ = {
+			isa = PBXGroup;
+			children = (
+				C9813A0E2ABB666000F4FC92 /* CustomTextField.swift */,
+				C96FAD152AAE034900CA0BAA /* K.swift */,
+			);
+			path = Extenstions;
+			sourceTree = "<group>";
+		};
+		C9813A112ABC6F7700F4FC92 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				C9813A142ABCBA6C00F4FC92 /* MainTabBar */,
+				C9813A132ABC708F00F4FC92 /* Registration */,
+				C9813A122ABC6F7F00F4FC92 /* Auth */,
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		C9813A122ABC6F7F00F4FC92 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				C9813A222AC1800A00F4FC92 /* Restore */,
+				C9813A232AC1819B00F4FC92 /* Login */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		C9813A132ABC708F00F4FC92 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				31A492972AAFB74E009B27C9 /* RegistrationViewController.swift */,
+				C989D9D62AB31DD300268730 /* RegistrationViewModel.swift */,
+			);
+			path = Registration;
+			sourceTree = "<group>";
+		};
+		C9813A142ABCBA6C00F4FC92 /* MainTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				C9813A242AC182B800F4FC92 /* Profile */,
+				C9813A252AC182C000F4FC92 /* Walk */,
+				C9813A262AC182C900F4FC92 /* Friends */,
+				C9813A272AC1830500F4FC92 /* MainTabCoordinator.swift */,
+			);
+			path = MainTabBar;
+			sourceTree = "<group>";
+		};
+		C9813A222AC1800A00F4FC92 /* Restore */ = {
+			isa = PBXGroup;
+			children = (
+				C989D9D82AB31E8100268730 /* RestorePasswordViewModel.swift */,
+				C9629F8D2AAB4F7500CBD361 /* RestorePasswordViewController.swift */,
+			);
+			path = Restore;
+			sourceTree = "<group>";
+		};
+		C9813A232AC1819B00F4FC92 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				C989D9D42AB31D8600268730 /* AuthorizationViewModel.swift */,
+				18A5394E2AA798CB00D82A49 /* AuthorizationViewController.swift */,
+				C9813A202AC1705700F4FC92 /* AuthorizationCoordinator.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		C9813A242AC182B800F4FC92 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				C9813A152ABCBAB800F4FC92 /* ProfileTabViewController.swift */,
+				C9813A2B2AC1C0EA00F4FC92 /* ProfileTabCoordinator.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		C9813A252AC182C000F4FC92 /* Walk */ = {
+			isa = PBXGroup;
+			children = (
+				C9813A172ABCBAE700F4FC92 /* WalkTabViewController.swift */,
+				C9813A2D2AC1C1D900F4FC92 /* WalkTabCoordinator.swift */,
+			);
+			path = Walk;
+			sourceTree = "<group>";
+		};
+		C9813A262AC182C900F4FC92 /* Friends */ = {
+			isa = PBXGroup;
+			children = (
+				C9813A192ABCBAFA00F4FC92 /* FriendsTabViewController.swift */,
+				C9813A2F2AC1C20500F4FC92 /* FriendsTabCoordinator.swift */,
+			);
+			path = Friends;
+			sourceTree = "<group>";
+		};
 		C989D9CE2AB3199500268730 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
@@ -149,16 +247,6 @@
 				C989D9D12AB31A0800268730 /* AppCoordinator.swift */,
 			);
 			path = Coordinator;
-			sourceTree = "<group>";
-		};
-		C989D9D32AB31D6100268730 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				C989D9D42AB31D8600268730 /* AutorizetionViewModel.swift */,
-				C989D9D62AB31DD300268730 /* RegistrationViewModel.swift */,
-				C989D9D82AB31E8100268730 /* RestorePasswordViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -242,19 +330,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9813A162ABCBAB800F4FC92 /* ProfileTabViewController.swift in Sources */,
+				C9813A2C2AC1C0EA00F4FC92 /* ProfileTabCoordinator.swift in Sources */,
 				C989D9D22AB31A0800268730 /* AppCoordinator.swift in Sources */,
-				18A5394F2AA798CB00D82A49 /* AutorizationViewController.swift in Sources */,
-				C989D9D52AB31D8600268730 /* AutorizetionViewModel.swift in Sources */,
+				18A5394F2AA798CB00D82A49 /* AuthorizationViewController.swift in Sources */,
+				C989D9D52AB31D8600268730 /* AuthorizationViewModel.swift in Sources */,
 				C989D9D72AB31DD300268730 /* RegistrationViewModel.swift in Sources */,
+				C9813A282AC1830500F4FC92 /* MainTabCoordinator.swift in Sources */,
 				C96FAD162AAE034900CA0BAA /* K.swift in Sources */,
+				C9813A1A2ABCBAFA00F4FC92 /* FriendsTabViewController.swift in Sources */,
 				C989D9D92AB31E8100268730 /* RestorePasswordViewModel.swift in Sources */,
-				C96FAD182AAE34D800CA0BAA /* CustomTextField.swift in Sources */,
+				C9813A302AC1C20500F4FC92 /* FriendsTabCoordinator.swift in Sources */,
 				C9629F8E2AAB4F7500CBD361 /* RestorePasswordViewController.swift in Sources */,
+				C9813A212AC1705700F4FC92 /* AuthorizationCoordinator.swift in Sources */,
+				C9813A182ABCBAE700F4FC92 /* WalkTabViewController.swift in Sources */,
+				C9813A0F2ABB666000F4FC92 /* CustomTextField.swift in Sources */,
 				31A492982AAFB74E009B27C9 /* RegistrationViewController.swift in Sources */,
 				18A5394B2AA798CB00D82A49 /* AppDelegate.swift in Sources */,
 				C989D9D02AB319AB00268730 /* Coordinator.swift in Sources */,
 				18A5394D2AA798CB00D82A49 /* SceneDelegate.swift in Sources */,
 				18A539702AA8913200D82A49 /* HumanModel.swift in Sources */,
+				C9813A2E2AC1C1D900F4FC92 /* WalkTabCoordinator.swift in Sources */,
 				18A5396D2AA7AB3300D82A49 /* FirebaseClient.swift in Sources */,
 				18A539722AA8913A00D82A49 /* PetModel.swift in Sources */,
 			);

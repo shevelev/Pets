@@ -7,9 +7,9 @@
 
 import UIKit
 import Firebase
-class AutorizetionViewController: UIViewController {
+class AuthorizationViewController: UIViewController {
     
-    var viewModel: AutorizetionViewModel!
+    var viewModel = AuthorizationViewModel()
     
     //MARK: buttons
     
@@ -54,13 +54,13 @@ class AutorizetionViewController: UIViewController {
     
     //MARK: textFields
     private let emailTextField: CustomTextField = {
-        let textField = CustomTextField(placeholder: "E-mail")
+        let textField = CustomTextField(placeholder: "E-mail", type: .email)//CustomFloatingTextField(placeholder: "E-mail", type: .email)
         return textField
     }()
     
     private let passwordTextField: CustomTextField = {
-        let textField = CustomTextField(placeholder: "Пароль")
-        textField.isSecureTextEntry = true
+        let textField = CustomTextField(placeholder: "Пароль", type: .pass)
+        //textField.isSecureTextEntry = true
         return textField
     }()
     
@@ -197,7 +197,6 @@ class AutorizetionViewController: UIViewController {
     //MARK: ButtonsPressed
     
     @objc func resetPasswordButtonPressed(_ sender: UIButton!) {
-        print("resetPasswordButtonPressed \(Date())")
         viewModel.goToRestorePassword()
     }
     
@@ -206,7 +205,8 @@ class AutorizetionViewController: UIViewController {
     }
     
     @objc func nextButtonPressed(_ sender: UIButton!) {
-        print("nextButtonPressed \(Date())")
+        print("no action -> Screen Pets")
+        viewModel.goToRegistration()
     }
 
 }

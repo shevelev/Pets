@@ -8,38 +8,34 @@
 import UIKit
 
 class AppCoordinator: Coordinator {
-    var parentCoordinator: Coordinator?
-    var children: [Coordinator] = []
-    var navigationController: UINavigationController
+
+    var children = [Coordinator]()
     
-    init(navCon: UINavigationController) {
-        self.navigationController = navCon
+    let window: UIWindow
+
+    init(window: UIWindow) {
+        self.window = window
     }
     
     func start() {
-        print("App Coordinator start")
-        goToAutorizetionPage()
+
+        let isLogin: Bool = getIsLogin()
+        
+        if isLogin {
+           let mainTabCoordinator = MainTabCoordinator()
+            mainTabCoordinator.start()
+            self.children = [mainTabCoordinator]
+            window.rootViewController = mainTabCoordinator.rootViewController
+        } else {
+            let authCoordinator = AuthorizationCoordinator()
+            authCoordinator.start()
+            self.children = [authCoordinator]
+            window.rootViewController = authCoordinator.rootViewContoller
+        }
     }
     
-    
-    func goToAutorizetionPage() {
-        let autorizetionViewController = AutorizetionViewController()
-        let autorizetionViewModel = AutorizetionViewModel.init()
-        autorizetionViewModel.coordinator = self
-        autorizetionViewController.viewModel = autorizetionViewModel
-        navigationController.pushViewController(autorizetionViewController, animated: true)
-    }
-    
-    func goToRegistrationPage() {
-        let registrationViewController = RegistrationViewController()
-        navigationController.pushViewController(registrationViewController, animated: true)
-    }
-    
-    func goToRestorePasswordPage() {
-        let restorePasswordViewController = RestorePasswordViewController()
-        let restorePasswordViewModel = RestorePasswordViewModel.init()
-        restorePasswordViewModel.coordinator = self
-        restorePasswordViewController.viewModel = restorePasswordViewModel
-        navigationController.pushViewController(restorePasswordViewController, animated: true)
+    private func getIsLogin() -> Bool {
+        let result = UserDefaults.standard.bool(forKey: K.loginKey)
+        return result
     }
 }
