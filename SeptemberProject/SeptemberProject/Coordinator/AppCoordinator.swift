@@ -19,9 +19,6 @@ class AppCoordinator: Coordinator {
     }
     
     func start() {
-
-
-        
         if Auth.auth().currentUser != nil {
            let mainTabCoordinator = MainTabCoordinator()
             mainTabCoordinator.start()

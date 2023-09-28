@@ -29,8 +29,7 @@ class AuthorizationCoordinator: Coordinator {
     }
     
     func goToRegistration() {
-        let value = true
-        UserDefaults.standard.setValue(value, forKey: K.loginKey)
+
     }
     
     func goToBack() {
