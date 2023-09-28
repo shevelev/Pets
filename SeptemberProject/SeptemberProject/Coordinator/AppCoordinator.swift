@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class AppCoordinator: Coordinator {
 
@@ -19,9 +20,9 @@ class AppCoordinator: Coordinator {
     
     func start() {
 
-        let isLogin: Bool = getIsLogin()
+
         
-        if isLogin {
+        if Auth.auth().currentUser != nil {
            let mainTabCoordinator = MainTabCoordinator()
             mainTabCoordinator.start()
             self.children = [mainTabCoordinator]
@@ -34,8 +35,5 @@ class AppCoordinator: Coordinator {
         }
     }
     
-    private func getIsLogin() -> Bool {
-        let result = UserDefaults.standard.bool(forKey: K.loginKey)
-        return result
-    }
+
 }

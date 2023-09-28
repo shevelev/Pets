@@ -26,7 +26,7 @@ import FirebaseAuth
 
 protocol FirebaseClientProtocol{
     func handleSignUp(withHuman human: HumanModel,pass: String)
-    func handleSignIn(email: String, password: String)
+    func handleSignIn(email: String, password: String, completion: @escaping (Error?)->Void)
 }
 
 final class FirebaseClient: FirebaseClientProtocol{
@@ -43,6 +43,7 @@ final class FirebaseClient: FirebaseClientProtocol{
             }
         }
     }
+    
     private func createDocument(_ human: HumanModel,_ pets: [PetModel]){
         
         let petsColl = dataBase.collection("pets")
@@ -80,15 +81,22 @@ final class FirebaseClient: FirebaseClientProtocol{
                 }
         }
     
-    func handleSignIn(email: String, password: String) {
-        Auth.auth().signIn(withEmail: email, password: password) { result, error in
-            if let err = error{
-                print(err)
-            } else{
-                print("SignIn")
+
+    
+    func handleSignIn(email: String, password: String, completion: @escaping (Error?)->Void) {
+            Auth.auth().signIn(
+                withEmail: email,
+                password: password
+            ) { result, error in
+                if let error = error {
+                    completion(error)
+                } else{
+                    completion(nil)
+                }
             }
         }
-    }
+    
+    
 //    func createUser(userFirstName: String, userLastName: String, email: String, password: String, completionBlock: @escaping (Result<UserAuthData, Error>) -> Void) {
 //        Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
 //            if let error = error {

@@ -183,5 +183,9 @@ final class CustomTextField: UIView {
         print("2")
         return super.resignFirstResponder()
     }
+    
+    func getValue() -> String {
+        floatingText.text ?? ""
+    }
  
 }

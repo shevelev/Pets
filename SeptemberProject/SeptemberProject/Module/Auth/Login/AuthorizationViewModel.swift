@@ -17,4 +17,12 @@ class AuthorizationViewModel {
     func goToRestorePassword() {
         coordinator.goToRestorePasswordPage()
     }
+    
+    func signIn(email: String, password: String) {
+        FirebaseClient().handleSignIn(email: email, password: password) { error in
+            if error == nil {
+                self.coordinator.goToMainTab()
+            }
+        }
+    }
 }
