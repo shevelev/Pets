@@ -11,7 +11,6 @@ import FirebaseAuth
 class AppCoordinator: Coordinator {
 
     var children = [Coordinator]()
-    
     let window: UIWindow
 
     init(window: UIWindow) {
@@ -31,6 +30,4 @@ class AppCoordinator: Coordinator {
             window.rootViewController = authCoordinator.rootViewContoller
         }
     }
-    
-
 }

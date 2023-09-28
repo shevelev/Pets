@@ -9,30 +9,42 @@ import UIKit
 
 final class CustomTextField: UIView {
     
-    enum typeTextField {
-        case email //regex check
-        case phone //format +* (***) *** **-**
+    /// Description
+    ///     email - regex
+    ///     phone - format  +1 (234) 567 89-01
+    ///     pass - security hide/nohide
+    enum TypeTextField {
+        case email
+        case phone
         case none
-        case pass // security hide/nohide
+        case pass
+    }
+    
+    class Color {
+        static let correctlyBorderColor = UIColor(red: 29/255, green: 133/255, blue: 255/255, alpha: 1)
+        static let correctlyTextColor = UIColor(red: 31/255, green: 34/255, blue: 52/255, alpha: 1)
+        static let notCorrectlyColor = UIColor(red: 250/255, green: 46/255, blue: 105/255, alpha: 1)
+        static let defaultColor = UIColor(red: 237/255, green: 237/255, blue: 240/255, alpha: 1)
+    }
+    
+    class Constraints {
+        static let size60: CGFloat = 60
+        static let size15: CGFloat = 15
+        static let size11: CGFloat = 11
     }
     
     private var labelText: String = ""
-    private var type: typeTextField = .none
+    private var type: TypeTextField = .none
     private var isCorrectly: Bool = false
     private var labelTopCon: CGFloat = 0
     private var textTopCon: CGFloat = 0
-    
-    
+
     //MARK: -- elements
-    
     private let stackView: UIStackView = {
            let stack = UIStackView(arrangedSubviews: [])
            stack.axis  = .horizontal
-           //stack.distribution = .fillEqually
            stack.alignment = .center
            stack.translatesAutoresizingMaskIntoConstraints = false
-//           stack.spacing = 5
-        //stack.backgroundColor = .red
            return stack
        }()
     
@@ -41,22 +53,17 @@ final class CustomTextField: UIView {
         label.font = UIFont.systemFont(ofSize: 12, weight: .light)
         label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
-        //label.backgroundColor = .yellow
         return label
     }()
     
     private var floatingText: UITextField = {
         let textField = UITextField()
-        //textField.placeholder = "test2"
         textField.textColor = .gray
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.font = UIFont.systemFont(ofSize: 16, weight: .light)
-        //textField.backgroundColor = .green
         textField.addTarget(self, action: #selector(editTextChanged), for: .editingChanged)
-        
         return textField
     }()
-    
     
     // MARK:- FloatingLabel
     @objc func editTextChanged() {
@@ -71,32 +78,26 @@ final class CustomTextField: UIView {
             floatingLabel.text = "Введите \(labelText)"
             floatingText.text = floatingText.text?.lowercased()
             if isCorrectly {
-                layer.borderColor = UIColor(red: 29/255, green: 133/255, blue: 255/255, alpha: 1).cgColor
-                floatingText.textColor = UIColor(red: 31/255, green: 34/255, blue: 52/255, alpha: 1)
+                layer.borderColor = Color.correctlyBorderColor.cgColor
+                floatingText.textColor = Color.correctlyTextColor
             } else {
-                layer.borderColor = UIColor(red: 250/255, green: 46/255, blue: 105/255, alpha: 1).cgColor
-                floatingText.textColor = UIColor(red: 250/255, green: 46/255, blue: 105/255, alpha: 1)
+                layer.borderColor = Color.notCorrectlyColor.cgColor
+                floatingText.textColor = Color.notCorrectlyColor
             }
-            
-//            labelTopCon = 15
-//            textTopCon = 5
-//            updateConst()
             
         } else if size == 0 {
             reset()
         }
     }
     
-    
     private func updateConst() {
         NSLayoutConstraint.activate([
-            self.heightAnchor.constraint(equalToConstant: 60),
-            //floatingLabel.heightAnchor.constraint(equalToConstant: 15),
+            self.heightAnchor.constraint(equalToConstant: Constraints.size60),
             
-            stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15),
-            stackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 11),
-            stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -15),
-            stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -11),
+            stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constraints.size15),
+            stackView.topAnchor.constraint(equalTo: self.topAnchor, constant: Constraints.size11),
+            stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Constraints.size15),
+            stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -Constraints.size11),
             
             floatingLabel.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: 0),
             floatingLabel.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: 0),
@@ -105,7 +106,6 @@ final class CustomTextField: UIView {
             floatingText.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: 0),
             floatingText.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: 0),
             floatingText.topAnchor.constraint(equalTo: floatingLabel.bottomAnchor, constant: textTopCon)
-            
         ])
     }
     
@@ -113,19 +113,16 @@ final class CustomTextField: UIView {
         floatingLabel.text = ""
         labelTopCon = 0
         textTopCon = 0
-        layer.borderColor = UIColor(red: 237/255, green: 237/255, blue: 240/255, alpha: 1).cgColor
-//        updateConst()
+        layer.borderColor = Color.defaultColor.cgColor
     }
     
-    init(placeholder: String, type: typeTextField) {
+    init(placeholder: String, type: TypeTextField) {
         super.init(frame: .zero)
         
         self.labelText = placeholder
         floatingText.placeholder = placeholder
         self.type = type
-        
-        
-        
+
         setupUI()
     }
     
@@ -146,7 +143,7 @@ final class CustomTextField: UIView {
         layer.cornerRadius = 10
         layer.cornerCurve = .continuous
         layer.backgroundColor = UIColor.white.cgColor
-        layer.borderColor =  UIColor(red: 237/255, green: 237/255, blue: 240/255, alpha: 1).cgColor
+        layer.borderColor =  Color.defaultColor.cgColor
         layer.borderWidth = 1
         translatesAutoresizingMaskIntoConstraints = false
         layer.borderColor = UIColor(named: "borderColorEditText")!.cgColor
@@ -154,14 +151,12 @@ final class CustomTextField: UIView {
         if self.type == .pass {
             floatingText.isSecureTextEntry = true
         }
-        
         updateConst()
-     
     }
     
     //MARK: -- Проверка различных типов поля
     private func check() {
-        switch self.type {
+        switch type {
         case .email:
             self.isCorrectly = isValidEmail()
         case .phone:
@@ -179,13 +174,7 @@ final class CustomTextField: UIView {
         return emailPred.evaluate(with: floatingText.text)
      }
     
-    override func resignFirstResponder() -> Bool {
-        print("2")
-        return super.resignFirstResponder()
-    }
-    
     func getValue() -> String {
         floatingText.text ?? ""
     }
- 
 }

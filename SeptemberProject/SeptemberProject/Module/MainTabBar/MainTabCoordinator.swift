@@ -13,6 +13,13 @@ class MainTabCoordinator: Coordinator {
     var rootViewController: UITabBarController
     var children = [Coordinator]()
     
+    class Constants {
+        static let tintColor = UIColor(red: 29/255, green: 133/255, blue: 255/255, alpha: 1)
+        static let tintColorRevers = UIColor(red: 217/255, green: 219/255, blue: 224/255, alpha: 1)
+        static let constraintsY: CGFloat = 14
+        static let layerHeight: CGFloat = 70
+    }
+    
     init() {
         self.rootViewController = UITabBarController()
         setupTabBar()
@@ -47,22 +54,22 @@ class MainTabCoordinator: Coordinator {
     }
     
     func setupTabBar() {
-        self.rootViewController.tabBar.tintColor = UIColor(red: 29/255, green: 133/255, blue: 255/255, alpha: 1)
-        self.rootViewController.tabBar.unselectedItemTintColor = UIColor(red: 217/255, green: 219/255, blue: 224/255, alpha: 1)
+        self.rootViewController.tabBar.tintColor = Constants.tintColor
+        self.rootViewController.tabBar.unselectedItemTintColor = Constants.tintColorRevers
         
         
         let layerView = CAShapeLayer()
         
         layerView.path = UIBezierPath(roundedRect: CGRect(x: 0,
-                                                          y: self.rootViewController.tabBar.bounds.minY - 14,
+                                                          y: self.rootViewController.tabBar.bounds.minY - Constants.constraintsY,
                                                           width: self.rootViewController.tabBar.bounds.width,
-                                                          height: self.rootViewController.tabBar.bounds.height + 70), cornerRadius: 0).cgPath
+                                                          height: self.rootViewController.tabBar.bounds.height + Constants.layerHeight), cornerRadius: 0).cgPath
         layerView.fillColor = UIColor(named: "borderColorEditText")?.cgColor
         
         let lineView = CAShapeLayer()
         
         lineView.path = UIBezierPath(roundedRect: CGRect(x: 0,
-                                                         y: -14,
+                                                         y: -Constants.constraintsY,
                                                          width: self.rootViewController.tabBar.bounds.width,
                                                          height: 1), cornerRadius: 0).cgPath
         lineView.fillColor = .init(red: 0.5, green: 0.5, blue: 0.5, alpha: 1)
