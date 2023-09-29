@@ -20,14 +20,12 @@ final class CustomTextField: UIView {
         case pass
     }
     
-    class Color {
+    class Constants {
         static let correctlyBorderColor = UIColor(red: 29/255, green: 133/255, blue: 255/255, alpha: 1)
         static let correctlyTextColor = UIColor(red: 31/255, green: 34/255, blue: 52/255, alpha: 1)
         static let notCorrectlyColor = UIColor(red: 250/255, green: 46/255, blue: 105/255, alpha: 1)
         static let defaultColor = UIColor(red: 237/255, green: 237/255, blue: 240/255, alpha: 1)
-    }
-    
-    class Constraints {
+        
         static let size60: CGFloat = 60
         static let size15: CGFloat = 15
         static let size11: CGFloat = 11
@@ -78,11 +76,11 @@ final class CustomTextField: UIView {
             floatingLabel.text = "Введите \(labelText)"
             floatingText.text = floatingText.text?.lowercased()
             if isCorrectly {
-                layer.borderColor = Color.correctlyBorderColor.cgColor
-                floatingText.textColor = Color.correctlyTextColor
+                layer.borderColor = Constants.correctlyBorderColor.cgColor
+                floatingText.textColor = Constants.correctlyTextColor
             } else {
-                layer.borderColor = Color.notCorrectlyColor.cgColor
-                floatingText.textColor = Color.notCorrectlyColor
+                layer.borderColor = Constants.notCorrectlyColor.cgColor
+                floatingText.textColor = Constants.notCorrectlyColor
             }
             
         } else if size == 0 {
@@ -92,12 +90,12 @@ final class CustomTextField: UIView {
     
     private func updateConst() {
         NSLayoutConstraint.activate([
-            self.heightAnchor.constraint(equalToConstant: Constraints.size60),
+            self.heightAnchor.constraint(equalToConstant: Constants.size60),
             
-            stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constraints.size15),
-            stackView.topAnchor.constraint(equalTo: self.topAnchor, constant: Constraints.size11),
-            stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Constraints.size15),
-            stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -Constraints.size11),
+            stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constants.size15),
+            stackView.topAnchor.constraint(equalTo: self.topAnchor, constant: Constants.size11),
+            stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Constants.size15),
+            stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -Constants.size11),
             
             floatingLabel.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: 0),
             floatingLabel.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: 0),
@@ -113,7 +111,7 @@ final class CustomTextField: UIView {
         floatingLabel.text = ""
         labelTopCon = 0
         textTopCon = 0
-        layer.borderColor = Color.defaultColor.cgColor
+        layer.borderColor = Constants.defaultColor.cgColor
     }
     
     init(placeholder: String, type: TypeTextField) {
@@ -130,6 +128,16 @@ final class CustomTextField: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    fileprivate func setupLayer() {
+        layer.cornerRadius = 10
+        layer.cornerCurve = .continuous
+        layer.backgroundColor = UIColor.white.cgColor
+        layer.borderColor =  Constants.defaultColor.cgColor
+        layer.borderWidth = 1
+        translatesAutoresizingMaskIntoConstraints = false
+        layer.borderColor = UIColor(named: "borderColorEditText")!.cgColor
+    }
+    
     private func setupUI() {
         
         self.addSubview(stackView)
@@ -140,13 +148,7 @@ final class CustomTextField: UIView {
         stackView.axis = .vertical
         stackView.alignment = .leading
         
-        layer.cornerRadius = 10
-        layer.cornerCurve = .continuous
-        layer.backgroundColor = UIColor.white.cgColor
-        layer.borderColor =  Color.defaultColor.cgColor
-        layer.borderWidth = 1
-        translatesAutoresizingMaskIntoConstraints = false
-        layer.borderColor = UIColor(named: "borderColorEditText")!.cgColor
+        setupLayer()
         
         if self.type == .pass {
             floatingText.isSecureTextEntry = true
