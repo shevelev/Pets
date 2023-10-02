@@ -38,6 +38,11 @@
 		C989D9D52AB31D8600268730 /* AuthorizationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C989D9D42AB31D8600268730 /* AuthorizationViewModel.swift */; };
 		C989D9D72AB31DD300268730 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C989D9D62AB31DD300268730 /* RegistrationViewModel.swift */; };
 		C989D9D92AB31E8100268730 /* RestorePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C989D9D82AB31E8100268730 /* RestorePasswordViewModel.swift */; };
+		C9AF04132AC80D720071765B /* ProfileTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AF04122AC80D720071765B /* ProfileTabViewModel.swift */; };
+		C9AF04152AC97E340071765B /* ProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AF04142AC97E340071765B /* ProfileHeader.swift */; };
+		C9AF04172AC9E5440071765B /* ProfileAbout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AF04162AC9E5440071765B /* ProfileAbout.swift */; };
+		C9AF04192ACAA04F0071765B /* ProfilePets.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AF04182ACAA04F0071765B /* ProfilePets.swift */; };
+		C9AF041B2ACACF720071765B /* ProfilePetPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AF041A2ACACF720071765B /* ProfilePetPhotoCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +74,11 @@
 		C989D9D42AB31D8600268730 /* AuthorizationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewModel.swift; sourceTree = "<group>"; };
 		C989D9D62AB31DD300268730 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		C989D9D82AB31E8100268730 /* RestorePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordViewModel.swift; sourceTree = "<group>"; };
+		C9AF04122AC80D720071765B /* ProfileTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTabViewModel.swift; sourceTree = "<group>"; };
+		C9AF04142AC97E340071765B /* ProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeader.swift; sourceTree = "<group>"; };
+		C9AF04162AC9E5440071765B /* ProfileAbout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAbout.swift; sourceTree = "<group>"; };
+		C9AF04182ACAA04F0071765B /* ProfilePets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePets.swift; sourceTree = "<group>"; };
+		C9AF041A2ACACF720071765B /* ProfilePetPhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePetPhotoCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +168,9 @@
 		C9813A112ABC6F7700F4FC92 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				C9813A262AC182C900F4FC92 /* Friends */,
+				C9813A252AC182C000F4FC92 /* Walk */,
+				C9813A242AC182B800F4FC92 /* Profile */,
 				C9813A142ABCBA6C00F4FC92 /* MainTabBar */,
 				C9813A132ABC708F00F4FC92 /* Registration */,
 				C9813A122ABC6F7F00F4FC92 /* Auth */,
@@ -186,9 +199,6 @@
 		C9813A142ABCBA6C00F4FC92 /* MainTabBar */ = {
 			isa = PBXGroup;
 			children = (
-				C9813A242AC182B800F4FC92 /* Profile */,
-				C9813A252AC182C000F4FC92 /* Walk */,
-				C9813A262AC182C900F4FC92 /* Friends */,
 				C9813A272AC1830500F4FC92 /* MainTabCoordinator.swift */,
 			);
 			path = MainTabBar;
@@ -218,6 +228,11 @@
 			children = (
 				C9813A152ABCBAB800F4FC92 /* ProfileTabViewController.swift */,
 				C9813A2B2AC1C0EA00F4FC92 /* ProfileTabCoordinator.swift */,
+				C9AF04122AC80D720071765B /* ProfileTabViewModel.swift */,
+				C9AF04142AC97E340071765B /* ProfileHeader.swift */,
+				C9AF04162AC9E5440071765B /* ProfileAbout.swift */,
+				C9AF04182ACAA04F0071765B /* ProfilePets.swift */,
+				C9AF041A2ACACF720071765B /* ProfilePetPhotoCell.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -330,6 +345,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9AF041B2ACACF720071765B /* ProfilePetPhotoCell.swift in Sources */,
 				C9813A162ABCBAB800F4FC92 /* ProfileTabViewController.swift in Sources */,
 				C9813A2C2AC1C0EA00F4FC92 /* ProfileTabCoordinator.swift in Sources */,
 				C989D9D22AB31A0800268730 /* AppCoordinator.swift in Sources */,
@@ -338,6 +354,7 @@
 				C989D9D72AB31DD300268730 /* RegistrationViewModel.swift in Sources */,
 				C9813A282AC1830500F4FC92 /* MainTabCoordinator.swift in Sources */,
 				C96FAD162AAE034900CA0BAA /* K.swift in Sources */,
+				C9AF04132AC80D720071765B /* ProfileTabViewModel.swift in Sources */,
 				C9813A1A2ABCBAFA00F4FC92 /* FriendsTabViewController.swift in Sources */,
 				C989D9D92AB31E8100268730 /* RestorePasswordViewModel.swift in Sources */,
 				C9813A302AC1C20500F4FC92 /* FriendsTabCoordinator.swift in Sources */,
@@ -346,10 +363,13 @@
 				C9813A182ABCBAE700F4FC92 /* WalkTabViewController.swift in Sources */,
 				C9813A0F2ABB666000F4FC92 /* CustomTextField.swift in Sources */,
 				31A492982AAFB74E009B27C9 /* RegistrationViewController.swift in Sources */,
+				C9AF04172AC9E5440071765B /* ProfileAbout.swift in Sources */,
 				18A5394B2AA798CB00D82A49 /* AppDelegate.swift in Sources */,
+				C9AF04152AC97E340071765B /* ProfileHeader.swift in Sources */,
 				C989D9D02AB319AB00268730 /* Coordinator.swift in Sources */,
 				18A5394D2AA798CB00D82A49 /* SceneDelegate.swift in Sources */,
 				18A539702AA8913200D82A49 /* HumanModel.swift in Sources */,
+				C9AF04192ACAA04F0071765B /* ProfilePets.swift in Sources */,
 				C9813A2E2AC1C1D900F4FC92 /* WalkTabCoordinator.swift in Sources */,
 				18A5396D2AA7AB3300D82A49 /* FirebaseClient.swift in Sources */,
 				18A539722AA8913A00D82A49 /* PetModel.swift in Sources */,
