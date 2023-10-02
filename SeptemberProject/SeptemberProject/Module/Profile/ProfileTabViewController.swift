@@ -84,7 +84,8 @@ class ProfileTabViewController: UIViewController {
             contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            contentView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor)
+            contentView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+            contentView.heightAnchor.constraint(equalToConstant: 2000)
         ])
     }
     
@@ -105,6 +106,7 @@ class ProfileTabViewController: UIViewController {
             profilePets.topAnchor.constraint(equalTo: profileAbout.bottomAnchor, constant: 20),
             profilePets.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             profilePets.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            //profilePets.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
     }
 }

@@ -55,7 +55,7 @@ class ProfilePets: UIView {
     private let descriptionLabel: UILabel = {
         let label = UILabel()
         label.text = UIConstants.descriptionLabelText
-        label.font = .systemFont(ofSize: UIConstants.aboutLabelTextSize, weight: .light)
+        label.font = .systemFont(ofSize: UIConstants.descriptionLabelTextSize, weight: .light)
         label.textColor = UIConstants.textColor
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -130,13 +130,13 @@ class ProfilePets: UIView {
     
     private var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
+        layout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
     
-    private var photos: [UIImage] = [UIImage(named: "dog21")!, UIImage(named: "dog18")!]//, UIImage(named: "dog20")!, UIImage(named: "dog21")! ]
+    private var photos: [UIImage] = [UIImage(named: "dog21")!, UIImage(named: "dog18")!, UIImage(named: "dog20")!, UIImage(named: "dog21")! ]
 }
 
 // MARK: - private methods
@@ -208,20 +208,21 @@ private extension ProfilePets {
             collectionView.bottomAnchor.constraint(equalTo: bottomAnchor),
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: UIConstants.contentPadding),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 50),
-            collectionView.heightAnchor.constraint(equalToConstant: 106)
+            collectionView.heightAnchor.constraint(equalToConstant: 106),
+            collectionView.widthAnchor.constraint(equalToConstant: 1000)
         ])
     }
 }
 
 extension ProfilePets: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3//photos.count
+        return photos.count + 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: ProfilePetPhotoCell.self), for: indexPath) as! ProfilePetPhotoCell
         let image: UIImage!
-        if indexPath.item > 1 {
+        if indexPath.item > 3 {
             image = UIImage(named: "petBoy")
         } else {
             image = photos[indexPath.item]
