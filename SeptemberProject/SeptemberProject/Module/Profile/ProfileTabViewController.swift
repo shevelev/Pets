@@ -74,11 +74,19 @@ class ProfileTabViewController: UIViewController {
     }
     
     private func makeConstraintsScrollContent() {
+        
+        if let top
+                = UIApplication.shared.windows.first?.safeAreaInsets.top
+            {
+                scrollView.contentInset.top = -top
+            }
+        
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: view.topAnchor),
             scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+           
             
             contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
             contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),

@@ -51,7 +51,7 @@ class ProfileHeader: UIView {
     private let profileBack: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "backgroundProfile")
-        image.contentMode = .scaleAspectFit
+        image.contentMode = .scaleToFill
          image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
