@@ -36,8 +36,8 @@ final class FirebaseClient: FirebaseClientProtocol{
     
     public func handleSignUp(withHuman human: HumanModel,pass: String) {
         Auth.auth().createUser(withEmail: human.email, password: pass) {[weak self] authResult, error in
-            if let err = error{
-                print(err)
+            if let error = error{
+                print(error)
             } else {
                 guard let self = self else {return}
                 self.createDocument(human,human.pets)
@@ -74,8 +74,8 @@ final class FirebaseClient: FirebaseClientProtocol{
                 DataHumanJsonFormat.bioAbout: human.bioAbout,
                 DataHumanJsonFormat.pets: petsList
             ]) { (error) in
-                if let e = error{
-                    print("there was issue, \(e)")
+                if let error = error{
+                    print("there was issue, \(error)")
                 } else{
                     print("succesfully saved your data")
                 }

@@ -7,13 +7,7 @@
 
 import UIKit
 
-class ProfileHeader: UIView {
-    
-    func configure(with model: String) {
-        // Настройка всех полей (свой/чужой профиль и данные из него)
-        mainAvatar.image = UIImage(named: "testBoy")
-        petAvatar.image = UIImage(named: "testPet")
-    }
+class ProfileHeaderView: UIView {
     
     private enum UIConstants {
         static let bigAvatarSize: CGFloat = 118
@@ -38,21 +32,11 @@ class ProfileHeader: UIView {
         static let headerTextColor: UIColor = UIColor(red: 31/255, green: 34/255, blue: 52/255, alpha: 1)
     }
     
-    //MARK: - Init
-    init() {
-        super.init(frame: .zero)
-        initialize()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     private let profileBack: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "backgroundProfile")
         image.contentMode = .scaleToFill
-         image.translatesAutoresizingMaskIntoConstraints = false
+        image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
     
@@ -118,12 +102,27 @@ class ProfileHeader: UIView {
         return view
     }()
     
+    //MARK: - Init
+    init() {
+        super.init(frame: .zero)
+        initialize()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func configure(with model: String) {
+        // Настройка всех полей (свой/чужой профиль и данные из него)
+        mainAvatar.image = UIImage(named: "testBoy")
+        petAvatar.image = UIImage(named: "testPet")
+    }
 }
 
 // MARK: - private methods
-private extension ProfileHeader {
+private extension ProfileHeaderView {
     func initialize() {
-
+        
         addSubview(profileBack)
         addSubview(mainAvatar)
         addSubview(petAvatar)
@@ -133,65 +132,81 @@ private extension ProfileHeader {
         addSubview(walkTimeLabel)
         addSubview(isOnline)
         
-        setConstraits()
+        makeConstraintsProfileBack()
+        makeConstraintsMainAvatar()
+        makeConstraintsPetAvatar()
+        makeConstraintsProfileSettingsButton()
+        makeConstraintsProfileMessageButton()
+        makeConstraintsNamesLabel()
+        makeConstraintsWalkTimeLabel()
+        makeConstraintsIsOnline()
     }
     
-    private func setConstraits() {
+    private func makeConstraintsProfileBack() {
         NSLayoutConstraint.activate([
             profileBack.topAnchor.constraint(equalTo: topAnchor),
             profileBack.leadingAnchor.constraint(equalTo: leadingAnchor),
             profileBack.trailingAnchor.constraint(equalTo: trailingAnchor),
-            
+        ])
+    }
+    
+    private func makeConstraintsMainAvatar() {
+        NSLayoutConstraint.activate([
             mainAvatar.topAnchor.constraint(equalTo: topAnchor, constant: UIConstants.mainAvatarTopPadding),
             mainAvatar.leadingAnchor.constraint(equalTo: leadingAnchor, constant: UIConstants.paddingContent),
             mainAvatar.widthAnchor.constraint(equalToConstant: UIConstants.bigAvatarSize),
             mainAvatar.heightAnchor.constraint(equalToConstant: UIConstants.bigAvatarSize),
-            
+        ])
+    }
+    
+    private func makeConstraintsPetAvatar() {
+        NSLayoutConstraint.activate([
             petAvatar.leadingAnchor.constraint(equalTo: mainAvatar.trailingAnchor, constant: -UIConstants.paddingContent),
             petAvatar.bottomAnchor.constraint(equalTo: mainAvatar.bottomAnchor),
             petAvatar.widthAnchor.constraint(equalToConstant: UIConstants.smallAvatarSize),
             petAvatar.heightAnchor.constraint(equalToConstant: UIConstants.smallAvatarSize),
-            
+        ])
+    }
+    
+    private func makeConstraintsProfileSettingsButton() {
+        NSLayoutConstraint.activate([
             profileSettingsButton.leadingAnchor.constraint(equalTo: petAvatar.trailingAnchor, constant: UIConstants.paddingContent),
             profileSettingsButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -UIConstants.paddingContent),
             profileSettingsButton.bottomAnchor.constraint(equalTo: mainAvatar.bottomAnchor),
             profileSettingsButton.heightAnchor.constraint(equalToConstant: UIConstants.buttonHeight),
-            
+        ])
+    }
+    
+    private func makeConstraintsProfileMessageButton() {
+        NSLayoutConstraint.activate([
             profileMessageButton.trailingAnchor.constraint(equalTo: profileSettingsButton.trailingAnchor),
             profileMessageButton.topAnchor.constraint(equalTo: mainAvatar.topAnchor),
             profileMessageButton.heightAnchor.constraint(equalToConstant: UIConstants.buttonHeight),
             profileMessageButton.widthAnchor.constraint(equalToConstant: UIConstants.buttonHeight),
-            
+        ])
+    }
+    
+    private func makeConstraintsNamesLabel() {
+        NSLayoutConstraint.activate([
             namesLabel.topAnchor.constraint(equalTo: mainAvatar.bottomAnchor, constant: UIConstants.namesLabelTopPadding),
             namesLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: UIConstants.paddingContent),
-            
+        ])
+    }
+    
+    private func makeConstraintsWalkTimeLabel() {
+        NSLayoutConstraint.activate([
             walkTimeLabel.topAnchor.constraint(equalTo: namesLabel.bottomAnchor, constant: UIConstants.walkTimeLabelTopPadding),
             walkTimeLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: UIConstants.paddingContent),
             walkTimeLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
-            
+        ])
+    }
+    
+    private func makeConstraintsIsOnline() {
+        NSLayoutConstraint.activate([
             isOnline.topAnchor.constraint(equalTo: namesLabel.topAnchor),
             isOnline.leadingAnchor.constraint(equalTo: namesLabel.trailingAnchor),
             isOnline.widthAnchor.constraint(equalToConstant: UIConstants.isOnlineWidthHeight),
             isOnline.heightAnchor.constraint(equalToConstant: UIConstants.isOnlineWidthHeight)
         ])
-    }
-    
-}
-
-extension UIImage {
-    func circleMask(color: CGColor = UIColor.white.cgColor, width: CGFloat = 0) -> UIImage? {
-        let square = CGSize(width: min(size.width, size.height), height: min(size.width, size.height))
-        let imageView = UIImageView(frame: .init(origin: .init(x: 0, y: 0), size: square))
-        imageView.contentMode = .scaleAspectFill
-        imageView.image = self
-        imageView.layer.cornerRadius = square.width/2
-        imageView.layer.borderColor = color
-        imageView.layer.borderWidth = width
-        imageView.layer.masksToBounds = true
-        UIGraphicsBeginImageContextWithOptions(imageView.bounds.size, false, scale)
-        defer { UIGraphicsEndImageContext() }
-        guard let context = UIGraphicsGetCurrentContext() else { return nil }
-        imageView.layer.render(in: context)
-        return UIGraphicsGetImageFromCurrentImageContext()
     }
 }

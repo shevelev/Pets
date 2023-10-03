@@ -9,9 +9,19 @@ import UIKit
 
 class ProfilePetPhotoCell: UICollectionViewCell {
     
-    func configure(with image: UIImage!) {
-        imageView.image = image
+    private enum UIConstants {
+        static let imageViewCornerRadius: CGFloat = 15
     }
+    
+    private let imageView: UIImageView = {
+        let view = UIImageView()
+        view.contentMode = .scaleAspectFill
+        view.layer.cornerRadius = UIConstants.imageViewCornerRadius
+        view.layer.masksToBounds = true
+        view.backgroundColor = UIColor.red
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -22,21 +32,19 @@ class ProfilePetPhotoCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private let imageView: UIImageView = {
-        let view = UIImageView()
-        view.contentMode = .scaleAspectFill
-        view.layer.cornerRadius = 15
-        view.layer.masksToBounds = true
-        view.backgroundColor = UIColor.red
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+    func configure(with image: UIImage!) {
+        imageView.image = image
+    }
 }
 
 private extension ProfilePetPhotoCell {
     func initialize() {
         contentView.addSubview(imageView)
         
+        makeConstaintsImageView()
+    }
+    
+    private func makeConstaintsImageView() {
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
             imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),

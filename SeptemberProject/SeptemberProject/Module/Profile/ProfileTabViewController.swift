@@ -13,14 +13,12 @@ class ProfileTabViewController: UIViewController {
     
     private enum UIConstants {
         static let contentBackgroundColor: UIColor = UIColor(red: 250/255, green: 250/255, blue: 252/255, alpha: 1)
+        static let contentTopPadding: CGFloat = 20
     }
     
     private let scrollView: UIScrollView = {
         let scroll = UIScrollView()
         scroll.translatesAutoresizingMaskIntoConstraints = false
-        //scroll.showsVerticalScrollIndicator = true
-        //scroll.isDirectionalLockEnabled = true
-        //scroll.showsHorizontalScrollIndicator = false
         scroll.backgroundColor = UIConstants.contentBackgroundColor
         return scroll
     }()
@@ -31,20 +29,20 @@ class ProfileTabViewController: UIViewController {
         return view
     }()
     
-    private let profileHeader: ProfileHeader = {
-        let header = ProfileHeader()
+    private let profileHeader: ProfileHeaderView = {
+        let header = ProfileHeaderView()
         header.translatesAutoresizingMaskIntoConstraints = false
         return header
     }()
     
-    private let profileAbout: ProfileAbout = {
-        let view = ProfileAbout()
+    private let profileAbout: ProfileAboutView = {
+        let view = ProfileAboutView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    private let profilePets: ProfilePets = {
-        let view = ProfilePets()
+    private let profilePets: ProfilePetsView = {
+        let view = ProfilePetsView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -64,13 +62,13 @@ class ProfileTabViewController: UIViewController {
         contentView.addSubview(profileAbout)
         contentView.addSubview(profilePets)
         
-        //mok - data
-        profileHeader.configure(with: "test")
-        profilePets.configure(with: "test")
-        
         makeConstraintsScrollContent()
         makeConstraintsProfileHeader()
         makeConstraintsProfileAbout()
+        
+        //mok - data
+        profileHeader.configure(with: "test")
+        profilePets.configure(with: "test")
     }
     
     private func makeConstraintsScrollContent() {
@@ -86,14 +84,12 @@ class ProfileTabViewController: UIViewController {
             scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-           
-            
+   
             contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
             contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             contentView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
-            contentView.heightAnchor.constraint(equalToConstant: 2000)
         ])
     }
     
@@ -107,14 +103,14 @@ class ProfileTabViewController: UIViewController {
     
     private func makeConstraintsProfileAbout() {
         NSLayoutConstraint.activate([
-            profileAbout.topAnchor.constraint(equalTo: profileHeader.bottomAnchor, constant: 20),
+            profileAbout.topAnchor.constraint(equalTo: profileHeader.bottomAnchor, constant: UIConstants.contentTopPadding),
             profileAbout.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             profileAbout.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             
-            profilePets.topAnchor.constraint(equalTo: profileAbout.bottomAnchor, constant: 20),
+            profilePets.topAnchor.constraint(equalTo: profileAbout.bottomAnchor, constant: UIConstants.contentTopPadding),
             profilePets.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             profilePets.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            //profilePets.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            profilePets.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
     }
 }

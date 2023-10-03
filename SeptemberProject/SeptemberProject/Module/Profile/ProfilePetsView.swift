@@ -7,12 +7,7 @@
 
 import UIKit
 
-class ProfilePets: UIView {
-    
-    func configure(with model: String) {
-        // Настройка всех полей (свой/чужой профиль и данные из него)
-        petAvatar.image = UIImage(named: "testPet")
-    }
+class ProfilePetsView: UIView {
     
     private enum UIConstants {
         static let aboutLabelText = "О питомце"
@@ -31,16 +26,11 @@ class ProfilePets: UIView {
         static let petLocationLabelTextSize: CGFloat = 13
         static let textColor: UIColor = UIColor(red: 130/255, green: 138/255, blue: 150/255, alpha: 1)
         static let headerTextColor: UIColor = UIColor(red: 31/255, green: 34/255, blue: 52/255, alpha: 1)
-    }
-    
-    //MARK: - Init
-    init() {
-        super.init(frame: .zero)
-        initialize()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        static let petStackViewLeadingPadding: CGFloat = 10
+        static let collectionViewHeight: CGFloat = 106
+        static let petLocationLabelTrailingPadding: CGFloat = 5
+        static let petNameLabelTrailingPadding: CGFloat = -2
+        static let genderPetImageTopPadding: CGFloat = -2
     }
     
     private let aboutLabel: UILabel = {
@@ -137,10 +127,25 @@ class ProfilePets: UIView {
     }()
     
     private var photos: [UIImage] = [UIImage(named: "dog21")!, UIImage(named: "dog18")!, UIImage(named: "dog20")!, UIImage(named: "dog21")! ]
+    
+    //MARK: - Init
+    init() {
+        super.init(frame: .zero)
+        initialize()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func configure(with model: String) {
+        // Настройка всех полей (свой/чужой профиль и данные из него)
+        petAvatar.image = UIImage(named: "testPet")
+    }
 }
 
 // MARK: - private methods
-private extension ProfilePets {
+private extension ProfilePetsView {
     func initialize() {
         
         backgroundColor = UIColor.white
@@ -168,53 +173,86 @@ private extension ProfilePets {
         
         addSubview(collectionView)
         
-        
-        
+        makeConstraintsPetAvatar()
+        makeConstraintsAboutLabel()
+        makeConstraintsDescriptionLabel()
+        makeConstraintsEditIconImage()
+        makeConstraintsPetStackView()
+        makeConstraintsPetNameLabel()
+        makeConstraintsPetLocationImage()
+        makeConstraintsGenderPetImage()
+        makeConstraintsCollectionView()
+    }
+    
+    private func makeConstraintsPetAvatar() {
         NSLayoutConstraint.activate([
             petAvatar.topAnchor.constraint(equalTo: topAnchor, constant: UIConstants.petAvatarPadding),
             petAvatar.leadingAnchor.constraint(equalTo: leadingAnchor, constant: UIConstants.petAvatarPadding),
             petAvatar.widthAnchor.constraint(equalToConstant: UIConstants.petAvatarSize),
             petAvatar.heightAnchor.constraint(equalToConstant: UIConstants.petAvatarSize),
-            
+        ])
+    }
+    private func makeConstraintsAboutLabel() {
+        NSLayoutConstraint.activate([
             aboutLabel.topAnchor.constraint(equalTo: petAvatar.bottomAnchor, constant: UIConstants.contentPadding),
             aboutLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: UIConstants.contentPadding),
-            
+        ])
+    }
+    private func makeConstraintsDescriptionLabel() {
+        NSLayoutConstraint.activate([
             descriptionLabel.topAnchor.constraint(equalTo: aboutLabel.bottomAnchor, constant: UIConstants.descriptionLabelTopPadding),
             descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: UIConstants.contentPadding),
             descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -UIConstants.contentPadding),
-            
+        ])
+    }
+    private func makeConstraintsEditIconImage() {
+        NSLayoutConstraint.activate([
             editIconImage.topAnchor.constraint(equalTo: topAnchor, constant: UIConstants.editIconImagePadding),
             editIconImage.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -UIConstants.editIconImagePadding),
             editIconImage.widthAnchor.constraint(equalToConstant: UIConstants.editIconImageSize),
             editIconImage.heightAnchor.constraint(equalToConstant: UIConstants.editIconImageSize),
-            
-            petStackView.leadingAnchor.constraint(equalTo: petAvatar.trailingAnchor, constant: 10),
+        ])
+    }
+    private func makeConstraintsPetStackView() {
+        NSLayoutConstraint.activate([
+            petStackView.leadingAnchor.constraint(equalTo: petAvatar.trailingAnchor, constant: UIConstants.petStackViewLeadingPadding),
             petStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -UIConstants.contentPadding),
             petStackView.centerYAnchor.constraint(equalTo: petAvatar.centerYAnchor),
-            
+        ])
+    }
+    private func makeConstraintsPetNameLabel() {
+        NSLayoutConstraint.activate([
             petNameLabel.topAnchor.constraint(equalTo: petNameView.topAnchor),
             petNameLabel.bottomAnchor.constraint(equalTo: petNameView.bottomAnchor),
             petNameLabel.leadingAnchor.constraint(equalTo: petNameView.leadingAnchor),
-            petNameLabel.trailingAnchor.constraint(equalTo: genderPetImage.leadingAnchor, constant: -2),
-            
+            petNameLabel.trailingAnchor.constraint(equalTo: genderPetImage.leadingAnchor, constant: UIConstants.petNameLabelTrailingPadding),
+        ])
+    }
+    private func makeConstraintsPetLocationImage() {
+        NSLayoutConstraint.activate([
             petLocationImage.topAnchor.constraint(equalTo: petLocationView.topAnchor),
             petLocationImage.leadingAnchor.constraint(equalTo: petLocationView.leadingAnchor),
             petLocationImage.bottomAnchor.constraint(equalTo: petLocationView.bottomAnchor),
-            petLocationLabel.leadingAnchor.constraint(equalTo: petLocationImage.trailingAnchor, constant: 5),
-            
-            genderPetImage.topAnchor.constraint(equalTo: petNameLabel.topAnchor, constant: -2),
-            
+            petLocationLabel.leadingAnchor.constraint(equalTo: petLocationImage.trailingAnchor, constant: UIConstants.petLocationLabelTrailingPadding),
+        ])
+    }
+    private func makeConstraintsGenderPetImage() {
+        NSLayoutConstraint.activate([
+            genderPetImage.topAnchor.constraint(equalTo: petNameLabel.topAnchor, constant: -UIConstants.genderPetImageTopPadding),
+        ])
+    }
+    private func makeConstraintsCollectionView() {
+        NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: UIConstants.contentPadding),
             collectionView.bottomAnchor.constraint(equalTo: bottomAnchor),
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: UIConstants.contentPadding),
-            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 50),
-            collectionView.heightAnchor.constraint(equalToConstant: 106),
-            collectionView.widthAnchor.constraint(equalToConstant: 1000)
+            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            collectionView.heightAnchor.constraint(equalToConstant: UIConstants.collectionViewHeight),
         ])
     }
 }
 
-extension ProfilePets: UICollectionViewDataSource {
+extension ProfilePetsView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return photos.count + 1
     }
@@ -232,7 +270,7 @@ extension ProfilePets: UICollectionViewDataSource {
     }
 }
 
-extension ProfilePets: UICollectionViewDelegateFlowLayout {
+extension ProfilePetsView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         CGSize(width: 106, height: 106)
     }

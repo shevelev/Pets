@@ -39,10 +39,11 @@
 		C989D9D72AB31DD300268730 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C989D9D62AB31DD300268730 /* RegistrationViewModel.swift */; };
 		C989D9D92AB31E8100268730 /* RestorePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C989D9D82AB31E8100268730 /* RestorePasswordViewModel.swift */; };
 		C9AF04132AC80D720071765B /* ProfileTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AF04122AC80D720071765B /* ProfileTabViewModel.swift */; };
-		C9AF04152AC97E340071765B /* ProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AF04142AC97E340071765B /* ProfileHeader.swift */; };
-		C9AF04172AC9E5440071765B /* ProfileAbout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AF04162AC9E5440071765B /* ProfileAbout.swift */; };
-		C9AF04192ACAA04F0071765B /* ProfilePets.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AF04182ACAA04F0071765B /* ProfilePets.swift */; };
+		C9AF04152AC97E340071765B /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AF04142AC97E340071765B /* ProfileHeaderView.swift */; };
+		C9AF04172AC9E5440071765B /* ProfileAboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AF04162AC9E5440071765B /* ProfileAboutView.swift */; };
+		C9AF04192ACAA04F0071765B /* ProfilePetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AF04182ACAA04F0071765B /* ProfilePetsView.swift */; };
 		C9AF041B2ACACF720071765B /* ProfilePetPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AF041A2ACACF720071765B /* ProfilePetPhotoCell.swift */; };
+		C9AF041D2ACC3E0B0071765B /* UIImageExtentsions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AF041C2ACC3E0B0071765B /* UIImageExtentsions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,10 +76,11 @@
 		C989D9D62AB31DD300268730 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		C989D9D82AB31E8100268730 /* RestorePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordViewModel.swift; sourceTree = "<group>"; };
 		C9AF04122AC80D720071765B /* ProfileTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTabViewModel.swift; sourceTree = "<group>"; };
-		C9AF04142AC97E340071765B /* ProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeader.swift; sourceTree = "<group>"; };
-		C9AF04162AC9E5440071765B /* ProfileAbout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAbout.swift; sourceTree = "<group>"; };
-		C9AF04182ACAA04F0071765B /* ProfilePets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePets.swift; sourceTree = "<group>"; };
+		C9AF04142AC97E340071765B /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
+		C9AF04162AC9E5440071765B /* ProfileAboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAboutView.swift; sourceTree = "<group>"; };
+		C9AF04182ACAA04F0071765B /* ProfilePetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePetsView.swift; sourceTree = "<group>"; };
 		C9AF041A2ACACF720071765B /* ProfilePetPhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePetPhotoCell.swift; sourceTree = "<group>"; };
+		C9AF041C2ACC3E0B0071765B /* UIImageExtentsions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtentsions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +163,7 @@
 			children = (
 				C9813A0E2ABB666000F4FC92 /* CustomTextField.swift */,
 				C96FAD152AAE034900CA0BAA /* K.swift */,
+				C9AF041C2ACC3E0B0071765B /* UIImageExtentsions.swift */,
 			);
 			path = Extenstions;
 			sourceTree = "<group>";
@@ -229,9 +232,9 @@
 				C9813A152ABCBAB800F4FC92 /* ProfileTabViewController.swift */,
 				C9813A2B2AC1C0EA00F4FC92 /* ProfileTabCoordinator.swift */,
 				C9AF04122AC80D720071765B /* ProfileTabViewModel.swift */,
-				C9AF04142AC97E340071765B /* ProfileHeader.swift */,
-				C9AF04162AC9E5440071765B /* ProfileAbout.swift */,
-				C9AF04182ACAA04F0071765B /* ProfilePets.swift */,
+				C9AF04142AC97E340071765B /* ProfileHeaderView.swift */,
+				C9AF04162AC9E5440071765B /* ProfileAboutView.swift */,
+				C9AF04182ACAA04F0071765B /* ProfilePetsView.swift */,
 				C9AF041A2ACACF720071765B /* ProfilePetPhotoCell.swift */,
 			);
 			path = Profile;
@@ -363,13 +366,14 @@
 				C9813A182ABCBAE700F4FC92 /* WalkTabViewController.swift in Sources */,
 				C9813A0F2ABB666000F4FC92 /* CustomTextField.swift in Sources */,
 				31A492982AAFB74E009B27C9 /* RegistrationViewController.swift in Sources */,
-				C9AF04172AC9E5440071765B /* ProfileAbout.swift in Sources */,
+				C9AF04172AC9E5440071765B /* ProfileAboutView.swift in Sources */,
 				18A5394B2AA798CB00D82A49 /* AppDelegate.swift in Sources */,
-				C9AF04152AC97E340071765B /* ProfileHeader.swift in Sources */,
+				C9AF04152AC97E340071765B /* ProfileHeaderView.swift in Sources */,
 				C989D9D02AB319AB00268730 /* Coordinator.swift in Sources */,
 				18A5394D2AA798CB00D82A49 /* SceneDelegate.swift in Sources */,
+				C9AF041D2ACC3E0B0071765B /* UIImageExtentsions.swift in Sources */,
 				18A539702AA8913200D82A49 /* HumanModel.swift in Sources */,
-				C9AF04192ACAA04F0071765B /* ProfilePets.swift in Sources */,
+				C9AF04192ACAA04F0071765B /* ProfilePetsView.swift in Sources */,
 				C9813A2E2AC1C1D900F4FC92 /* WalkTabCoordinator.swift in Sources */,
 				18A5396D2AA7AB3300D82A49 /* FirebaseClient.swift in Sources */,
 				18A539722AA8913A00D82A49 /* PetModel.swift in Sources */,

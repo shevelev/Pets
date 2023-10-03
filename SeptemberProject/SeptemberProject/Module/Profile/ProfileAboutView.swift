@@ -7,11 +7,7 @@
 
 import UIKit
 
-class ProfileAbout: UIView {
-    
-    func configure(with model: String) {
-        // Настройка всех полей (свой/чужой профиль и данные из него)
-    }
+class ProfileAboutView: UIView {
     
     private enum UIConstants {
         static let aboutLabelText = "О себе"
@@ -25,16 +21,6 @@ class ProfileAbout: UIView {
         static let descriptionLabelTopPadding: CGFloat = 10
         static let textColor: UIColor = UIColor(red: 130/255, green: 138/255, blue: 150/255, alpha: 1)
         static let headerTextColor: UIColor = UIColor(red: 31/255, green: 34/255, blue: 52/255, alpha: 1)
-    }
-    
-    //MARK: - Init
-    init() {
-        super.init(frame: .zero)
-        initialize()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
     private let aboutLabel: UILabel = {
@@ -62,28 +48,58 @@ class ProfileAbout: UIView {
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
+    
+    //MARK: - Init
+    init() {
+        super.init(frame: .zero)
+        initialize()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func configure(with model: String) {
+        // Настройка всех полей (свой/чужой профиль и данные из него)
+    }
 }
 
 // MARK: - private methods
-private extension ProfileAbout {
+private extension ProfileAboutView {
     func initialize() {
-
-        backgroundColor = UIColor.white
-        layer.cornerRadius = UIConstants.cornerRadius
+        
+        setupLayer()
         
         addSubview(aboutLabel)
         addSubview(descriptionLabel)
         addSubview(editIconImage)
         
+        makeConstraintsAboutLabel()
+        makeConstraintsDescriptionLabel()
+        makeConstraintsEditIconImage()
+    }
+    
+    private func setupLayer() {
+        backgroundColor = UIColor.white
+        layer.cornerRadius = UIConstants.cornerRadius
+    }
+    
+    private func makeConstraintsAboutLabel() {
         NSLayoutConstraint.activate([
             aboutLabel.topAnchor.constraint(equalTo: topAnchor, constant: UIConstants.contentPadding),
             aboutLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: UIConstants.contentPadding),
-            
+        ])
+    }
+    private func makeConstraintsDescriptionLabel() {
+        NSLayoutConstraint.activate([
             descriptionLabel.topAnchor.constraint(equalTo: aboutLabel.bottomAnchor, constant: UIConstants.descriptionLabelTopPadding),
             descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: UIConstants.contentPadding),
             descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: UIConstants.contentPadding),
             descriptionLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -UIConstants.contentPadding),
-            
+        ])
+    }
+    private func makeConstraintsEditIconImage() {
+        NSLayoutConstraint.activate([
             editIconImage.topAnchor.constraint(equalTo: topAnchor, constant: UIConstants.editIconImagePadding),
             editIconImage.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -UIConstants.editIconImagePadding),
             editIconImage.widthAnchor.constraint(equalToConstant: UIConstants.editIconImageSize),
