@@ -15,6 +15,11 @@ class AppCoordinator: Coordinator {
 
     init(window: UIWindow) {
         self.window = window
+//        do {
+//            try Auth.auth().signOut()
+//        } catch let error {
+//            print(error.localizedDescription)
+//        }
     }
     
     func start() {
