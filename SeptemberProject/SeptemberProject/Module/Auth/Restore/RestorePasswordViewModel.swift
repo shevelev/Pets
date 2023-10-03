@@ -13,5 +13,14 @@ class RestorePasswordViewModel {
     func goToBack() {
        coordinator.goToBack()
     }
+    
+    func resetPaassWord(email: String) {
+        FirebaseClient().resetPassword(email: email) { error in
+            if error == nil {
+                //alert об успешности или ошибки
+                self.goToBack()
+            }
+        }
+    }
 }
 

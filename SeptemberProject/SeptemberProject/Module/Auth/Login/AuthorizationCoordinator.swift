@@ -15,7 +15,7 @@ class AuthorizationCoordinator: Coordinator {
         let autorizetionViewModel = AuthorizationViewModel.init()
         autorizetionViewModel.coordinator = self
         let view = AuthorizationViewController()
-
+        
         view.viewModel = autorizetionViewModel
         rootViewContoller.setViewControllers([view], animated: false)
     }
@@ -29,18 +29,18 @@ class AuthorizationCoordinator: Coordinator {
     }
     
     func goToRegistration() {
-        let value = true
-        UserDefaults.standard.setValue(value, forKey: K.loginKey)
-        
-        rootViewContoller.viewControllers.removeAll()
-        //для наглядности перехода
-        let main = MainTabCoordinator()
-        main.start()
-        rootViewContoller.pushViewController(main.rootViewController, animated: true)
+
     }
     
     func goToBack() {
         rootViewContoller.popViewController(animated: true)
+    }
+    
+    func goToMainTab() {
+        rootViewContoller.viewControllers.removeAll()
+        let main = MainTabCoordinator()
+        main.start()
+        rootViewContoller.pushViewController(main.rootViewController, animated: true)
     }
     
 }

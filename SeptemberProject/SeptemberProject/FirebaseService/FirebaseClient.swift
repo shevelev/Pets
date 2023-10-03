@@ -26,7 +26,8 @@ import FirebaseAuth
 
 protocol FirebaseClientProtocol{
     func handleSignUp(withHuman human: HumanModel,pass: String)
-    func handleSignIn(email: String, password: String)
+    func handleSignIn(email: String, password: String, completion: @escaping (Error?)->Void)
+    func resetPassword(email: String, completion: @escaping (Error?)->Void)
 }
 
 final class FirebaseClient: FirebaseClientProtocol{
@@ -35,14 +36,15 @@ final class FirebaseClient: FirebaseClientProtocol{
     
     public func handleSignUp(withHuman human: HumanModel,pass: String) {
         Auth.auth().createUser(withEmail: human.email, password: pass) {[weak self] authResult, error in
-            if let err = error{
-                print(err)
+            if let error = error{
+                print(error)
             } else {
                 guard let self = self else {return}
                 self.createDocument(human,human.pets)
             }
         }
     }
+    
     private func createDocument(_ human: HumanModel,_ pets: [PetModel]){
         
         let petsColl = dataBase.collection("pets")
@@ -61,62 +63,49 @@ final class FirebaseClient: FirebaseClientProtocol{
             ])
             petsList.append(petsRef)
         }
-            dataBase
-                .collection("users")
-                .addDocument(data: [
-                    DataHumanJsonFormat.name: human.name,
-                    DataHumanJsonFormat.phoneNumber: human.phoneNumber,
-                    DataHumanJsonFormat.location: [human.location.coordinate.latitude,
-                                                   human.location.coordinate.longitude
-                                                  ],
-                    DataHumanJsonFormat.bioAbout: human.bioAbout,
-                    DataHumanJsonFormat.pets: petsList
-                ]) { (error) in
-                    if let e = error{
-                        print("there was issue, \(e)")
-                    } else{
-                        print("succesfully saved your data")
-                    }
+        dataBase
+            .collection("users")
+            .addDocument(data: [
+                DataHumanJsonFormat.name: human.name,
+                DataHumanJsonFormat.phoneNumber: human.phoneNumber,
+                DataHumanJsonFormat.location: [human.location.coordinate.latitude,
+                                               human.location.coordinate.longitude
+                                              ],
+                DataHumanJsonFormat.bioAbout: human.bioAbout,
+                DataHumanJsonFormat.pets: petsList
+            ]) { (error) in
+                if let error = error{
+                    print("there was issue, \(error)")
+                } else{
+                    print("succesfully saved your data")
                 }
-        }
+            }
+    }
     
-    func handleSignIn(email: String, password: String) {
-        Auth.auth().signIn(withEmail: email, password: password) { result, error in
-            if let err = error{
-                print(err)
+    
+    
+    func handleSignIn(email: String, password: String, completion: @escaping (Error?)->Void) {
+        Auth.auth().signIn(
+            withEmail: email,
+            password: password
+        ) { result, error in
+            if let error = error {
+                completion(error)
             } else{
-                print("SignIn")
+                completion(nil)
             }
         }
     }
-//    func createUser(userFirstName: String, userLastName: String, email: String, password: String, completionBlock: @escaping (Result<UserAuthData, Error>) -> Void) {
-//        Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
-//            if let error = error {
-//                completionBlock(.failure(error))
-//                return
-//            } else {
-//                if let currentUser = Auth.auth().currentUser?.createProfileChangeRequest() {
-//                    currentUser.displayName = String("\(userFirstName) \(userLastName)")
-//                    currentUser.commitChanges { [self] (error) in
-//                        if let error = error {
-//                            completionBlock(.failure(error))
-//                        } else {
-//                            if let curUser = Auth.auth().currentUser {
-//                                user = UserAuthData(userFirstName: userFirstName,
-//                                                    userLastName: userLastName,
-//                                                    userEmail: curUser.email!,
-//                                                    userPassword: password,
-//                                                    uid: curUser.uid,
-//                                                    userImageUrl: curUser.photoURL,
-//                                                    isGoogleUser: false)
-//                            }
-//                            completionBlock(.success(user))
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//    }
-
+    
+    func resetPassword(email: String, completion: @escaping (Error?)->Void) {
+        Auth.auth().sendPasswordReset(withEmail: email) { error in
+            if let error = error {
+                completion(error)
+            } else{
+                completion(nil)
+            }
+        }
+    }
+    
 }
 

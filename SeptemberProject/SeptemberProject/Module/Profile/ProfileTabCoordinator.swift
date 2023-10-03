@@ -13,7 +13,6 @@ class ProfileTabCoordinator: Coordinator {
     
     lazy var profileTabViewController: ProfileTabViewController = {
        let vc = ProfileTabViewController()
-        vc.title = "Profile"
         return vc
     }()
     

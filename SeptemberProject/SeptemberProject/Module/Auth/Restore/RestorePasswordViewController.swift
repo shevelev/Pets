@@ -54,7 +54,7 @@ class RestorePasswordViewController: UIViewController {
     }
     
     @objc private func sendCode() {
-        print("no action")
+        viewModel.resetPaassWord(email: emailTextField.getValue())
     }
     
     @objc private func goToBack() {

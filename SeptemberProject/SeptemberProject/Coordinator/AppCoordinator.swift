@@ -6,22 +6,24 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class AppCoordinator: Coordinator {
 
     var children = [Coordinator]()
-    
     let window: UIWindow
 
     init(window: UIWindow) {
         self.window = window
+//        do {
+//            try Auth.auth().signOut()
+//        } catch let error {
+//            print(error.localizedDescription)
+//        }
     }
     
     func start() {
-
-        let isLogin: Bool = getIsLogin()
-        
-        if isLogin {
+        if Auth.auth().currentUser != nil {
            let mainTabCoordinator = MainTabCoordinator()
             mainTabCoordinator.start()
             self.children = [mainTabCoordinator]
@@ -32,10 +34,5 @@ class AppCoordinator: Coordinator {
             self.children = [authCoordinator]
             window.rootViewController = authCoordinator.rootViewContoller
         }
-    }
-    
-    private func getIsLogin() -> Bool {
-        let result = UserDefaults.standard.bool(forKey: K.loginKey)
-        return result
     }
 }

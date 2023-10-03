@@ -205,8 +205,8 @@ class AuthorizationViewController: UIViewController {
     }
     
     @objc func nextButtonPressed(_ sender: UIButton!) {
-        print("no action -> Screen Pets")
-        viewModel.goToRegistration()
+
+        viewModel.signIn(email: emailTextField.getValue(), password: passwordTextField.getValue())
     }
 
 }
