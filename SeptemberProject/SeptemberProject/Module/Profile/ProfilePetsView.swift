@@ -138,9 +138,12 @@ class ProfilePetsView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(with model: String) {
+    func configure(with model: [PetModel]) {
         // Настройка всех полей (свой/чужой профиль и данные из него)
         petAvatar.image = UIImage(named: "testPet")
+        print(model.count)
+        petNameLabel.text = model[0].name
+        descriptionLabel.text = model[0].bioAbout
     }
 }
 

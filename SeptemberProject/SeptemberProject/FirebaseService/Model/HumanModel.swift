@@ -14,7 +14,7 @@ struct HumanModel{
     let location: CLLocation
     let phoneNumber: String
     let bioAbout: String
-    let pets: [PetModel]
+    var pets: [PetModel]
     let isonline: Bool
     let walktime: String
 }

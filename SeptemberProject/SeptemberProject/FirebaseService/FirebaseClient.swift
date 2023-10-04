@@ -32,7 +32,7 @@ protocol FirebaseClientProtocol{
     func handleSignUp(withHuman human: HumanModel,pass: String)
     func handleSignIn(email: String, password: String, completion: @escaping (Error?)->Void)
     func resetPassword(email: String, completion: @escaping (Error?)->Void)
-    func getUser(collection: String, docName: String, completion: @escaping (HumanModel?)->Void)
+    func getUser(collection: String, docName: String, completion: @escaping (Human?)->Void)
     func getImage(picName: String, completion: @escaping (UIImage) -> Void)
 }
 
@@ -113,24 +113,47 @@ final class FirebaseClient: FirebaseClientProtocol{
         }
     }
     
-    func getUser(collection: String, docName: String, completion: @escaping (HumanModel?) -> Void) {
+    func getUser(collection: String, docName: String, completion: @escaping (Human?) -> Void) {
         dataBase.collection(collection).document(docName).getDocument { document, error in
             guard error == nil else {completion(nil); return}
             
-            //let t = document?.get("petIds") as! Array<Any>
-            
-            let doc = HumanModel(
+            let doc = Human(
                 name: document?.get("name") as! String,
                 email: document?.get("email") as! String,
                 location: CLLocation(latitude: 0, longitude: 0),
                 phoneNumber: "",
                 bioAbout: document?.get("bioAbout") as! String,
-                pets: [],
+                pets: document?.get("petIds") as! [String],
                 isonline: document?.get("isonline") as! Bool,
                 walktime: document?.get("walktime") as! String
             )
             completion(doc)
         }
+    }
+    
+    
+    func getPetsByUser(userid: String, completion: @escaping ([PetModel]?) -> Void) {
+        
+        let ref = dataBase.collection("pets").whereField("owner", isEqualTo: userid)
+        ref.getDocuments() { (querySnapshot, err) in
+            var pets: [PetModel] = []
+            if let _ = err {
+                completion(nil)
+                return
+            } else {
+                for document in querySnapshot!.documents {
+                    //print("\(document.documentID) => \(document.data())")
+                    let pet = PetModel(
+                        breed: document.get("breed") as! String,
+                        name: document.get("name") as! String,
+                        dateBirth: NSDate(timeIntervalSinceNow: TimeInterval(10)),
+                        bioAbout: "ff",//document.get("bioAbout") as! String ,
+                        media: [])
+                    pets.append(pet)
+                }
+                completion(pets)
+            }
+    }
     }
     
     func getImage(picName: String, completion: @escaping (UIImage) -> Void) {

@@ -44,6 +44,7 @@
 		C9AF04192ACAA04F0071765B /* ProfilePetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AF04182ACAA04F0071765B /* ProfilePetsView.swift */; };
 		C9AF041B2ACACF720071765B /* ProfilePetPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AF041A2ACACF720071765B /* ProfilePetPhotoCell.swift */; };
 		C9AF041D2ACC3E0B0071765B /* UIImageExtentsions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AF041C2ACC3E0B0071765B /* UIImageExtentsions.swift */; };
+		C9B5CAA62ACDB92D001AC7A3 /* Human.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B5CAA52ACDB92D001AC7A3 /* Human.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,6 +82,7 @@
 		C9AF04182ACAA04F0071765B /* ProfilePetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePetsView.swift; sourceTree = "<group>"; };
 		C9AF041A2ACACF720071765B /* ProfilePetPhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePetPhotoCell.swift; sourceTree = "<group>"; };
 		C9AF041C2ACC3E0B0071765B /* UIImageExtentsions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtentsions.swift; sourceTree = "<group>"; };
+		C9B5CAA52ACDB92D001AC7A3 /* Human.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Human.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +156,7 @@
 			children = (
 				18A5396F2AA8913200D82A49 /* HumanModel.swift */,
 				18A539712AA8913A00D82A49 /* PetModel.swift */,
+				C9B5CAA52ACDB92D001AC7A3 /* Human.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 				18A5394F2AA798CB00D82A49 /* AuthorizationViewController.swift in Sources */,
 				C989D9D52AB31D8600268730 /* AuthorizationViewModel.swift in Sources */,
 				C989D9D72AB31DD300268730 /* RegistrationViewModel.swift in Sources */,
+				C9B5CAA62ACDB92D001AC7A3 /* Human.swift in Sources */,
 				C9813A282AC1830500F4FC92 /* MainTabCoordinator.swift in Sources */,
 				C96FAD162AAE034900CA0BAA /* K.swift in Sources */,
 				C9AF04132AC80D720071765B /* ProfileTabViewModel.swift in Sources */,

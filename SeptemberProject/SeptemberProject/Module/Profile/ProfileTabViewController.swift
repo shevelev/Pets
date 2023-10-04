@@ -62,15 +62,19 @@ class ProfileTabViewController: UIViewController {
     
     private func loadProfile() {
         let user = Auth.auth().currentUser!
+
         FirebaseClient().getUser(collection: "users", docName: user.uid) { human in
             guard human != nil else {return}
             
             //mok - data
             self.profileHeader.configure(with: human!)
             self.profileAbout.configure(with: human!)
-            
+            //self.profilePets.configure(with: human!.pets)
+
+            FirebaseClient().getPetsByUser(userid: user.uid) { pets in
+                self.profilePets.configure(with: pets!)
+            }
         }
-        
     }
     
     private func setupUI() {
