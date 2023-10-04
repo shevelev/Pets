@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+
 struct PetModel{
     let breed: String
     let name: String

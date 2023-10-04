@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreLocation
+
 struct HumanModel{
     let name: String
     let email: String
@@ -14,7 +15,9 @@ struct HumanModel{
     let phoneNumber: String
     let bioAbout: String
     let pets: [PetModel]
+    let isonline: Bool
+    let walktime: String
 }
-extension HumanModel{
-    static let MOCK_USER = HumanModel(name: "Igor", email: "aa@1mail.ru", location: CLLocation(latitude: 5, longitude: 5), phoneNumber: "891999999911", bioAbout: "ya igor", pets: [PetModel.MOCK_PET])
-}
+//extension HumanModel{
+//    static let MOCK_USER = HumanModel(name: "Igor", email: "aa@1mail.ru", location: CLLocation(latitude: 5, longitude: 5), phoneNumber: "891999999911", bioAbout: "ya igor", pets: [PetModel.MOCK_PET])
+//}

@@ -8,8 +8,12 @@
 import UIKit
 import Foundation
 import FirebaseAuth
+import FirebaseCore
+import FirebaseFirestore
 
 class ProfileTabViewController: UIViewController {
+    
+    var viewModel = ProfileTabViewModel()
     
     private enum UIConstants {
         static let contentBackgroundColor: UIColor = UIColor(red: 250/255, green: 250/255, blue: 252/255, alpha: 1)
@@ -53,6 +57,20 @@ class ProfileTabViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = true
         
         setupUI()
+        loadProfile()
+    }
+    
+    private func loadProfile() {
+        let user = Auth.auth().currentUser!
+        FirebaseClient().getUser(collection: "users", docName: user.uid) { human in
+            guard human != nil else {return}
+            
+            //mok - data
+            self.profileHeader.configure(with: human!)
+            self.profileAbout.configure(with: human!)
+            
+        }
+        
     }
     
     private func setupUI() {
@@ -65,10 +83,6 @@ class ProfileTabViewController: UIViewController {
         makeConstraintsScrollContent()
         makeConstraintsProfileHeader()
         makeConstraintsProfileAbout()
-        
-        //mok - data
-        profileHeader.configure(with: "test")
-        profilePets.configure(with: "test")
     }
     
     private func makeConstraintsScrollContent() {

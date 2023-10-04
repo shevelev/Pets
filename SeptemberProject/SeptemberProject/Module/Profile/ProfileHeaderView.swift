@@ -21,6 +21,7 @@ class ProfileHeaderView: UIView {
         static let nameLabelText: String = "Хозяин и питомец"
         static let walkTimeLabelText: String = "На прогулке еще 15 мин"
         static let isOnlineBackgroundColor: UIColor = UIColor(red: 16/255, green: 201/255, blue: 113/255, alpha: 1)
+        static let isNotOnlineBackgroundColor: UIColor = UIColor(red: 255/255, green: 0/255, blue: 0/255, alpha: 1)
         static let isOnlineCornerRadius: CGFloat = 5
         static let isOnlineWidthHeight: CGFloat = 10
         static let mainAvatarTopPadding: CGFloat = 65
@@ -112,10 +113,14 @@ class ProfileHeaderView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(with model: String) {
+    func configure(with model: HumanModel) {
         // Настройка всех полей (свой/чужой профиль и данные из него)
         mainAvatar.image = UIImage(named: "testBoy")
         petAvatar.image = UIImage(named: "testPet")
+        namesLabel.text = model.name
+        isOnline.backgroundColor = model.isonline ? UIConstants.isOnlineBackgroundColor : UIConstants.isNotOnlineBackgroundColor
+        walkTimeLabel.isHidden = !model.isonline
+        walkTimeLabel.text = "На прогулке еще \(model.walktime) мин"
     }
 }
 

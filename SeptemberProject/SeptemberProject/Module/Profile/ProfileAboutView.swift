@@ -59,8 +59,9 @@ class ProfileAboutView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(with model: String) {
-        // Настройка всех полей (свой/чужой профиль и данные из него)
+    func configure(with model: HumanModel) {
+        descriptionLabel.text = model.bioAbout.isEmpty ? "Нажмите для заполнения" : model.bioAbout
+        editIconImage.isHidden = !model.bioAbout.isEmpty
     }
 }
 

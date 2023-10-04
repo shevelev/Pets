@@ -8,6 +8,10 @@
 import Foundation
 import Firebase
 import FirebaseAuth
+import CoreLocation
+import FirebaseStorage
+import UIKit
+
 @frozen enum DataHumanJsonFormat{
     static let name = "name"
     static let bioAbout = "bioAbout"
@@ -28,6 +32,8 @@ protocol FirebaseClientProtocol{
     func handleSignUp(withHuman human: HumanModel,pass: String)
     func handleSignIn(email: String, password: String, completion: @escaping (Error?)->Void)
     func resetPassword(email: String, completion: @escaping (Error?)->Void)
+    func getUser(collection: String, docName: String, completion: @escaping (HumanModel?)->Void)
+    func getImage(picName: String, completion: @escaping (UIImage) -> Void)
 }
 
 final class FirebaseClient: FirebaseClientProtocol{
@@ -104,6 +110,42 @@ final class FirebaseClient: FirebaseClientProtocol{
             } else{
                 completion(nil)
             }
+        }
+    }
+    
+    func getUser(collection: String, docName: String, completion: @escaping (HumanModel?) -> Void) {
+        dataBase.collection(collection).document(docName).getDocument { document, error in
+            guard error == nil else {completion(nil); return}
+            
+            //let t = document?.get("petIds") as! Array<Any>
+            
+            let doc = HumanModel(
+                name: document?.get("name") as! String,
+                email: document?.get("email") as! String,
+                location: CLLocation(latitude: 0, longitude: 0),
+                phoneNumber: "",
+                bioAbout: document?.get("bioAbout") as! String,
+                pets: [],
+                isonline: document?.get("isonline") as! Bool,
+                walktime: document?.get("walktime") as! String
+            )
+            completion(doc)
+        }
+    }
+    
+    func getImage(picName: String, completion: @escaping (UIImage) -> Void) {
+        let storage = Storage.storage()
+        let reference = storage.reference()
+        let pathRef = reference.child("photo")
+        
+        var image: UIImage = UIImage(named: "avatarMan")!
+        
+        let fileRef = pathRef.child(picName)
+        fileRef.getData(maxSize: 1024*1024) { data, error in
+            guard error == nil else {completion(image); return}
+            
+            image = UIImage(data: data!)!
+            completion(image)
         }
     }
     

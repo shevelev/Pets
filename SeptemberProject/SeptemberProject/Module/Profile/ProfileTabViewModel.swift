@@ -8,5 +8,11 @@
 import UIKit
 
 class ProfileTabViewModel {
-    
+//    func loadProfile(collection: String, docName: String) -> HumanModel {
+//        FirebaseClient().getUser(collection: collection, docName: docName) { human in
+//            guard human != nil else {return HumanModel.MOCK_USER}
+//
+//
+//
+//        }
 }
