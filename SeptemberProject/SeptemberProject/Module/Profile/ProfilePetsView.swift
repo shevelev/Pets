@@ -141,7 +141,10 @@ class ProfilePetsView: UIView {
     func configure(with model: [PetModel]) {
         // Настройка всех полей (свой/чужой профиль и данные из него)
         petAvatar.image = UIImage(named: "testPet")
-        print(model.count)
+
+        descriptionLabel.text = model[0].bioAbout.isEmpty ? "Нажмите для заполнения" : model[0].bioAbout
+        editIconImage.isHidden = !model[0].bioAbout.isEmpty
+        
         petNameLabel.text = model[0].name
         descriptionLabel.text = model[0].bioAbout
     }
