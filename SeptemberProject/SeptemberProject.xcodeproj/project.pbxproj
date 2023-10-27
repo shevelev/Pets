@@ -45,6 +45,12 @@
 		C9AF041B2ACACF720071765B /* ProfilePetPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AF041A2ACACF720071765B /* ProfilePetPhotoCell.swift */; };
 		C9AF041D2ACC3E0B0071765B /* UIImageExtentsions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AF041C2ACC3E0B0071765B /* UIImageExtentsions.swift */; };
 		C9B5CAA62ACDB92D001AC7A3 /* Human.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B5CAA52ACDB92D001AC7A3 /* Human.swift */; };
+		C9B5CAA82ACEE615001AC7A3 /* ProfileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B5CAA72ACEE615001AC7A3 /* ProfileData.swift */; };
+		C9B5CAAA2AD1A5BD001AC7A3 /* ProfilePetCollections.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B5CAA92AD1A5BD001AC7A3 /* ProfilePetCollections.swift */; };
+		C9B5CAAC2AD2C232001AC7A3 /* ProfilePetsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B5CAAB2AD2C232001AC7A3 /* ProfilePetsCell.swift */; };
+		C9B5CAAE2AD33B17001AC7A3 /* CustomPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B5CAAD2AD33B17001AC7A3 /* CustomPageControl.swift */; };
+		C9B5CAB02AE4313E001AC7A3 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B5CAAF2AE4313E001AC7A3 /* Observable.swift */; };
+		C9B5CAB52AE540E9001AC7A3 /* TestHuman.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B5CAB42AE540E9001AC7A3 /* TestHuman.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,6 +89,12 @@
 		C9AF041A2ACACF720071765B /* ProfilePetPhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePetPhotoCell.swift; sourceTree = "<group>"; };
 		C9AF041C2ACC3E0B0071765B /* UIImageExtentsions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtentsions.swift; sourceTree = "<group>"; };
 		C9B5CAA52ACDB92D001AC7A3 /* Human.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Human.swift; sourceTree = "<group>"; };
+		C9B5CAA72ACEE615001AC7A3 /* ProfileData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileData.swift; sourceTree = "<group>"; };
+		C9B5CAA92AD1A5BD001AC7A3 /* ProfilePetCollections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePetCollections.swift; sourceTree = "<group>"; };
+		C9B5CAAB2AD2C232001AC7A3 /* ProfilePetsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePetsCell.swift; sourceTree = "<group>"; };
+		C9B5CAAD2AD33B17001AC7A3 /* CustomPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPageControl.swift; sourceTree = "<group>"; };
+		C9B5CAAF2AE4313E001AC7A3 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		C9B5CAB42AE540E9001AC7A3 /* TestHuman.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHuman.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +169,8 @@
 				18A5396F2AA8913200D82A49 /* HumanModel.swift */,
 				18A539712AA8913A00D82A49 /* PetModel.swift */,
 				C9B5CAA52ACDB92D001AC7A3 /* Human.swift */,
+				C9B5CAA72ACEE615001AC7A3 /* ProfileData.swift */,
+				C9B5CAB42AE540E9001AC7A3 /* TestHuman.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -167,6 +181,8 @@
 				C9813A0E2ABB666000F4FC92 /* CustomTextField.swift */,
 				C96FAD152AAE034900CA0BAA /* K.swift */,
 				C9AF041C2ACC3E0B0071765B /* UIImageExtentsions.swift */,
+				C9B5CAAD2AD33B17001AC7A3 /* CustomPageControl.swift */,
+				C9B5CAAF2AE4313E001AC7A3 /* Observable.swift */,
 			);
 			path = Extenstions;
 			sourceTree = "<group>";
@@ -235,10 +251,11 @@
 				C9813A152ABCBAB800F4FC92 /* ProfileTabViewController.swift */,
 				C9813A2B2AC1C0EA00F4FC92 /* ProfileTabCoordinator.swift */,
 				C9AF04122AC80D720071765B /* ProfileTabViewModel.swift */,
-				C9AF04142AC97E340071765B /* ProfileHeaderView.swift */,
-				C9AF04162AC9E5440071765B /* ProfileAboutView.swift */,
+				C9B5CAB22AE4322D001AC7A3 /* Header */,
+				C9B5CAB12AE4320E001AC7A3 /* About */,
 				C9AF04182ACAA04F0071765B /* ProfilePetsView.swift */,
-				C9AF041A2ACACF720071765B /* ProfilePetPhotoCell.swift */,
+				C9B5CAB32AE43259001AC7A3 /* Pets */,
+				C9B5CAAB2AD2C232001AC7A3 /* ProfilePetsCell.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -268,6 +285,31 @@
 				C989D9D12AB31A0800268730 /* AppCoordinator.swift */,
 			);
 			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		C9B5CAB12AE4320E001AC7A3 /* About */ = {
+			isa = PBXGroup;
+			children = (
+				C9AF04162AC9E5440071765B /* ProfileAboutView.swift */,
+			);
+			path = About;
+			sourceTree = "<group>";
+		};
+		C9B5CAB22AE4322D001AC7A3 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				C9AF04142AC97E340071765B /* ProfileHeaderView.swift */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
+		C9B5CAB32AE43259001AC7A3 /* Pets */ = {
+			isa = PBXGroup;
+			children = (
+				C9AF041A2ACACF720071765B /* ProfilePetPhotoCell.swift */,
+				C9B5CAA92AD1A5BD001AC7A3 /* ProfilePetCollections.swift */,
+			);
+			path = Pets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -354,17 +396,21 @@
 				C9AF041B2ACACF720071765B /* ProfilePetPhotoCell.swift in Sources */,
 				C9813A162ABCBAB800F4FC92 /* ProfileTabViewController.swift in Sources */,
 				C9813A2C2AC1C0EA00F4FC92 /* ProfileTabCoordinator.swift in Sources */,
+				C9B5CAA82ACEE615001AC7A3 /* ProfileData.swift in Sources */,
 				C989D9D22AB31A0800268730 /* AppCoordinator.swift in Sources */,
 				18A5394F2AA798CB00D82A49 /* AuthorizationViewController.swift in Sources */,
 				C989D9D52AB31D8600268730 /* AuthorizationViewModel.swift in Sources */,
+				C9B5CAB52AE540E9001AC7A3 /* TestHuman.swift in Sources */,
 				C989D9D72AB31DD300268730 /* RegistrationViewModel.swift in Sources */,
 				C9B5CAA62ACDB92D001AC7A3 /* Human.swift in Sources */,
 				C9813A282AC1830500F4FC92 /* MainTabCoordinator.swift in Sources */,
+				C9B5CAAC2AD2C232001AC7A3 /* ProfilePetsCell.swift in Sources */,
 				C96FAD162AAE034900CA0BAA /* K.swift in Sources */,
 				C9AF04132AC80D720071765B /* ProfileTabViewModel.swift in Sources */,
 				C9813A1A2ABCBAFA00F4FC92 /* FriendsTabViewController.swift in Sources */,
 				C989D9D92AB31E8100268730 /* RestorePasswordViewModel.swift in Sources */,
 				C9813A302AC1C20500F4FC92 /* FriendsTabCoordinator.swift in Sources */,
+				C9B5CAAA2AD1A5BD001AC7A3 /* ProfilePetCollections.swift in Sources */,
 				C9629F8E2AAB4F7500CBD361 /* RestorePasswordViewController.swift in Sources */,
 				C9813A212AC1705700F4FC92 /* AuthorizationCoordinator.swift in Sources */,
 				C9813A182ABCBAE700F4FC92 /* WalkTabViewController.swift in Sources */,
@@ -379,8 +425,10 @@
 				18A539702AA8913200D82A49 /* HumanModel.swift in Sources */,
 				C9AF04192ACAA04F0071765B /* ProfilePetsView.swift in Sources */,
 				C9813A2E2AC1C1D900F4FC92 /* WalkTabCoordinator.swift in Sources */,
+				C9B5CAB02AE4313E001AC7A3 /* Observable.swift in Sources */,
 				18A5396D2AA7AB3300D82A49 /* FirebaseClient.swift in Sources */,
 				18A539722AA8913A00D82A49 /* PetModel.swift in Sources */,
+				C9B5CAAE2AD33B17001AC7A3 /* CustomPageControl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

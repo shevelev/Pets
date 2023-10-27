@@ -172,5 +172,16 @@ final class FirebaseClient: FirebaseClientProtocol{
         }
     }
     
+    func getFakeUser(completion: @escaping (TestHuman?) -> Void) {
+        let pet1 = TestPet(breed: "breed 1", name: "name 1", dateBirth: NSDate(timeIntervalSinceNow: TimeInterval(10)), bioAbout: "good pet 1")
+        let pet2 = TestPet(breed: "breed 2", name: "name 2", dateBirth: NSDate(timeIntervalSinceNow: TimeInterval(10)), bioAbout: "good pet 2")
+        let pet3 = TestPet(breed: "breed 3", name: "name 3", dateBirth: NSDate(timeIntervalSinceNow: TimeInterval(10)), bioAbout: "good pet 3")
+        
+        let pets: [TestPet] = [pet1, pet2, pet3]
+        
+        let testHuman = TestHuman(name: "Ivan", email: "qweq@qwe.ru", bioAbout: "help me", pets: pets)
+        completion(testHuman)
+    }
+    
 }
 

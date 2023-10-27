@@ -7,12 +7,28 @@
 
 import UIKit
 
-class ProfileTabViewModel {
-//    func loadProfile(collection: String, docName: String) -> HumanModel {
-//        FirebaseClient().getUser(collection: collection, docName: docName) { human in
-//            guard human != nil else {return HumanModel.MOCK_USER}
-//
-//
-//
-//        }
+protocol ProfileTabViewModelProtocol {
+    var isLoading: Observable<Bool> {get}
+    var profile: TestHuman? { get set }
+    func getUser()
+}
+
+final class ProfileTabViewModel: ProfileTabViewModelProtocol {
+    
+    var isLoading: Observable<Bool> = Observable(false)
+
+    var profile: TestHuman?
+     
+    func getUser() {
+        isLoading.value = true
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2  ) {
+            print("load")
+            self.isLoading.value = false
+            FirebaseClient().getFakeUser { testHuman in
+                guard let testHuman else {return}
+                self.profile = testHuman
+            }
+        }
+    }
 }

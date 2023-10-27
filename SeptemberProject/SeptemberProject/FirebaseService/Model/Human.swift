@@ -9,12 +9,12 @@ import Foundation
 import CoreLocation
 
 struct Human {
-    let name: String
-    let email: String
-    let location: CLLocation
-    let phoneNumber: String
-    let bioAbout: String
+    var name: String
+    var email: String
+    var location: CLLocation
+    var phoneNumber: String
+    var bioAbout: String
     var pets: [String]
-    let isonline: Bool
-    let walktime: String
+    var isonline: Bool
+    var walktime: String
 }

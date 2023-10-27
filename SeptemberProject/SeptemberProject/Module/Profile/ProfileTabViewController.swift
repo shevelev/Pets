@@ -13,12 +13,14 @@ import FirebaseFirestore
 
 class ProfileTabViewController: UIViewController {
     
-    var viewModel = ProfileTabViewModel()
+    private var viewModel = ProfileTabViewModel()
     
     private enum UIConstants {
         static let contentBackgroundColor: UIColor = UIColor(red: 250/255, green: 250/255, blue: 252/255, alpha: 1)
         static let contentTopPadding: CGFloat = 20
     }
+    
+    private var activityIndicator = UIActivityIndicatorView(style: .medium)
     
     private let scrollView: UIScrollView = {
         let scroll = UIScrollView()
@@ -45,44 +47,67 @@ class ProfileTabViewController: UIViewController {
         return view
     }()
     
-    private let profilePets: ProfilePetsView = {
-        let view = ProfilePetsView()
+    private let profilePets: ProfilePetCollections = {
+        let view = ProfilePetCollections()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+    
+    //    private let profilePets: ProfilePetsView = {
+    //        let view = ProfilePetsView()
+    //        view.translatesAutoresizingMaskIntoConstraints = false
+    //        return view
+    //    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationController?.isNavigationBarHidden = true
+        view.backgroundColor = UIConstants.contentBackgroundColor
         
+        viewModel.getUser()
+        
+        bindViewModel()
         setupUI()
-        loadProfile()
     }
     
-    private func loadProfile() {
-        let user = Auth.auth().currentUser!
-
-        FirebaseClient().getUser(collection: "users", docName: user.uid) { human in
-            guard human != nil else {return}
+    private func setupUI() {
+        
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        activityIndicator.color = .blue
+        
+        view.addSubview(activityIndicator)
+        
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+    }
+    
+    private func bindViewModel() {
+        print("bindViewModek")
+        viewModel.isLoading.bind { [weak self] isLoading in
+            guard let self, let isLoading else { return }
+            print("isLoading: \(isLoading)")
+            isLoading ?  self.activityIndicator.startAnimating() : self.activityIndicator.stopAnimating()
             
-            //mok - data
-            self.profileHeader.configure(with: human!)
-            self.profileAbout.configure(with: human!)
-            //self.profilePets.configure(with: human!.pets)
-
-            FirebaseClient().getPetsByUser(userid: user.uid) { pets in
-                self.profilePets.configure(with: pets!)
+            if !isLoading {
+                self.show()
             }
         }
     }
     
-    private func setupUI() {
+    private func show() {
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
+        
         contentView.addSubview(profileHeader)
         contentView.addSubview(profileAbout)
         contentView.addSubview(profilePets)
+        
+        profileHeader.configure(with: viewModel.profile!)
+        profileAbout.configure(with: viewModel.profile!)
+        profilePets.configure(with: viewModel.profile!)
         
         makeConstraintsScrollContent()
         makeConstraintsProfileHeader()
@@ -91,18 +116,18 @@ class ProfileTabViewController: UIViewController {
     
     private func makeConstraintsScrollContent() {
         
-        if let top
-                = UIApplication.shared.windows.first?.safeAreaInsets.top
-            {
-                scrollView.contentInset.top = -top
-            }
+        //        if let top
+        //            = UIApplication.shared.windows.first?.safeAreaInsets.top
+        //        {
+        //            scrollView.contentInset.top = -top
+        //        }
         
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: view.topAnchor),
             scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-   
+            
             contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
             contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),

@@ -76,7 +76,7 @@ class ProfileHeaderView: UIView {
         return image
     }()
     
-    private let namesLabel: UILabel = {
+     let namesLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: UIConstants.namesLabelFontSize, weight: .semibold)
@@ -113,14 +113,15 @@ class ProfileHeaderView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(with model: Human) {
+    func configure(with model: TestHuman) {
         // Настройка всех полей (свой/чужой профиль и данные из него)
         mainAvatar.image = UIImage(named: "testBoy")
         petAvatar.image = UIImage(named: "testPet")
-        namesLabel.text = model.name
-        isOnline.backgroundColor = model.isonline ? UIConstants.isOnlineBackgroundColor : UIConstants.isNotOnlineBackgroundColor
-        walkTimeLabel.isHidden = !model.isonline
-        walkTimeLabel.text = "На прогулке еще \(model.walktime) мин"
+        let namePets = model.pets![0].name!.isEmpty ? "" : "и \(model.pets![0].name ?? "")"
+        namesLabel.text = "\(model.name) \(namePets)"
+        isOnline.backgroundColor = model.isonline ?? false ? UIConstants.isOnlineBackgroundColor : UIConstants.isNotOnlineBackgroundColor
+        walkTimeLabel.isHidden = !(model.isonline ?? false)
+        walkTimeLabel.text = "На прогулке еще \(model.walktime ?? 0) мин"
     }
 }
 
