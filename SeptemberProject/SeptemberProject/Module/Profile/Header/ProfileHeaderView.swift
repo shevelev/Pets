@@ -18,8 +18,6 @@ class ProfileHeaderView: UIView {
         static let buttonCornerRadius = buttonHeight / 2
         static let buttonBorderWidth: CGFloat = 1
         static let buttonBackgroundColor: UIColor = .white
-        static let nameLabelText: String = "Хозяин и питомец"
-        static let walkTimeLabelText: String = "На прогулке еще 15 мин"
         static let isOnlineBackgroundColor: UIColor = UIColor(red: 16/255, green: 201/255, blue: 113/255, alpha: 1)
         static let isNotOnlineBackgroundColor: UIColor = UIColor(red: 255/255, green: 0/255, blue: 0/255, alpha: 1)
         static let isOnlineCornerRadius: CGFloat = 5
@@ -37,21 +35,18 @@ class ProfileHeaderView: UIView {
         let image = UIImageView()
         image.image = UIImage(named: "backgroundProfile")
         image.contentMode = .scaleToFill
-        image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
     
     private let mainAvatar: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "avatarMan")?.circleMask()
-        image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
     
     private let petAvatar: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "avatarPetBoy")?.circleMask(color: UIColor.white.cgColor, width: 1)
-        image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
     
@@ -62,7 +57,6 @@ class ProfileHeaderView: UIView {
         button.layer.cornerCurve = .continuous
         button.layer.borderWidth = UIConstants.buttonBorderWidth
         button.layer.borderColor = UIColor.gray.cgColor
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = UIConstants.buttonBackgroundColor
         return button
     }()
@@ -72,24 +66,19 @@ class ProfileHeaderView: UIView {
         image.image = UIImage(named: "avatarMan")
         image.layer.masksToBounds = true
         image.backgroundColor = UIConstants.buttonBackgroundColor
-        image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
     
      let namesLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: UIConstants.namesLabelFontSize, weight: .semibold)
-        label.text = UIConstants.nameLabelText
         label.textColor = UIConstants.headerTextColor
         return label
     }()
     
     private let walkTimeLabel: UILabel = {
         let label = UILabel()
-        label.text = UIConstants.walkTimeLabelText
         label.font = .systemFont(ofSize: UIConstants.walkTimeLabelFontSize, weight: .light)
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIConstants.textColor
         return label
     }()
@@ -99,7 +88,6 @@ class ProfileHeaderView: UIView {
         view.backgroundColor = UIConstants.isOnlineBackgroundColor
         view.layer.cornerRadius = UIConstants.isOnlineCornerRadius
         view.layer.masksToBounds = true
-        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
@@ -149,70 +137,64 @@ private extension ProfileHeaderView {
     }
     
     private func makeConstraintsProfileBack() {
-        NSLayoutConstraint.activate([
-            profileBack.topAnchor.constraint(equalTo: topAnchor),
-            profileBack.leadingAnchor.constraint(equalTo: leadingAnchor),
-            profileBack.trailingAnchor.constraint(equalTo: trailingAnchor),
-        ])
+        profileBack.snp.makeConstraints { make in
+            make.top.leading.trailing.equalToSuperview()
+        }
     }
     
     private func makeConstraintsMainAvatar() {
-        NSLayoutConstraint.activate([
-            mainAvatar.topAnchor.constraint(equalTo: topAnchor, constant: UIConstants.mainAvatarTopPadding),
-            mainAvatar.leadingAnchor.constraint(equalTo: leadingAnchor, constant: UIConstants.paddingContent),
-            mainAvatar.widthAnchor.constraint(equalToConstant: UIConstants.bigAvatarSize),
-            mainAvatar.heightAnchor.constraint(equalToConstant: UIConstants.bigAvatarSize),
-        ])
+        mainAvatar.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(UIConstants.mainAvatarTopPadding)
+            make.leading.equalToSuperview().offset(UIConstants.paddingContent)
+            make.width.height.equalTo(UIConstants.bigAvatarSize)
+        }
     }
     
     private func makeConstraintsPetAvatar() {
-        NSLayoutConstraint.activate([
-            petAvatar.leadingAnchor.constraint(equalTo: mainAvatar.trailingAnchor, constant: -UIConstants.paddingContent),
-            petAvatar.bottomAnchor.constraint(equalTo: mainAvatar.bottomAnchor),
-            petAvatar.widthAnchor.constraint(equalToConstant: UIConstants.smallAvatarSize),
-            petAvatar.heightAnchor.constraint(equalToConstant: UIConstants.smallAvatarSize),
-        ])
+        petAvatar.snp.makeConstraints { make in
+            make.leading.equalTo(mainAvatar.snp.trailing).offset(-UIConstants.paddingContent)
+            make.bottom.equalTo(mainAvatar.snp.bottom)
+            make.width.height.equalTo(UIConstants.smallAvatarSize)
+        }
     }
     
     private func makeConstraintsProfileSettingsButton() {
-        NSLayoutConstraint.activate([
-            profileSettingsButton.leadingAnchor.constraint(equalTo: petAvatar.trailingAnchor, constant: UIConstants.paddingContent),
-            profileSettingsButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -UIConstants.paddingContent),
-            profileSettingsButton.bottomAnchor.constraint(equalTo: mainAvatar.bottomAnchor),
-            profileSettingsButton.heightAnchor.constraint(equalToConstant: UIConstants.buttonHeight),
-        ])
+        profileSettingsButton.snp.makeConstraints { make in
+            make.leading.equalTo(petAvatar.snp.trailing).offset(UIConstants.paddingContent)
+            make.trailing.equalToSuperview().offset(-UIConstants.paddingContent)
+            make.bottom.equalTo(mainAvatar.snp.bottom)
+            make.height.equalTo(UIConstants.buttonHeight)
+        }
     }
     
     private func makeConstraintsProfileMessageButton() {
-        NSLayoutConstraint.activate([
-            profileMessageButton.trailingAnchor.constraint(equalTo: profileSettingsButton.trailingAnchor),
-            profileMessageButton.topAnchor.constraint(equalTo: mainAvatar.topAnchor),
-            profileMessageButton.heightAnchor.constraint(equalToConstant: UIConstants.buttonHeight),
-            profileMessageButton.widthAnchor.constraint(equalToConstant: UIConstants.buttonHeight),
-        ])
+        profileMessageButton.snp.makeConstraints { make in
+            make.trailing.equalTo(profileSettingsButton.snp.trailing)
+            make.top.equalTo(mainAvatar.snp.top)
+            make.width.height.equalTo(UIConstants.buttonHeight)
+        }
     }
     
     private func makeConstraintsNamesLabel() {
-        NSLayoutConstraint.activate([
-            namesLabel.topAnchor.constraint(equalTo: mainAvatar.bottomAnchor, constant: UIConstants.namesLabelTopPadding),
-            namesLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: UIConstants.paddingContent),
-        ])
+        namesLabel.snp.makeConstraints { make in
+            make.top.equalTo(mainAvatar.snp.bottom).offset(UIConstants.namesLabelTopPadding)
+            make.leading.equalToSuperview().offset(UIConstants.paddingContent)
+        }
     }
     
     private func makeConstraintsWalkTimeLabel() {
-        NSLayoutConstraint.activate([
-            walkTimeLabel.topAnchor.constraint(equalTo: namesLabel.bottomAnchor, constant: UIConstants.walkTimeLabelTopPadding),
-            walkTimeLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: UIConstants.paddingContent),
-            walkTimeLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
-        ])
+        walkTimeLabel.snp.makeConstraints { make in
+            make.top.equalTo(namesLabel.snp.bottom).offset(UIConstants.walkTimeLabelTopPadding)
+            make.leading.equalToSuperview().offset(UIConstants.paddingContent)
+            make.bottom.equalToSuperview()
+        }
     }
     
     private func makeConstraintsIsOnline() {
-        NSLayoutConstraint.activate([
-            isOnline.topAnchor.constraint(equalTo: namesLabel.topAnchor),
-            isOnline.leadingAnchor.constraint(equalTo: namesLabel.trailingAnchor),
-            isOnline.widthAnchor.constraint(equalToConstant: UIConstants.isOnlineWidthHeight),
-            isOnline.heightAnchor.constraint(equalToConstant: UIConstants.isOnlineWidthHeight)
-        ])
+        isOnline.snp.makeConstraints { make in
+            make.top.equalTo(namesLabel.snp.top)
+            make.leading.equalTo(namesLabel.snp.trailing)
+            make.width.height.equalTo(UIConstants.isOnlineWidthHeight)
+        }
     }
 }

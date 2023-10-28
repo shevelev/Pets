@@ -22,6 +22,7 @@
 		18A5397D2AA896DF00D82A49 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 18A5397C2AA896DF00D82A49 /* FirebaseFirestoreSwift */; };
 		18A5397F2AA896DF00D82A49 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 18A5397E2AA896DF00D82A49 /* FirebaseStorage */; };
 		31A492982AAFB74E009B27C9 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A492972AAFB74E009B27C9 /* RegistrationViewController.swift */; };
+		C950D6012AEBEE1000209D5F /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = C950D6002AEBEE1000209D5F /* SnapKit */; };
 		C9629F8E2AAB4F7500CBD361 /* RestorePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9629F8D2AAB4F7500CBD361 /* RestorePasswordViewController.swift */; };
 		C96FAD162AAE034900CA0BAA /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96FAD152AAE034900CA0BAA /* K.swift */; };
 		C9813A0F2ABB666000F4FC92 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9813A0E2ABB666000F4FC92 /* CustomTextField.swift */; };
@@ -105,6 +106,7 @@
 				18A539792AA896DF00D82A49 /* FirebaseDatabase in Frameworks */,
 				18A539772AA896DF00D82A49 /* FirebaseAuth in Frameworks */,
 				18A5397B2AA896DF00D82A49 /* FirebaseFirestore in Frameworks */,
+				C950D6012AEBEE1000209D5F /* SnapKit in Frameworks */,
 				18A5397F2AA896DF00D82A49 /* FirebaseStorage in Frameworks */,
 				18A5397D2AA896DF00D82A49 /* FirebaseFirestoreSwift in Frameworks */,
 			);
@@ -334,6 +336,7 @@
 				18A5397A2AA896DF00D82A49 /* FirebaseFirestore */,
 				18A5397C2AA896DF00D82A49 /* FirebaseFirestoreSwift */,
 				18A5397E2AA896DF00D82A49 /* FirebaseStorage */,
+				C950D6002AEBEE1000209D5F /* SnapKit */,
 			);
 			productName = SeptemberProject;
 			productReference = 18A539472AA798CB00D82A49 /* SeptemberProject.app */;
@@ -365,6 +368,7 @@
 			mainGroup = 18A5393E2AA798CB00D82A49;
 			packageReferences = (
 				18A539752AA896DF00D82A49 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				C950D5FF2AEBEE1000209D5F /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 18A539482AA798CB00D82A49 /* Products */;
 			projectDirPath = "";
@@ -567,7 +571,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = R82UJBY7FF;
+				DEVELOPMENT_TEAM = U7VDM8AC6G;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SeptemberProject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -596,7 +600,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = R82UJBY7FF;
+				DEVELOPMENT_TEAM = U7VDM8AC6G;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SeptemberProject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -650,6 +654,14 @@
 				kind = branch;
 			};
 		};
+		C950D5FF2AEBEE1000209D5F /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -677,6 +689,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 18A539752AA896DF00D82A49 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		C950D6002AEBEE1000209D5F /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C950D5FF2AEBEE1000209D5F /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -22,13 +22,11 @@ class ProfilePetCollections: UIView {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
     
     lazy private var pageControl: CustomPageControl = {
         let control = CustomPageControl()
-        control.translatesAutoresizingMaskIntoConstraints = false
         control.delegate = self
         return control
     }()
@@ -55,14 +53,11 @@ extension ProfilePetCollections {
     }
     
     private func makeConstraintsPageControl() {
-        NSLayoutConstraint.activate([
-            pageControl.topAnchor.constraint(equalTo: collectionView.bottomAnchor),
-            pageControl.bottomAnchor.constraint(equalTo: bottomAnchor),
-            //pageControl.centerXAnchor.constraint(equalTo: centerXAnchor),
-            pageControl.leadingAnchor.constraint(equalTo: leadingAnchor),
-            pageControl.trailingAnchor.constraint(equalTo: trailingAnchor),
-            pageControl.heightAnchor.constraint(equalToConstant: 30),
-        ])
+        pageControl.snp.makeConstraints { make in
+            make.top.equalTo(collectionView.snp.bottom)
+            make.leading.trailing.bottom.equalToSuperview()
+            make.height.equalTo(30)
+        }
     }
     
     private func makeConstraintsCollectionView() {
@@ -71,16 +66,12 @@ extension ProfilePetCollections {
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: topAnchor),
-            //collectionView.bottomAnchor.constraint(equalTo: pageControl.topAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            collectionView.heightAnchor.constraint(equalToConstant: 100),
-        ])
+        collectionView.snp.makeConstraints { make in
+            make.top.leading.trailing.equalToSuperview()
+            make.height.equalTo(100)
+        }
     }
 }
-
 
 extension ProfilePetCollections: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 protocol CustomPageControlDelegate: AnyObject {
     func updateCurrentSlide(slide: Int)
@@ -23,7 +24,6 @@ class CustomPageControl: UIView {
         stack.spacing = 5
         stack.distribution = .fill
         stack.alignment = .center
-        stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
     
@@ -51,21 +51,22 @@ class CustomPageControl: UIView {
     private func setupUI() {
         addSubview(stackView)
         
-        NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: topAnchor),
-            stackView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            stackView.centerXAnchor.constraint(equalTo: centerXAnchor),
-        ])
+        stackView.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.bottom.equalToSuperview()
+            make.centerX.equalToSuperview()
+        }
     }
     
     private func updateView() {
         print("update view \(currentPage)")
+        
         var widthAnchor: NSLayoutConstraint?
         
         dots.forEach { dot in
             let tag = dot.tag
             let viewTag = currentPage
-            
+                
             dot.constraints.forEach { const in
                 dot.removeConstraint(const)
             }
@@ -82,8 +83,14 @@ class CustomPageControl: UIView {
         for tag in 0..<numberOfPages {
             let dot = UIView()
             dot.tag = tag
-            dot.translatesAutoresizingMaskIntoConstraints = false
-            dot.widthAnchor.constraint(equalToConstant: 10).isActive = true
+            
+//            dot.translatesAutoresizingMaskIntoConstraints = false
+//            dot.widthAnchor.constraint(equalToConstant: 10).isActive = true
+            
+            dot.snp.makeConstraints { make in
+                make.width.equalTo(10)
+            }
+            
             dot.backgroundColor = UIColor(red: 217/255, green: 219/255, blue: 224/255, alpha: 1)
             dot.layer.cornerRadius = 5
             dot.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(scrollToCell(sender: ))))

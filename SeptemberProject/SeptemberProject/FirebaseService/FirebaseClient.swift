@@ -179,7 +179,7 @@ final class FirebaseClient: FirebaseClientProtocol{
         
         let pets: [TestPet] = [pet1, pet2, pet3]
         
-        let testHuman = TestHuman(name: "Ivan", email: "qweq@qwe.ru", bioAbout: "help me", pets: pets)
+        let testHuman = TestHuman(name: "Ivan", email: "qweq@qwe.ru", pets: pets)
         completion(testHuman)
     }
     

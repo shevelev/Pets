@@ -7,9 +7,6 @@
 
 import UIKit
 import Foundation
-import FirebaseAuth
-import FirebaseCore
-import FirebaseFirestore
 
 class ProfileTabViewController: UIViewController {
     
@@ -24,32 +21,27 @@ class ProfileTabViewController: UIViewController {
     
     private let scrollView: UIScrollView = {
         let scroll = UIScrollView()
-        scroll.translatesAutoresizingMaskIntoConstraints = false
         scroll.backgroundColor = UIConstants.contentBackgroundColor
         return scroll
     }()
     
     private let contentView: UIView = {
         let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private let profileHeader: ProfileHeaderView = {
         let header = ProfileHeaderView()
-        header.translatesAutoresizingMaskIntoConstraints = false
         return header
     }()
     
     private let profileAbout: ProfileAboutView = {
         let view = ProfileAboutView()
-        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private let profilePets: ProfilePetCollections = {
         let view = ProfilePetCollections()
-        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
@@ -72,16 +64,13 @@ class ProfileTabViewController: UIViewController {
     }
     
     private func setupUI() {
-        
-        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         activityIndicator.color = .blue
         
         view.addSubview(activityIndicator)
         
-        NSLayoutConstraint.activate([
-            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-        ])
+        activityIndicator.snp.makeConstraints { make in
+            make.centerX.centerY.equalToSuperview()
+        }
     }
     
     private func bindViewModel() {
@@ -115,45 +104,30 @@ class ProfileTabViewController: UIViewController {
     }
     
     private func makeConstraintsScrollContent() {
+        scrollView.snp.makeConstraints { make in
+            make.top.leading.trailing.bottom.equalToSuperview()
+        }
         
-        //        if let top
-        //            = UIApplication.shared.windows.first?.safeAreaInsets.top
-        //        {
-        //            scrollView.contentInset.top = -top
-        //        }
-        
-        NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            
-            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            contentView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
-        ])
+        contentView.snp.makeConstraints { make in
+            make.top.leading.trailing.bottom.centerX.equalTo(scrollView)
+        }
     }
     
     private func makeConstraintsProfileHeader() {
-        NSLayoutConstraint.activate([
-            profileHeader.topAnchor.constraint(equalTo: contentView.topAnchor),
-            profileHeader.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            profileHeader.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-        ])
+        profileHeader.snp.makeConstraints { make in
+            make.top.leading.trailing.equalTo(contentView)
+        }
     }
     
     private func makeConstraintsProfileAbout() {
-        NSLayoutConstraint.activate([
-            profileAbout.topAnchor.constraint(equalTo: profileHeader.bottomAnchor, constant: UIConstants.contentTopPadding),
-            profileAbout.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            profileAbout.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            
-            profilePets.topAnchor.constraint(equalTo: profileAbout.bottomAnchor, constant: UIConstants.contentTopPadding),
-            profilePets.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            profilePets.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            profilePets.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
-        ])
+        profileAbout.snp.makeConstraints { make in
+            make.top.equalTo(profileHeader.snp.bottom).offset(UIConstants.contentTopPadding)
+            make.leading.trailing.equalTo(contentView)
+        }
+        
+        profilePets.snp.makeConstraints { make in
+            make.top.equalTo(profileAbout.snp.bottom).offset(UIConstants.contentTopPadding)
+            make.leading.trailing.bottom.equalTo(contentView)
+        }
     }
 }
