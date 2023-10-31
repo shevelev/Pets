@@ -12,11 +12,9 @@ class AuthorizationViewController: UIViewController {
     var viewModel = AuthorizationViewModel()
     
     //MARK: buttons
-    
     lazy var resetPasswordButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle(K.viewControllerText.resetPasswordButtonText.rawValue, for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(resetPasswordButtonPressed(_:)), for: .touchUpInside) //test
         return button
     }()
@@ -24,7 +22,6 @@ class AuthorizationViewController: UIViewController {
     lazy var registrationButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle(K.viewControllerText.registrationButtonText.rawValue, for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(registrationButtonPressed(_:)), for: .touchUpInside) //test
         return button
     }()
@@ -33,7 +30,6 @@ class AuthorizationViewController: UIViewController {
         let button = UIButton(type: .system)
         button.backgroundColor = UIColor(named: "backgroundColorAuth")
         button.setTitleColor(.white, for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle(K.viewControllerText.nextButtonText.rawValue, for: .normal)
         button.layer.cornerRadius = 32
         button.layer.cornerCurve = .continuous
@@ -48,7 +44,6 @@ class AuthorizationViewController: UIViewController {
         label.font = .systemFont(ofSize: 22, weight: .medium)
         label.textColor = .black
         label.textAlignment = .center
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
@@ -60,7 +55,6 @@ class AuthorizationViewController: UIViewController {
     
     private let passwordTextField: CustomTextField = {
         let textField = CustomTextField(placeholder: "Пароль", type: .pass)
-        //textField.isSecureTextEntry = true
         return textField
     }()
     
@@ -71,7 +65,6 @@ class AuthorizationViewController: UIViewController {
         image.backgroundColor = UIColor(named: "backgroundColorAuth")
         image.contentMode = .scaleToFill
         image.layer.masksToBounds = true
-        image.translatesAutoresizingMaskIntoConstraints = false
         
         return image
     }()
@@ -81,7 +74,6 @@ class AuthorizationViewController: UIViewController {
         image.image = UIImage(named: "Line3")
         image.contentMode = .center
         image.layer.masksToBounds = true
-        image.translatesAutoresizingMaskIntoConstraints = false
         
         return image
     }()
@@ -89,9 +81,7 @@ class AuthorizationViewController: UIViewController {
     private let backgroundBottomImageView: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "Rectangle150")
-        //$0.contentMode = .scaleToFill
         image.layer.masksToBounds = true
-        image.translatesAutoresizingMaskIntoConstraints = false
         
         return image
     }()
@@ -102,10 +92,9 @@ class AuthorizationViewController: UIViewController {
         stack.axis  = .horizontal
         stack.distribution = .equalCentering
         stack.alignment = .center
-        stack.translatesAutoresizingMaskIntoConstraints = false
+        
         return stack
     }()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -124,7 +113,6 @@ class AuthorizationViewController: UIViewController {
         stackView.addArrangedSubview(registrationButton)
         
         setupUI()
-        
     }
     
     func setupUI() {
@@ -136,66 +124,66 @@ class AuthorizationViewController: UIViewController {
     }
     
     private func setConstraintsBackgroundImage() {
-        NSLayoutConstraint.activate([
-            backgroundTopImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
-            backgroundTopImageView.bottomAnchor.constraint(equalTo: backgroundBottomImageView.topAnchor, constant: 140),
-            
-            backgroundBottomImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),
-            backgroundBottomImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-            backgroundBottomImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
-            
-        ])
+        backgroundTopImageView.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.bottom.equalTo(backgroundBottomImageView.snp.top).offset(140)
+        }
+        
+        backgroundBottomImageView.snp.makeConstraints { make in
+            make.leading.trailing.bottom.equalToSuperview()
+        }
     }
     
     private func setConstraintsButtons() {
-        NSLayoutConstraint.activate([
-            resetPasswordButton.widthAnchor.constraint(equalToConstant: (view.frame.size.width / 2) - 2),
-            registrationButton.widthAnchor.constraint(equalToConstant: (view.frame.size.width / 2) - 2),
-            
-            nextButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 30),
-            nextButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            nextButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            nextButton.heightAnchor.constraint(equalToConstant: 60),
-        ])
+        resetPasswordButton.snp.makeConstraints { make in
+            make.width.equalTo((view.frame.size.width / 2) - 2)
+        }
+        
+        registrationButton.snp.makeConstraints { make in
+            make.width.equalTo((view.frame.size.width / 2) - 2)
+        }
+        
+        nextButton.snp.makeConstraints { make in
+            make.top.equalTo(passwordTextField.snp.bottom).offset(30)
+            make.centerX.equalToSuperview()
+            make.width.equalToSuperview().offset(-32)
+            make.height.equalTo(60)
+        }
     }
     
     private func setConstraintsEditTexts() {
-        NSLayoutConstraint.activate([
-            emailTextField.topAnchor.constraint(equalTo: enterLabel.bottomAnchor, constant: 15),
-            emailTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            emailTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            emailTextField.heightAnchor.constraint(equalToConstant: 60),
-            
-            passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 15),
-            passwordTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            passwordTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            passwordTextField.heightAnchor.constraint(equalToConstant: 60),
-        ])
+        
+        emailTextField.snp.makeConstraints { make in
+            make.top.equalTo(enterLabel.snp.bottom).offset(15)
+            make.centerX.equalToSuperview()
+            make.width.equalToSuperview().offset(-32)
+            make.height.equalTo(60)
+        }
+        
+        passwordTextField.snp.makeConstraints { make in
+            make.top.equalTo(emailTextField.snp.bottom).offset(15)
+            make.centerX.equalToSuperview()
+            make.width.equalToSuperview().offset(-32)
+            make.height.equalTo(60)
+        }
     }
     
     private func setConstraintsLabels() {
-        NSLayoutConstraint.activate([
-            enterLabel.topAnchor.constraint(equalTo: backgroundBottomImageView.topAnchor, constant: K.constraint.a45.rawValue),
-            enterLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: K.constraint.a15.rawValue),
-            enterLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -K.constraint.a15.rawValue),
-            
-            
-        ])
+        enterLabel.snp.makeConstraints { make in
+            make.top.equalTo(backgroundBottomImageView.snp.top).offset(45)
+            make.centerX.equalToSuperview()
+        }
     }
     
     private func setConstraintsStack() {
-        NSLayoutConstraint.activate([
-            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: K.constraint.a0.rawValue),
-            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: K.constraint.a0.rawValue),
-            stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -K.constraint.a25.rawValue),
-            stackView.heightAnchor.constraint(equalToConstant: 50),
-            
-        ])
+        stackView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(50)
+            make.bottom.equalToSuperview().offset(-25)
+        }
     }
-    
 
     //MARK: ButtonsPressed
-    
     @objc func resetPasswordButtonPressed(_ sender: UIButton!) {
         viewModel.goToRestorePassword()
     }
@@ -208,5 +196,4 @@ class AuthorizationViewController: UIViewController {
 
         viewModel.signIn(email: emailTextField.getValue(), password: passwordTextField.getValue())
     }
-
 }

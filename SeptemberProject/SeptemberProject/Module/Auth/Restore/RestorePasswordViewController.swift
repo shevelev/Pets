@@ -15,7 +15,6 @@ class RestorePasswordViewController: UIViewController {
         let button = UIButton()
         button.backgroundColor = UIColor(named: "backgroundColorAuth")
         button.setTitleColor(.white, for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Отправить код", for: .normal)
         button.layer.cornerRadius = 32
         button.layer.cornerCurve = .continuous
@@ -30,7 +29,6 @@ class RestorePasswordViewController: UIViewController {
         label.textColor = .gray
         label.textAlignment = .center
         label.numberOfLines = 2
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
@@ -49,7 +47,6 @@ class RestorePasswordViewController: UIViewController {
         view.addSubview(emailTextField)
         
         setupNavItem()
-        
         setConstraints()
     }
     
@@ -62,7 +59,6 @@ class RestorePasswordViewController: UIViewController {
     }
     
     private func setupNavItem() {
-
         let button = UIButton()
         let image = UIImage(systemName: "chevron.left")?.withTintColor(UIColor(red: 117/255, green: 127/255, blue: 140/255, alpha: 1), renderingMode: .alwaysOriginal)
         //image?.withTintColor(.systemRed, renderingMode: .alwaysOriginal)
@@ -79,23 +75,23 @@ class RestorePasswordViewController: UIViewController {
     }
 
     private func setConstraints() {
-        NSLayoutConstraint.activate([
-            
-            emailTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
-            emailTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
-            emailTextField.widthAnchor.constraint(equalToConstant: 100),
-            emailTextField.heightAnchor.constraint(equalToConstant: 60),
-            emailTextField.bottomAnchor.constraint(equalTo: descriptionLabel.topAnchor, constant: -20),
-            
-            descriptionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            descriptionLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            descriptionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            descriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-
-            signInButton.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 20),
-            signInButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            signInButton.heightAnchor.constraint(equalToConstant: 60),
-            signInButton.widthAnchor.constraint(equalToConstant: 212)
-        ])
+        emailTextField.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.width.equalToSuperview().offset(-30)
+            make.height.equalTo(60)
+            make.bottom.equalTo(descriptionLabel.snp.top).offset(-20)
+        }
+        
+        descriptionLabel.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.width.equalToSuperview().offset(-40)
+        }
+        
+        signInButton.snp.makeConstraints { make in
+            make.top.equalTo(descriptionLabel.snp.bottom).offset(20)
+            make.centerX.equalToSuperview()
+            make.height.equalTo(60)
+            make.width.equalTo(212)
+        }
     }
 }
