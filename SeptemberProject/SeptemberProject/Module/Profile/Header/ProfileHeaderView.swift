@@ -101,7 +101,7 @@ class ProfileHeaderView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(with model: TestHuman) {
+    func configure(with model: MockHuman) {
         // Настройка всех полей (свой/чужой профиль и данные из него)
         mainAvatar.image = UIImage(named: "testBoy")
         petAvatar.image = UIImage(named: "testPet")

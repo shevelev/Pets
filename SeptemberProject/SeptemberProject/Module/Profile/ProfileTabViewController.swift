@@ -45,12 +45,6 @@ class ProfileTabViewController: UIViewController {
         return view
     }()
     
-    //    private let profilePets: ProfilePetsView = {
-    //        let view = ProfilePetsView()
-    //        view.translatesAutoresizingMaskIntoConstraints = false
-    //        return view
-    //    }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -74,7 +68,6 @@ class ProfileTabViewController: UIViewController {
     }
     
     private func bindViewModel() {
-        print("bindViewModek")
         viewModel.isLoading.bind { [weak self] isLoading in
             guard let self, let isLoading else { return }
             print("isLoading: \(isLoading)")
@@ -109,7 +102,8 @@ class ProfileTabViewController: UIViewController {
         }
         
         contentView.snp.makeConstraints { make in
-            make.top.leading.trailing.bottom.centerX.equalTo(scrollView)
+            make.top.leading.trailing.bottom.equalTo(scrollView.contentLayoutGuide)
+            make.width.equalToSuperview()
         }
     }
     
@@ -127,7 +121,7 @@ class ProfileTabViewController: UIViewController {
         
         profilePets.snp.makeConstraints { make in
             make.top.equalTo(profileAbout.snp.bottom).offset(UIConstants.contentTopPadding)
-            make.leading.trailing.bottom.equalTo(contentView)
+            make.leading.trailing.bottom.equalToSuperview()
         }
     }
 }

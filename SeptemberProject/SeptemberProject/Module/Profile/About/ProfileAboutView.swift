@@ -56,7 +56,7 @@ class ProfileAboutView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(with model: TestHuman) {
+    func configure(with model: MockHuman) {
         descriptionLabel.text = model.bioAbout.isEmpty ? "Нажмите для заполнения" : model.bioAbout
         editIconImage.isHidden = !model.bioAbout.isEmpty
     }

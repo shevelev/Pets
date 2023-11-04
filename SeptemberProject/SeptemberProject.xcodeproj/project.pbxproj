@@ -23,6 +23,7 @@
 		18A5397F2AA896DF00D82A49 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 18A5397E2AA896DF00D82A49 /* FirebaseStorage */; };
 		31A492982AAFB74E009B27C9 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A492972AAFB74E009B27C9 /* RegistrationViewController.swift */; };
 		C950D6012AEBEE1000209D5F /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = C950D6002AEBEE1000209D5F /* SnapKit */; };
+		C950D6032AF5707700209D5F /* MockHuman.swift in Sources */ = {isa = PBXBuildFile; fileRef = C950D6022AF5707700209D5F /* MockHuman.swift */; };
 		C9629F8E2AAB4F7500CBD361 /* RestorePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9629F8D2AAB4F7500CBD361 /* RestorePasswordViewController.swift */; };
 		C96FAD162AAE034900CA0BAA /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96FAD152AAE034900CA0BAA /* K.swift */; };
 		C9813A0F2ABB666000F4FC92 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9813A0E2ABB666000F4FC92 /* CustomTextField.swift */; };
@@ -67,6 +68,7 @@
 		18A5396F2AA8913200D82A49 /* HumanModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HumanModel.swift; sourceTree = "<group>"; };
 		18A539712AA8913A00D82A49 /* PetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetModel.swift; sourceTree = "<group>"; };
 		31A492972AAFB74E009B27C9 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		C950D6022AF5707700209D5F /* MockHuman.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHuman.swift; sourceTree = "<group>"; };
 		C9629F8D2AAB4F7500CBD361 /* RestorePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordViewController.swift; sourceTree = "<group>"; };
 		C96FAD152AAE034900CA0BAA /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
 		C9813A0E2ABB666000F4FC92 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 				C9B5CAA52ACDB92D001AC7A3 /* Human.swift */,
 				C9B5CAA72ACEE615001AC7A3 /* ProfileData.swift */,
 				C9B5CAB42AE540E9001AC7A3 /* TestHuman.swift */,
+				C950D6022AF5707700209D5F /* MockHuman.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -257,7 +260,6 @@
 				C9B5CAB12AE4320E001AC7A3 /* About */,
 				C9AF04182ACAA04F0071765B /* ProfilePetsView.swift */,
 				C9B5CAB32AE43259001AC7A3 /* Pets */,
-				C9B5CAAB2AD2C232001AC7A3 /* ProfilePetsCell.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -308,6 +310,7 @@
 		C9B5CAB32AE43259001AC7A3 /* Pets */ = {
 			isa = PBXGroup;
 			children = (
+				C9B5CAAB2AD2C232001AC7A3 /* ProfilePetsCell.swift */,
 				C9AF041A2ACACF720071765B /* ProfilePetPhotoCell.swift */,
 				C9B5CAA92AD1A5BD001AC7A3 /* ProfilePetCollections.swift */,
 			);
@@ -415,6 +418,7 @@
 				C989D9D92AB31E8100268730 /* RestorePasswordViewModel.swift in Sources */,
 				C9813A302AC1C20500F4FC92 /* FriendsTabCoordinator.swift in Sources */,
 				C9B5CAAA2AD1A5BD001AC7A3 /* ProfilePetCollections.swift in Sources */,
+				C950D6032AF5707700209D5F /* MockHuman.swift in Sources */,
 				C9629F8E2AAB4F7500CBD361 /* RestorePasswordViewController.swift in Sources */,
 				C9813A212AC1705700F4FC92 /* AuthorizationCoordinator.swift in Sources */,
 				C9813A182ABCBAE700F4FC92 /* WalkTabViewController.swift in Sources */,

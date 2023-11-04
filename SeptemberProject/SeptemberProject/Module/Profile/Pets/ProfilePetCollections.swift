@@ -9,23 +9,25 @@ import UIKit
 
 class ProfilePetCollections: UIView {
     
-    private var pets: [TestPet] = []
+    private var pets: [MockPet] = []
     
-    func configure(with model: TestHuman) {
+    func configure(with model: MockHuman) {
         self.pets = model.pets ?? []
         pageControl.numberOfPages = self.pets.count
         
         collectionView.reloadData()
-  }
+        collectionView.layoutIfNeeded()
+    }
     
-    private let collectionView: UICollectionView = {
+    private lazy var collectionView: UICollectionView = {
+       
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         return collectionView
     }()
     
-    lazy private var pageControl: CustomPageControl = {
+    private lazy var pageControl: CustomPageControl = {
         let control = CustomPageControl()
         control.delegate = self
         return control
@@ -35,6 +37,7 @@ class ProfilePetCollections: UIView {
     init() {
         super.init(frame: .zero)
         initialize()
+        
     }
     
     required init?(coder: NSCoder) {
@@ -47,9 +50,20 @@ extension ProfilePetCollections {
         
         addSubview(collectionView)
         addSubview(pageControl)
-        
+            
         makeConstraintsCollectionView()
         makeConstraintsPageControl()
+    }
+
+    private func makeConstraintsCollectionView() {
+        collectionView.register(ProfilePetsCell.self, forCellWithReuseIdentifier: String(describing: ProfilePetsCell.self))
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
+        collectionView.snp.makeConstraints { make in
+            make.top.leading.trailing.equalToSuperview()
+            make.height.equalTo(350)
+           }
     }
     
     private func makeConstraintsPageControl() {
@@ -59,35 +73,19 @@ extension ProfilePetCollections {
             make.height.equalTo(30)
         }
     }
-    
-    private func makeConstraintsCollectionView() {
-        
-        collectionView.register(ProfilePetsCell.self, forCellWithReuseIdentifier: String(describing: ProfilePetsCell.self))
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        
-        collectionView.snp.makeConstraints { make in
-            make.top.leading.trailing.equalToSuperview()
-            make.height.equalTo(100)
-        }
-    }
 }
 
-extension ProfilePetCollections: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+extension ProfilePetCollections: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return pets.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: frame.width, height: 106)
-    }
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: ProfilePetsCell.self), for: indexPath) as! ProfilePetsCell
-        let test = pets[indexPath.item]
+        let pet = pets[indexPath.item]
         
-        cell.configure(with: test)
+        cell.configure(with: pet)
         return cell
     }
     
@@ -96,10 +94,14 @@ extension ProfilePetCollections: UICollectionViewDelegateFlowLayout, UICollectio
     }
 }
 
+extension ProfilePetCollections: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        CGSize(width: frame.width, height: 350)
+    }
+}
+
 extension ProfilePetCollections: CustomPageControlDelegate {
     func updateCurrentSlide(slide: Int) {
-        print("slide: \(slide)")
-        
-            collectionView.scrollToItem(at: IndexPath(item: slide, section: 0), at: .right, animated: true)
+        collectionView.scrollToItem(at: IndexPath(item: slide, section: 0), at: .right, animated: true)
     }
 }

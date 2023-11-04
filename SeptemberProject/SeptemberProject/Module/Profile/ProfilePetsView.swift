@@ -52,35 +52,35 @@ class ProfilePetsView: UIView {
         return label
     }()
     
-    private let editIconImage: UIImageView = {
-        let image = UIImageView()
-        image.image = UIImage(named: "editIcon")
-        image.translatesAutoresizingMaskIntoConstraints = false
-        return image
-    }()
+//    private let editIconImage: UIImageView = {
+//        let image = UIImageView()
+//        image.image = UIImage(named: "editIcon")
+//        image.translatesAutoresizingMaskIntoConstraints = false
+//        return image
+//    }()
     
-    private let petAvatar: UIImageView = {
-        let image = UIImageView()
-        image.image = UIImage(named: "avatarPetBoy")?.circleMask(color: UIColor.white.cgColor, width: 1)
-        image.translatesAutoresizingMaskIntoConstraints = false
-        return image
-    }()
+//    private let petAvatar: UIImageView = {
+//        let image = UIImageView()
+//        image.image = UIImage(named: "avatarPetBoy")?.circleMask(color: UIColor.white.cgColor, width: 1)
+//        image.translatesAutoresizingMaskIntoConstraints = false
+//        return image
+//    }()
     
-    private let petNameLabel: UILabel = {
-        let label = UILabel()
-        label.text = UIConstants.petNameLabelText
-        label.textColor = UIConstants.headerTextColor
-        label.font = .systemFont(ofSize: UIConstants.petNameLabelTextSize, weight: .bold)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    private let genderPetImage: UIImageView = {
-        let image = UIImageView()
-        image.image = UIImage(named: "genderBoy")
-        image.translatesAutoresizingMaskIntoConstraints = false
-        return image
-    }()
+//    private let petNameLabel: UILabel = {
+//        let label = UILabel()
+//        label.text = UIConstants.petNameLabelText
+//        label.textColor = UIConstants.headerTextColor
+//        label.font = .systemFont(ofSize: UIConstants.petNameLabelTextSize, weight: .bold)
+//        label.translatesAutoresizingMaskIntoConstraints = false
+//        return label
+//    }()
+//    
+//    private let genderPetImage: UIImageView = {
+//        let image = UIImageView()
+//        image.image = UIImage(named: "genderBoy")
+//        image.translatesAutoresizingMaskIntoConstraints = false
+//        return image
+//    }()
     
     private let petLocationImage: UIImageView = {
         let image = UIImageView()
@@ -89,13 +89,13 @@ class ProfilePetsView: UIView {
         return image
     }()
     
-    private let petStackView: UIStackView = {
-        let view = UIStackView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.axis = .vertical
-        view.spacing = 5
-        return view
-    }()
+//    private let petStackView: UIStackView = {
+//        let view = UIStackView()
+//        view.translatesAutoresizingMaskIntoConstraints = false
+//        view.axis = .vertical
+//        view.spacing = 5
+//        return view
+//    }()
     
     private let petLocationLabel: UILabel = {
         let label = UILabel()
@@ -140,13 +140,13 @@ class ProfilePetsView: UIView {
     
     func configure(with model: [PetModel]) {
         // Настройка всех полей (свой/чужой профиль и данные из него)
-        petAvatar.image = UIImage(named: "testPet")
+//        petAvatar.image = UIImage(named: "testPet")
 
-        descriptionLabel.text = model[0].bioAbout.isEmpty ? "Нажмите для заполнения" : model[0].bioAbout
-        editIconImage.isHidden = !model[0].bioAbout.isEmpty
+//        descriptionLabel.text = model[0].bioAbout.isEmpty ? "Нажмите для заполнения" : model[0].bioAbout
+//        editIconImage.isHidden = !model[0].bioAbout.isEmpty
         
-        petNameLabel.text = model[0].name
-        descriptionLabel.text = model[0].bioAbout
+//        petNameLabel.text = model[0].name
+//        descriptionLabel.text = model[0].bioAbout
     }
 }
 
@@ -157,105 +157,105 @@ private extension ProfilePetsView {
         backgroundColor = UIColor.white
         layer.cornerRadius = 20
         
-        addSubview(petAvatar)
-        addSubview(petStackView)
+//        addSubview(petAvatar)
+//        addSubview(petStackView)
+//
+//        petNameView.addSubview(petNameLabel)
+//        petNameView.addSubview(genderPetImage)
+//
+//        petLocationView.addSubview(petLocationImage)
+//        petLocationView.addSubview(petLocationLabel)
+//
+//        petStackView.addArrangedSubview(petNameView)
+//        petStackView.addArrangedSubview(petLocationView)
+//
+//        addSubview(aboutLabel)
+//        addSubview(descriptionLabel)
+//        addSubview(editIconImage)
         
-        petNameView.addSubview(petNameLabel)
-        petNameView.addSubview(genderPetImage)
+//        collectionView.register(ProfilePetPhotoCell.self, forCellWithReuseIdentifier: String(describing: ProfilePetPhotoCell.self))
+//        collectionView.dataSource = self
+//        collectionView.delegate = self
+//
+//        addSubview(collectionView)
         
-        petLocationView.addSubview(petLocationImage)
-        petLocationView.addSubview(petLocationLabel)
-        
-        petStackView.addArrangedSubview(petNameView)
-        petStackView.addArrangedSubview(petLocationView)
-        
-        addSubview(aboutLabel)
-        addSubview(descriptionLabel)
-        addSubview(editIconImage)
-        
-        collectionView.register(ProfilePetPhotoCell.self, forCellWithReuseIdentifier: String(describing: ProfilePetPhotoCell.self))
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        
-        addSubview(collectionView)
-        
-        makeConstraintsPetAvatar()
-        makeConstraintsAboutLabel()
-        makeConstraintsDescriptionLabel()
-        makeConstraintsEditIconImage()
-        makeConstraintsPetStackView()
-        makeConstraintsPetNameLabel()
-        makeConstraintsPetLocationImage()
-        makeConstraintsGenderPetImage()
-        makeConstraintsCollectionView()
+//        makeConstraintsPetAvatar()
+//        makeConstraintsAboutLabel()
+//        makeConstraintsDescriptionLabel()
+//        makeConstraintsEditIconImage()
+//        makeConstraintsPetStackView()
+//        makeConstraintsPetNameLabel()
+//        makeConstraintsPetLocationImage()
+//        makeConstraintsGenderPetImage()
+//        makeConstraintsCollectionView()
     }
     
-    private func makeConstraintsPetAvatar() {
-        NSLayoutConstraint.activate([
-            petAvatar.topAnchor.constraint(equalTo: topAnchor, constant: UIConstants.petAvatarPadding),
-            petAvatar.leadingAnchor.constraint(equalTo: leadingAnchor, constant: UIConstants.petAvatarPadding),
-            petAvatar.widthAnchor.constraint(equalToConstant: UIConstants.petAvatarSize),
-            petAvatar.heightAnchor.constraint(equalToConstant: UIConstants.petAvatarSize),
-        ])
-    }
-    private func makeConstraintsAboutLabel() {
-        NSLayoutConstraint.activate([
-            aboutLabel.topAnchor.constraint(equalTo: petAvatar.bottomAnchor, constant: UIConstants.contentPadding),
-            aboutLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: UIConstants.contentPadding),
-        ])
-    }
-    private func makeConstraintsDescriptionLabel() {
-        NSLayoutConstraint.activate([
-            descriptionLabel.topAnchor.constraint(equalTo: aboutLabel.bottomAnchor, constant: UIConstants.descriptionLabelTopPadding),
-            descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: UIConstants.contentPadding),
-            descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -UIConstants.contentPadding),
-        ])
-    }
-    private func makeConstraintsEditIconImage() {
-        NSLayoutConstraint.activate([
-            editIconImage.topAnchor.constraint(equalTo: topAnchor, constant: UIConstants.editIconImagePadding),
-            editIconImage.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -UIConstants.editIconImagePadding),
-            editIconImage.widthAnchor.constraint(equalToConstant: UIConstants.editIconImageSize),
-            editIconImage.heightAnchor.constraint(equalToConstant: UIConstants.editIconImageSize),
-        ])
-    }
-    private func makeConstraintsPetStackView() {
-        NSLayoutConstraint.activate([
-            petStackView.leadingAnchor.constraint(equalTo: petAvatar.trailingAnchor, constant: UIConstants.petStackViewLeadingPadding),
-            petStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -UIConstants.contentPadding),
-            petStackView.centerYAnchor.constraint(equalTo: petAvatar.centerYAnchor),
-        ])
-    }
-    private func makeConstraintsPetNameLabel() {
-        NSLayoutConstraint.activate([
-            petNameLabel.topAnchor.constraint(equalTo: petNameView.topAnchor),
-            petNameLabel.bottomAnchor.constraint(equalTo: petNameView.bottomAnchor),
-            petNameLabel.leadingAnchor.constraint(equalTo: petNameView.leadingAnchor),
-            petNameLabel.trailingAnchor.constraint(equalTo: genderPetImage.leadingAnchor, constant: UIConstants.petNameLabelTrailingPadding),
-        ])
-    }
-    private func makeConstraintsPetLocationImage() {
-        NSLayoutConstraint.activate([
-            petLocationImage.topAnchor.constraint(equalTo: petLocationView.topAnchor),
-            petLocationImage.leadingAnchor.constraint(equalTo: petLocationView.leadingAnchor),
-            petLocationImage.bottomAnchor.constraint(equalTo: petLocationView.bottomAnchor),
-            petLocationLabel.leadingAnchor.constraint(equalTo: petLocationImage.trailingAnchor, constant: UIConstants.petLocationLabelTrailingPadding),
-        ])
-    }
-    private func makeConstraintsGenderPetImage() {
-        NSLayoutConstraint.activate([
-            genderPetImage.topAnchor.constraint(equalTo: petNameLabel.topAnchor, constant: -UIConstants.genderPetImageTopPadding),
-        ])
-    }
-    private func makeConstraintsCollectionView() {
-        NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: UIConstants.contentPadding),
-            collectionView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: UIConstants.contentPadding),
-            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            collectionView.heightAnchor.constraint(equalToConstant: UIConstants.collectionViewHeight),
-        ])
-    }
+//    private func makeConstraintsPetAvatar() {
+//        NSLayoutConstraint.activate([
+//            petAvatar.topAnchor.constraint(equalTo: topAnchor, constant: UIConstants.petAvatarPadding),
+//            petAvatar.leadingAnchor.constraint(equalTo: leadingAnchor, constant: UIConstants.petAvatarPadding),
+//            petAvatar.widthAnchor.constraint(equalToConstant: UIConstants.petAvatarSize),
+//            petAvatar.heightAnchor.constraint(equalToConstant: UIConstants.petAvatarSize),
+//        ])
+//    }
+//    private func makeConstraintsAboutLabel() {
+//        NSLayoutConstraint.activate([
+//            aboutLabel.topAnchor.constraint(equalTo: petAvatar.bottomAnchor, constant: UIConstants.contentPadding),
+//            aboutLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: UIConstants.contentPadding),
+//        ])
+//    }
+//    private func makeConstraintsDescriptionLabel() {
+//        NSLayoutConstraint.activate([
+//            descriptionLabel.topAnchor.constraint(equalTo: aboutLabel.bottomAnchor, constant: UIConstants.descriptionLabelTopPadding),
+//            descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: UIConstants.contentPadding),
+//            descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -UIConstants.contentPadding),
+//        ])
+//    }
+//    private func makeConstraintsEditIconImage() {
+//        NSLayoutConstraint.activate([
+//            editIconImage.topAnchor.constraint(equalTo: topAnchor, constant: UIConstants.editIconImagePadding),
+//            editIconImage.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -UIConstants.editIconImagePadding),
+//            editIconImage.widthAnchor.constraint(equalToConstant: UIConstants.editIconImageSize),
+//            editIconImage.heightAnchor.constraint(equalToConstant: UIConstants.editIconImageSize),
+//        ])
+//    }
+//    private func makeConstraintsPetStackView() {
+//        NSLayoutConstraint.activate([
+//            petStackView.leadingAnchor.constraint(equalTo: petAvatar.trailingAnchor, constant: UIConstants.petStackViewLeadingPadding),
+//            petStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -UIConstants.contentPadding),
+//            petStackView.centerYAnchor.constraint(equalTo: petAvatar.centerYAnchor),
+//        ])
+//    }
+//    private func makeConstraintsPetNameLabel() {
+//        NSLayoutConstraint.activate([
+//            petNameLabel.topAnchor.constraint(equalTo: petNameView.topAnchor),
+//            petNameLabel.bottomAnchor.constraint(equalTo: petNameView.bottomAnchor),
+//            petNameLabel.leadingAnchor.constraint(equalTo: petNameView.leadingAnchor),
+//            petNameLabel.trailingAnchor.constraint(equalTo: genderPetImage.leadingAnchor, constant: UIConstants.petNameLabelTrailingPadding),
+//        ])
+//    }
+//    private func makeConstraintsPetLocationImage() {
+//        NSLayoutConstraint.activate([
+//            petLocationImage.topAnchor.constraint(equalTo: petLocationView.topAnchor),
+//            petLocationImage.leadingAnchor.constraint(equalTo: petLocationView.leadingAnchor),
+//            petLocationImage.bottomAnchor.constraint(equalTo: petLocationView.bottomAnchor),
+//            petLocationLabel.leadingAnchor.constraint(equalTo: petLocationImage.trailingAnchor, constant: UIConstants.petLocationLabelTrailingPadding),
+//        ])
+//    }
+//    private func makeConstraintsGenderPetImage() {
+//        NSLayoutConstraint.activate([
+//            genderPetImage.topAnchor.constraint(equalTo: petNameLabel.topAnchor, constant: -UIConstants.genderPetImageTopPadding),
+//        ])
+//    }
+//    private func makeConstraintsCollectionView() {
+//        NSLayoutConstraint.activate([
+//            collectionView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: UIConstants.contentPadding),
+//            collectionView.bottomAnchor.constraint(equalTo: bottomAnchor),
+//            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: UIConstants.contentPadding),
+//            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
+//            collectionView.heightAnchor.constraint(equalToConstant: UIConstants.collectionViewHeight),
+//        ])
+//    }
 }
 
 extension ProfilePetsView: UICollectionViewDataSource {
