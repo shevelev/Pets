@@ -23,7 +23,6 @@ final class ProfileTabViewModel: ProfileTabViewModelProtocol {
         isLoading.value = true
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            print("load")
             self.isLoading.value = false
             FirebaseClient().getFakeUser { human in
                 guard let human else {return}

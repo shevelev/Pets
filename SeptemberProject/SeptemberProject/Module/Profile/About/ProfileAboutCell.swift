@@ -1,13 +1,13 @@
 //
-//  ProfileAbout.swift
+//  ProfileAboutCell.swift
 //  SeptemberProject
 //
-//  Created by Сергей Шевелев on 01.10.2023.
+//  Created by Сергей Шевелев on 05.11.2023.
 //
 
 import UIKit
 
-class ProfileAboutView: UIView {
+class ProfileAboutCell: UITableViewCell {
     
     private enum UIConstants {
         static let aboutLabelText = "О себе"
@@ -46,60 +46,54 @@ class ProfileAboutView: UIView {
         return image
     }()
     
-    //MARK: - Init
-    init() {
-        super.init(frame: .zero)
-        initialize()
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        iniialize()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(with model: MockHuman) {
-        descriptionLabel.text = model.bioAbout.isEmpty ? "Нажмите для заполнения" : model.bioAbout
-        editIconImage.isHidden = !model.bioAbout.isEmpty
+    func configure(with info: MockHuman) {
+        descriptionLabel.text = info.bioAbout.isEmpty ? "Нажмите для заполнения" : info.bioAbout
+        editIconImage.isHidden = !info.bioAbout.isEmpty
     }
 }
 
-// MARK: - private methods
-private extension ProfileAboutView {
-    func initialize() {
+private extension ProfileAboutCell {
+    func iniialize() {
         
-        setupLayer()
+        backgroundColor = .clear
+        selectionStyle = .none
+        let view = UIView()
         
-        addSubview(aboutLabel)
-        addSubview(descriptionLabel)
-        addSubview(editIconImage)
-        
-        makeConstraintsAboutLabel()
-        makeConstraintsDescriptionLabel()
-        makeConstraintsEditIconImage()
-    }
-    
-    private func setupLayer() {
-        backgroundColor = UIColor.white
-        layer.cornerRadius = UIConstants.cornerRadius
-    }
-    
-    private func makeConstraintsAboutLabel() {
-        aboutLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(UIConstants.contentPadding)
-            make.leading.equalToSuperview().offset(UIConstants.contentPadding)
+        contentView.addSubview(view)
+        view.snp.makeConstraints { make in
+            make.top.bottom.equalToSuperview()
+            make.leading.trailing.equalToSuperview().inset(11)
         }
-    }
-    private func makeConstraintsDescriptionLabel() {
+        view.backgroundColor = UIColor.white
+        view.layer.cornerRadius = UIConstants.cornerRadius
+        
+        view.addSubview(aboutLabel)
+        aboutLabel.snp.makeConstraints { make in
+            make.top.equalTo(view).offset(UIConstants.contentPadding)
+            make.leading.equalTo(view).offset(UIConstants.contentPadding)
+        }
+        
+        view.addSubview(descriptionLabel)
         descriptionLabel.snp.makeConstraints { make in
             make.top.equalTo(aboutLabel.snp.bottom).offset(UIConstants.descriptionLabelTopPadding)
-            make.leading.equalToSuperview().offset(UIConstants.contentPadding)
-            make.trailing.equalToSuperview().offset(UIConstants.contentPadding)
-            make.bottom.equalToSuperview().offset(-UIConstants.contentPadding)
+            make.leading.equalTo(view).offset(UIConstants.contentPadding)
+            make.trailing.equalTo(view).inset(UIConstants.contentPadding)
+            make.bottom.equalTo(view).inset(UIConstants.contentPadding)
         }
-    }
-    private func makeConstraintsEditIconImage() {
+        
+        view.addSubview(editIconImage)
         editIconImage.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(UIConstants.editIconImagePadding)
-            make.trailing.equalToSuperview().offset(-UIConstants.editIconImagePadding)
+            make.top.equalTo(view).offset(UIConstants.editIconImagePadding)
+            make.trailing.equalTo(view).offset(-UIConstants.editIconImagePadding)
             make.width.equalTo(UIConstants.editIconImageSize)
             make.height.equalTo(UIConstants.editIconImageSize)
         }

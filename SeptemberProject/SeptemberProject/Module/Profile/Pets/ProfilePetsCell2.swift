@@ -1,23 +1,15 @@
 //
-//  ProfilePetCollections.swift
+//  ProfilePetsCell2.swift
 //  SeptemberProject
 //
-//  Created by Сергей Шевелев on 07.10.2023.
+//  Created by Сергей Шевелев on 05.11.2023.
 //
 
 import UIKit
 
-class ProfilePetCollections: UIView {
+class ProfilePetsCell2: UITableViewCell {
     
     private var pets: [MockPet] = []
-    
-    func configure(with model: MockHuman) {
-        self.pets = model.pets ?? []
-        pageControl.numberOfPages = self.pets.count
-        
-        collectionView.reloadData()
-        collectionView.layoutIfNeeded()
-    }
     
     private lazy var collectionView: UICollectionView = {
        
@@ -33,49 +25,64 @@ class ProfilePetCollections: UIView {
         return control
     }()
     
-    //MARK: - Init
-    init() {
-        super.init(frame: .zero)
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         initialize()
-        
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func configure(with info: MockHuman) {
+        self.pets = info.pets ?? []
+        pageControl.numberOfPages = self.pets.count
+        
+        collectionView.reloadData()
+        collectionView.layoutIfNeeded()
+    }
 }
 
-extension ProfilePetCollections {
+private extension ProfilePetsCell2 {
     func initialize() {
+        selectionStyle = .none
         
-        addSubview(collectionView)
-        addSubview(pageControl)
-            
-        makeConstraintsCollectionView()
-        makeConstraintsPageControl()
-    }
-
-    private func makeConstraintsCollectionView() {
+        backgroundColor = .clear//UIColor(named: "profileBackGround")
+        
+        contentView.addSubview(collectionView)
+        contentView.addSubview(pageControl)
+        
         collectionView.register(ProfilePetsCell.self, forCellWithReuseIdentifier: String(describing: ProfilePetsCell.self))
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.backgroundColor = .clear
         
         collectionView.snp.makeConstraints { make in
-            make.top.leading.trailing.equalToSuperview()
+            make.top.equalToSuperview().inset(20)
+            make.leading.trailing.equalToSuperview().inset(11)
+//            make.trailing.equalToSuperview()
             make.height.equalTo(350)
-           }
-    }
-    
-    private func makeConstraintsPageControl() {
+        }
         pageControl.snp.makeConstraints { make in
             make.top.equalTo(collectionView.snp.bottom)
-            make.leading.trailing.bottom.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
             make.height.equalTo(30)
+            //make.bottom.equalToSuperview()
+        }
+        
+        let viewPadding = UIView()
+        contentView.addSubview(viewPadding)
+        viewPadding.snp.makeConstraints { make in
+            make.top.equalTo(pageControl.snp.bottom)
+            make.centerX.equalToSuperview()
+            make.height.equalTo(100)
+            make.bottom.equalToSuperview()
         }
     }
 }
 
-extension ProfilePetCollections: UICollectionViewDataSource {
+
+extension ProfilePetsCell2: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return pets.count
@@ -94,13 +101,13 @@ extension ProfilePetCollections: UICollectionViewDataSource {
     }
 }
 
-extension ProfilePetCollections: UICollectionViewDelegateFlowLayout {
+extension ProfilePetsCell2: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: frame.width, height: 350)
+        CGSize(width: frame.width - 22, height: 350)
     }
 }
 
-extension ProfilePetCollections: CustomPageControlDelegate {
+extension ProfilePetsCell2: CustomPageControlDelegate {
     func updateCurrentSlide(slide: Int) {
         collectionView.scrollToItem(at: IndexPath(item: slide, section: 0), at: .right, animated: true)
     }

@@ -19,40 +19,15 @@ class ProfileTabViewController: UIViewController {
     
     private var activityIndicator = UIActivityIndicatorView(style: .medium)
     
-    private let scrollView: UIScrollView = {
-        let scroll = UIScrollView()
-        scroll.backgroundColor = UIConstants.contentBackgroundColor
-        return scroll
-    }()
-    
-    private let contentView: UIView = {
-        let view = UIView()
-        return view
-    }()
-    
-    private let profileHeader: ProfileHeaderView = {
-        let header = ProfileHeaderView()
-        return header
-    }()
-    
-    private let profileAbout: ProfileAboutView = {
-        let view = ProfileAboutView()
-        return view
-    }()
-    
-    private let profilePets: ProfilePetCollections = {
-        let view = ProfilePetCollections()
-        return view
-    }()
+    private var tableView = UITableView()
+    private var profileItems: [ProfileItemType] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationController?.isNavigationBarHidden = true
-        view.backgroundColor = UIConstants.contentBackgroundColor
         
         viewModel.getUser()
-        
         bindViewModel()
         setupUI()
     }
@@ -70,58 +45,60 @@ class ProfileTabViewController: UIViewController {
     private func bindViewModel() {
         viewModel.isLoading.bind { [weak self] isLoading in
             guard let self, let isLoading else { return }
-            print("isLoading: \(isLoading)")
             isLoading ?  self.activityIndicator.startAnimating() : self.activityIndicator.stopAnimating()
             
             if !isLoading {
+                if let profile = self.viewModel.profile {
+                    self.profileItems.append(.header(profile))
+                    self.profileItems.append(.about(profile))
+                    self.profileItems.append(.pets(profile))
+                }
                 self.show()
             }
         }
     }
     
     private func show() {
-        view.addSubview(scrollView)
-        scrollView.addSubview(contentView)
         
-        contentView.addSubview(profileHeader)
-        contentView.addSubview(profileAbout)
-        contentView.addSubview(profilePets)
+        tableView.dataSource = self
+        tableView.contentInsetAdjustmentBehavior = .never
+        tableView.separatorColor = .clear
         
-        profileHeader.configure(with: viewModel.profile!)
-        profileAbout.configure(with: viewModel.profile!)
-        profilePets.configure(with: viewModel.profile!)
+        tableView.backgroundColor = UIColor(named: "profileBackGround")
+        tableView.register(ProfileHeaderCell.self, forCellReuseIdentifier: String(describing: ProfileHeaderCell.self))
+        tableView.register(ProfileAboutCell.self, forCellReuseIdentifier: String(describing: ProfileAboutCell.self))
+        tableView.register(ProfilePetsCell2.self, forCellReuseIdentifier: String(describing: ProfilePetsCell2.self))
+        view.addSubview(tableView)
         
-        makeConstraintsScrollContent()
-        makeConstraintsProfileHeader()
-        makeConstraintsProfileAbout()
-    }
-    
-    private func makeConstraintsScrollContent() {
-        scrollView.snp.makeConstraints { make in
-            make.top.leading.trailing.bottom.equalToSuperview()
-        }
         
-        contentView.snp.makeConstraints { make in
-            make.top.leading.trailing.bottom.equalTo(scrollView.contentLayoutGuide)
-            make.width.equalToSuperview()
+        tableView.snp.makeConstraints { make in
+            make.top.leading.trailing.equalToSuperview()
+            make.bottom.equalToSuperview()
+            make.width.equalTo(view.frame.width)
         }
     }
-    
-    private func makeConstraintsProfileHeader() {
-        profileHeader.snp.makeConstraints { make in
-            make.top.leading.trailing.equalTo(contentView)
-        }
+}
+
+extension ProfileTabViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        profileItems.count
     }
     
-    private func makeConstraintsProfileAbout() {
-        profileAbout.snp.makeConstraints { make in
-            make.top.equalTo(profileHeader.snp.bottom).offset(UIConstants.contentTopPadding)
-            make.leading.trailing.equalTo(contentView)
-        }
-        
-        profilePets.snp.makeConstraints { make in
-            make.top.equalTo(profileAbout.snp.bottom).offset(UIConstants.contentTopPadding)
-            make.leading.trailing.bottom.equalToSuperview()
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let item = profileItems[indexPath.row]
+        switch item {
+        case .header(let header):
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ProfileHeaderCell.self), for: indexPath) as! ProfileHeaderCell
+            cell.configure(with: header)
+            return cell
+        case .about(let about):
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ProfileAboutCell.self), for: indexPath) as! ProfileAboutCell
+            cell.configure(with: about)
+            return cell
+        case .pets(let pets):
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ProfilePetsCell2.self), for: indexPath) as! ProfilePetsCell2
+            cell.configure(with: pets)
+            return cell
         }
     }
 }

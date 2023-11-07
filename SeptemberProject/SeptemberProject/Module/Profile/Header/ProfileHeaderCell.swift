@@ -1,14 +1,14 @@
 //
-//  ProfileHeader.swift
+//  ProfileHeaderCell.swift
 //  SeptemberProject
 //
-//  Created by Сергей Шевелев on 01.10.2023.
+//  Created by Сергей Шевелев on 05.11.2023.
 //
 
 import UIKit
 
-class ProfileHeaderView: UIView {
-    
+class ProfileHeaderCell: UITableViewCell {
+
     private enum UIConstants {
         static let bigAvatarSize: CGFloat = 118
         static let smallAvatarSize: CGFloat = 80
@@ -29,6 +29,16 @@ class ProfileHeaderView: UIView {
         static let walkTimeLabelFontSize: CGFloat = 13
         static let textColor: UIColor = UIColor(red: 130/255, green: 138/255, blue: 150/255, alpha: 1)
         static let headerTextColor: UIColor = UIColor(red: 31/255, green: 34/255, blue: 52/255, alpha: 1)
+        static let contentBackgroundColor: UIColor = UIColor(red: 250/255, green: 250/255, blue: 252/255, alpha: 1)
+    }
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        iniialize() 
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     private let profileBack: UIImageView = {
@@ -91,106 +101,71 @@ class ProfileHeaderView: UIView {
         return view
     }()
     
-    //MARK: - Init
-    init() {
-        super.init(frame: .zero)
-        initialize()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func configure(with model: MockHuman) {
+    func configure(with info: MockHuman) {
         // Настройка всех полей (свой/чужой профиль и данные из него)
         mainAvatar.image = UIImage(named: "testBoy")
         petAvatar.image = UIImage(named: "testPet")
-        let namePets = model.pets![0].name!.isEmpty ? "" : "и \(model.pets![0].name ?? "")"
-        namesLabel.text = "\(model.name) \(namePets)"
-        isOnline.backgroundColor = model.isonline ?? false ? UIConstants.isOnlineBackgroundColor : UIConstants.isNotOnlineBackgroundColor
-        walkTimeLabel.isHidden = !(model.isonline ?? false)
-        walkTimeLabel.text = "На прогулке еще \(model.walktime ?? 0) мин"
+        let namePets = info.pets![0].name!.isEmpty ? "" : "и \(info.pets![0].name ?? "")"
+        namesLabel.text = "\(info.name) \(namePets)"
+        isOnline.backgroundColor = info.isonline ?? false ? UIConstants.isOnlineBackgroundColor : UIConstants.isNotOnlineBackgroundColor
+        walkTimeLabel.isHidden = !(info.isonline ?? false)
+        walkTimeLabel.text = "На прогулке еще \(info.walktime ?? 0) мин"
     }
 }
 
-// MARK: - private methods
-private extension ProfileHeaderView {
-    func initialize() {
+private extension ProfileHeaderCell {
+    func iniialize() {
         
-        addSubview(profileBack)
-        addSubview(mainAvatar)
-        addSubview(petAvatar)
-        addSubview(profileSettingsButton)
-        addSubview(profileMessageButton)
-        addSubview(namesLabel)
-        addSubview(walkTimeLabel)
-        addSubview(isOnline)
+        contentView.backgroundColor = UIColor(named: "profileBackGround")
         
-        makeConstraintsProfileBack()
-        makeConstraintsMainAvatar()
-        makeConstraintsPetAvatar()
-        makeConstraintsProfileSettingsButton()
-        makeConstraintsProfileMessageButton()
-        makeConstraintsNamesLabel()
-        makeConstraintsWalkTimeLabel()
-        makeConstraintsIsOnline()
-    }
-    
-    private func makeConstraintsProfileBack() {
+        contentView.addSubview(profileBack)
         profileBack.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview()
         }
-    }
-    
-    private func makeConstraintsMainAvatar() {
+        
+        contentView.addSubview(mainAvatar)
         mainAvatar.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(UIConstants.mainAvatarTopPadding)
             make.leading.equalToSuperview().offset(UIConstants.paddingContent)
             make.width.height.equalTo(UIConstants.bigAvatarSize)
         }
-    }
-    
-    private func makeConstraintsPetAvatar() {
+        
+        contentView.addSubview(petAvatar)
         petAvatar.snp.makeConstraints { make in
             make.leading.equalTo(mainAvatar.snp.trailing).offset(-UIConstants.paddingContent)
             make.bottom.equalTo(mainAvatar.snp.bottom)
             make.width.height.equalTo(UIConstants.smallAvatarSize)
         }
-    }
-    
-    private func makeConstraintsProfileSettingsButton() {
+        
+        contentView.addSubview(profileSettingsButton)
         profileSettingsButton.snp.makeConstraints { make in
             make.leading.equalTo(petAvatar.snp.trailing).offset(UIConstants.paddingContent)
             make.trailing.equalToSuperview().offset(-UIConstants.paddingContent)
             make.bottom.equalTo(mainAvatar.snp.bottom)
             make.height.equalTo(UIConstants.buttonHeight)
         }
-    }
-    
-    private func makeConstraintsProfileMessageButton() {
+        
+        contentView.addSubview(profileMessageButton)
         profileMessageButton.snp.makeConstraints { make in
             make.trailing.equalTo(profileSettingsButton.snp.trailing)
             make.top.equalTo(mainAvatar.snp.top)
             make.width.height.equalTo(UIConstants.buttonHeight)
         }
-    }
-    
-    private func makeConstraintsNamesLabel() {
+        
+        contentView.addSubview(namesLabel)
         namesLabel.snp.makeConstraints { make in
             make.top.equalTo(mainAvatar.snp.bottom).offset(UIConstants.namesLabelTopPadding)
             make.leading.equalToSuperview().offset(UIConstants.paddingContent)
         }
-    }
-    
-    private func makeConstraintsWalkTimeLabel() {
+        
+        contentView.addSubview(walkTimeLabel)
         walkTimeLabel.snp.makeConstraints { make in
             make.top.equalTo(namesLabel.snp.bottom).offset(UIConstants.walkTimeLabelTopPadding)
             make.leading.equalToSuperview().offset(UIConstants.paddingContent)
-            make.bottom.equalToSuperview()
+            make.bottom.equalToSuperview().inset(20)
         }
-    }
-    
-    private func makeConstraintsIsOnline() {
+        
+        contentView.addSubview(isOnline)
         isOnline.snp.makeConstraints { make in
             make.top.equalTo(namesLabel.snp.top)
             make.leading.equalTo(namesLabel.snp.trailing)
