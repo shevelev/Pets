@@ -8,7 +8,7 @@
 import UIKit
 
 class ProfileHeaderCell: UITableViewCell {
-
+    
     private enum UIConstants {
         static let bigAvatarSize: CGFloat = 118
         static let smallAvatarSize: CGFloat = 80
@@ -34,7 +34,7 @@ class ProfileHeaderCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        iniialize() 
+        iniialize()
     }
     
     required init?(coder: NSCoder) {
@@ -71,15 +71,7 @@ class ProfileHeaderCell: UITableViewCell {
         return button
     }()
     
-    private let profileMessageButton: UIImageView = {
-        let image = UIImageView()
-        image.image = UIImage(named: "avatarMan")
-        image.layer.masksToBounds = true
-        image.backgroundColor = UIConstants.buttonBackgroundColor
-        return image
-    }()
-    
-     let namesLabel: UILabel = {
+    let namesLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: UIConstants.namesLabelFontSize, weight: .semibold)
         label.textColor = UIConstants.headerTextColor
@@ -101,6 +93,29 @@ class ProfileHeaderCell: UITableViewCell {
         return view
     }()
     
+    //MARK: - Message button
+    private let messageButtonView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(named: "profileBackGround")
+        view.layer.cornerRadius = UIConstants.buttonHeight / 2
+        return view
+    }()
+    
+    private let iconMessageButtom: UIImageView = {
+        let view = UIImageView()
+        return view
+    }()
+    
+    private let badgeButton: UIButton = {
+       let view = UIButton()
+        view.layer.cornerRadius = 13 / 2
+        view.setTitleColor(.white, for: .normal)
+        view.titleLabel?.font = UIFont.systemFont(ofSize: 7)
+        view.backgroundColor = UIColor(red: 250/255, green: 46/255, blue: 105/255, alpha: 1)
+        view.contentEdgeInsets = UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 4)
+        return view
+    }()
+    
     func configure(with info: MockHuman) {
         // Настройка всех полей (свой/чужой профиль и данные из него)
         mainAvatar.image = UIImage(named: "testBoy")
@@ -110,6 +125,9 @@ class ProfileHeaderCell: UITableViewCell {
         isOnline.backgroundColor = info.isonline ?? false ? UIConstants.isOnlineBackgroundColor : UIConstants.isNotOnlineBackgroundColor
         walkTimeLabel.isHidden = !(info.isonline ?? false)
         walkTimeLabel.text = "На прогулке еще \(info.walktime ?? 0) мин"
+        
+        iconMessageButtom.image = UIImage(named: "iconMessage")
+        badgeButton.setTitle("666", for: .normal)
     }
 }
 
@@ -145,13 +163,6 @@ private extension ProfileHeaderCell {
             make.height.equalTo(UIConstants.buttonHeight)
         }
         
-        contentView.addSubview(profileMessageButton)
-        profileMessageButton.snp.makeConstraints { make in
-            make.trailing.equalTo(profileSettingsButton.snp.trailing)
-            make.top.equalTo(mainAvatar.snp.top)
-            make.width.height.equalTo(UIConstants.buttonHeight)
-        }
-        
         contentView.addSubview(namesLabel)
         namesLabel.snp.makeConstraints { make in
             make.top.equalTo(mainAvatar.snp.bottom).offset(UIConstants.namesLabelTopPadding)
@@ -170,6 +181,25 @@ private extension ProfileHeaderCell {
             make.top.equalTo(namesLabel.snp.top)
             make.leading.equalTo(namesLabel.snp.trailing)
             make.width.height.equalTo(UIConstants.isOnlineWidthHeight)
+        }
+        
+        contentView.addSubview(messageButtonView)
+        messageButtonView.snp.makeConstraints { make in
+            make.trailing.equalTo(profileSettingsButton.snp.trailing)
+            make.top.equalTo(mainAvatar.snp.top)
+            make.width.height.equalTo(UIConstants.buttonHeight)
+        }
+        
+        messageButtonView.addSubview(iconMessageButtom)
+        iconMessageButtom.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.height.width.equalTo(18)
+        }
+        
+        messageButtonView.addSubview(badgeButton)
+        badgeButton.snp.makeConstraints { make in
+            make.top.trailing.equalToSuperview()
+            make.height.equalTo(13)
         }
     }
 }
